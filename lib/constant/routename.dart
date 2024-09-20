@@ -1,0 +1,9 @@
+const String homescreen = "homescreen";
+const String feedbackscreen = "feedbackscreen";
+const String signupScreen = "signupscreen";
+const String feedbackscreen2 = "feedbackscreen2";
+const String feedbackscreen3 = "feedbackscreen3";
+const String feedbackscreen4 = "feedbackscreen4";
+const String otpscreen = "otpscreen";
+const String changelanguagescreen = "changelanguagescreen";
+const String grhomescreen = "grhomescreen";
