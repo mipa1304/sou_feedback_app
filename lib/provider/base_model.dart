@@ -76,7 +76,7 @@ class BaseModel extends ChangeNotifier {
 
     return update_Srno
         .doc('CXXxGjqj3C0fyaCNSfqG')
-        .update({'sr_no': '$newSrno'})
+        .update({'sr_no':'$newSrno'})
         .then((value) => print("Sr No Update Successfully"))
         .catchError((e) => print("Failed to update Sr No: $e"));
   }

@@ -325,6 +325,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
   @override
   Widget build(BuildContext context) {
+    
     var size = MediaQuery.sizeOf(context);
 
     return ChangeNotifierProvider<FeedbackFormViewModel>(
@@ -876,6 +877,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                           {viewModel.remark = str},
                                       controller: _feedbackA,
                                       decoration: InputDecoration(
+                                        suffixIcon: IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(Icons.mic_sharp)),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(20.0),
@@ -1421,6 +1425,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       maxLines: 3,
                                       controller: _feedbackB,
                                       decoration: InputDecoration(
+                                        suffixIcon: IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(Icons.mic_sharp)),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(20.0),
@@ -1718,6 +1725,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                         viewModel.remark_c = str;
                                       },
                                       decoration: InputDecoration(
+                                        suffixIcon: IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(Icons.mic_sharp)),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(20.0),
@@ -2113,6 +2123,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                         viewModel.remark_d = str;
                                       },
                                       decoration: InputDecoration(
+                                        suffixIcon: IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(Icons.mic_sharp)),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(20.0),
@@ -2417,6 +2430,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                             viewModel.remark_e = str;
                                           },
                                           decoration: InputDecoration(
+                                            suffixIcon: IconButton(
+                                                onPressed: () {},
+                                                icon: Icon(Icons.mic_sharp)),
                                             focusedBorder: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(20.0),
@@ -2724,6 +2740,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                             viewModel.remark_f = str;
                                           },
                                           decoration: InputDecoration(
+                                            suffixIcon: IconButton(
+                                                onPressed: () {},
+                                                icon: Icon(Icons.mic_sharp)),
                                             focusedBorder: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(20.0),
@@ -3107,6 +3126,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                             viewModel.remark_g = str;
                                           },
                                           decoration: InputDecoration(
+                                            suffixIcon: IconButton(
+                                                onPressed: () {},
+                                                icon: Icon(Icons.mic_sharp)),
                                             focusedBorder: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(20.0),
@@ -3428,6 +3450,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                             viewModel.remark_h = str;
                                           },
                                           decoration: InputDecoration(
+                                            suffixIcon: IconButton(
+                                                onPressed: () {},
+                                                icon: Icon(Icons.mic_sharp)),
                                             focusedBorder: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(20.0),
@@ -3465,6 +3490,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                             viewModel.other_suggestion = str;
                                           },
                                           decoration: InputDecoration(
+                                            suffixIcon: IconButton(
+                                                onPressed: () {},
+                                                icon: Icon(Icons.mic_sharp)),
                                             focusedBorder: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(20.0),
