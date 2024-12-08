@@ -323,28 +323,22 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
   bool isData = false;
 
+  bool isRecording = false;
+
   @override
   Widget build(BuildContext context) {
-    
     var size = MediaQuery.sizeOf(context);
-
     return ChangeNotifierProvider<FeedbackFormViewModel>(
       create: (context) => locator<FeedbackFormViewModel>(),
       child: ViewModelBuilder<FeedbackFormViewModel>.reactive(
           viewModelBuilder: () => FeedbackFormViewModel(context),
           builder: ((context, viewModel, child) {
             viewModel.getSrno();
-
-            // srno = viewModel.srno[index].srno;
-
+            viewModel.initRecorder();
+            // viewModel.is
             return Scaffold(
               appBar: AppBar(
-                // foregroundColor: Color.fromARGB(0, 0, 0, 0),
-                // backgroundColor: Color.fromARGB(0, 0, 0, 0),
-                // elevation: 0.0,
-                // shadowColor: Color.fromARGB(0, 0, 0, 0),
                 backgroundColor: ThemeColors.bgColor,
-
                 actions: [
                   Container(
                     color: Color.fromARGB(0, 0, 0, 0),
@@ -878,8 +872,15 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       controller: _feedbackA,
                                       decoration: InputDecoration(
                                         suffixIcon: IconButton(
-                                            onPressed: () {},
-                                            icon: Icon(Icons.mic_sharp)),
+                                            onPressed: () {
+                                              //  viewModel.isRecording
+                                              viewModel.isRecording
+                                                  ? viewModel.stopRecording()
+                                                  : viewModel.startRecording();
+                                            },
+                                            icon: Icon(viewModel.isRecording
+                                                ? Icons.stop
+                                                : Icons.mic_sharp)),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(20.0),
