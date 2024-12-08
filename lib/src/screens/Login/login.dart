@@ -20,12 +20,12 @@ import 'package:SOUFEEDBACKAPP/locator.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:stacked/stacked.dart';
 import 'package:SOUFEEDBACKAPP/src/screens/OTP Screen/OTP_Screen.dart';
-// import 'package:custom_qr_generator/custom_qr_generator.dart';
+//import 'package:custom_qr_generator/custom_qr_generator.dart';
 import 'package:SOUFEEDBACKAPP/src/screens/FeedbackForm/feedback.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:SOUFEEDBACKAPP/src/screens/FeedBackForm2/feedback2.dart';
-// import 'package:qr_code_scanner/qr_code_scanner.dart';
-// import 'package:qr_flutter/qr_flutter.dart';
+//import 'package:qr_code_scanner/qr_code_scanner.dart';
+//import 'package:qr_flutter/qr_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
