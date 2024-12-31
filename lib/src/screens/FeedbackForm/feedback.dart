@@ -873,14 +873,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       decoration: InputDecoration(
                                         suffixIcon: IconButton(
                                             onPressed: () {
-                                              //  viewModel.isRecording
-                                              viewModel.isRecording
-                                                  ? viewModel.stopRecording()
-                                                  : viewModel.startRecording();
+                                              viewModel.handleMicButtonPress();
                                             },
-                                            icon: Icon(viewModel.isRecording
-                                                ? Icons.stop
-                                                : Icons.mic_sharp)),
+                                            icon: Icon(Icons.mic_sharp)),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(20.0),

@@ -17,6 +17,8 @@ class ChangeLanguageScreen extends StatefulWidget {
 }
 
 class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
+  LanguageModel? _selectedLanguage;
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ChangeLanguageViewModel>(
@@ -61,7 +63,11 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
           iconSize: 30,
           underline: SizedBox(),
           hint: Text(Languages.of(context)!.labelSelectLanguage),
+          value: _selectedLanguage,
           onChanged: (LanguageModel? language) {
+            setState(() {
+              _selectedLanguage = language;
+            });
             changeLanguage(context, language!.languageCode);
 
             print(language.languageCode);

@@ -92,6 +92,15 @@ class BaseModel extends ChangeNotifier {
     return null;
   }
 
+  Future<void> handleMicButtonPress() async {
+    if (isRecording) {
+      await stopRecording();
+    } else {
+      await startRecording();
+    }
+    notifyListeners();
+  }
+
   Future<void> getSrno() async {
     final querySnapshot = await _firestore.collection('form_no').get();
     final srnos =
