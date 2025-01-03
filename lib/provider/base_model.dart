@@ -20,45 +20,30 @@ import 'package:speech_to_text/speech_to_text.dart';
 import '../locator.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
-// import 'package:flutter_tts/flutter_tts.dart';
-
-//import 'package:SOUFEEDBACKAPP/src/models/sr_view_model.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BaseModel extends ChangeNotifier {
   final navigationService = locator<NavigationService>();
   final DialogService _dialogService = locator<DialogService>();
-  // late final Srno srno;
+
   ViewState _state = ViewState.idle;
-
   BuildContext? context;
-
   ViewState get state => _state;
-
   DialogService get dialogService => _dialogService;
-
   FirebaseAuth auth = FirebaseAuth.instance;
-
   QuerySnapshot? snapshot;
-
   FlutterSoundRecorder? _recorder;
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   List<Srno> _srno = [];
-
   List<Srno> get srno => _srno;
-
   AnimationController? _animationController;
   bool _isAnimating = false;
-  String lastStatus = "";
-  String lastWords = "";
-  String lastError = "";
+  String? text = "";
   bool isMatchFound = false;
   final SpeechToText speech = SpeechToText();
   bool speechTest = false;
   PersistentBottomSheetController? _controller;
-  // FlutterTts? flutterTts;
-  // int index = 0;
+  bool isListening = true;
 
   Future<void> initRecorder() async {
     _recorder = FlutterSoundRecorder();
@@ -115,45 +100,36 @@ class BaseModel extends ChangeNotifier {
 
   void setState(ViewState viewState) {
     _state = viewState;
-
-    // speechTest = true;
-
     _initspeech();
-
-    // authStatus = authStatus;
-    // verificationId = verificationId;
-    // print("=====>>>>> ${_state}");
     notifyListeners();
   }
 
-  // initTts() {
-  //   flutterTts = FlutterTts();
-
-  //   _getLanguages();
-
-  //   flutterTts!.setStartHandler(() {
-  //     setState(() {
-  //       ttsState = TtsState.playing;
-  //     });
-  //   });
-
-  //   flutterTts!.setCompletionHandler(() {
-  //     setState(() {
-  //       ttsState = TtsState.stopped;
-  //     });
-  //   });
-
-  //   flutterTts!.setErrorHandler((msg) {
-  //     setState(() {
-  //       ttsState = TtsState.stopped;
-  //     });
-  //   });
-  // }
-
   void _initspeech() async {
-    speechTest = await speech.initialize();
-    setState(_state);
+    bool available = await speech.initialize();
+    if (available) {
+      speechTest = true;
+      notifyListeners();
+    } else {
+      speechTest = false;
+    }
   }
+
+  void startListening() {
+    speech.listen(onResult: (result) {
+      text = result.recognizedWords;
+      notifyListeners();
+    });
+    isListening = true;
+    notifyListeners();
+  }
+
+  void stopListening() {
+    speech.stop();
+    isListening = false;
+    notifyListeners();
+  }
+
+  String get recognizedText => text ?? '';
 
   redirectToPage(String routename, {dynamic arguments}) {
     if (arguments == null) {
@@ -190,7 +166,6 @@ class BaseModel extends ChangeNotifier {
   String? viewing_gallery_b;
   String? washroom_at_ticket_counter;
   String? washroom_at_exhibition_hall;
-
   String? washroom_at_vg;
   String? remark_b;
   String? body_frisking;
@@ -223,8 +198,6 @@ class BaseModel extends ChangeNotifier {
 
   Future<bool> savefeedbackform() async {
     bool isFormA = false;
-    // final feedForm = SaveFeedback_a(
-    //     ExhibitionHall, LiftLobi, ViewingGallery, ExternalWalkways, RemarkA);
 
     final feedForm = SaveFeedback_a(
       your_name,
@@ -289,301 +262,4 @@ class BaseModel extends ChangeNotifier {
 
     return isFormA;
   }
-
-  void resultListenerCheck(SpeechRecognitionResult result) {
-    if (!speech.isListening) {
-      print("===> Listening True");
-      resultListener(result);
-      print("${result}");
-    }
-  }
-
-  void resultListener(SpeechRecognitionResult result) {
-    _animationController!.reset();
-    _isAnimating = false;
-    _controller!.setState!(() {
-      //lastWords = "${result.recognizedWords} - ${result.finalResult}";
-      lastWords = "${result.recognizedWords}";
-    });
-    if (speech.isListening) {
-      print("Listening ==> True");
-
-      return;
-    } else {
-      lastWords != null &&
-          lastWords.isNotEmpty &&
-          !speech.isListening &&
-          !isMatchFound;
-
-      ///lastWords="Sorry No Match Founds";
-      isMatchFound = true;
-      // _speak("sorry we can not found any match! please try again");
-    }
-  }
-
-  void startListening() {
-    _initspeech();
-
-    // _animationController!.addListener(() {
-    //   setState(_state);
-    // });
-    // _animationController!.repeat(period: const Duration(seconds: 2));
-    // _isAnimating = true;
-    lastWords = "";
-    lastError = "";
-    isMatchFound = false;
-    int listenForSeconds = 60;
-    try {
-      if (Platform.isAndroid) {
-        listenForSeconds = 60;
-      }
-      Duration listenFor = Duration(seconds: listenForSeconds);
-
-      speech.listen(onResult: resultListenerCheck, listenFor: listenFor);
-
-      setState(state);
-    } catch (e) {
-      print("====> catch me if you can $e");
-    }
-  }
-  // Future<Srno> updateSrno() async {
-  //   await _firestore.collection('form_no').doc().update(srno :)
-  // }
-
-  // String BodyFrishking = "";
-  // String BagFrishking = "";
-  // String BahaviourofSecuritySataff = "";
-  // String RemarkC = "";
-
-  // String QueManagementFrishking = "";
-  // String BehaviourofStaffBrownDress = "";
-  // String QueueManagementForVG = "";
-  // String BehaviourOfGRStaffBlackAndWhiteDress = "";
-  // String grname = "";
-  // String grcity = "";
-  // String grmobile = "";
-  // String grgroupsize = "";
-  // String RemarkD = "";
-
-  // bool issrNoLoading = false;
-
-  // Future<bool> savefeedbackformB() async {
-  //   bool isFormB = false;
-  //   // final feedFormC = SaveFeedback_c(
-  //   //     BodyFrishking, BagFrishking, BahaviourofSecuritySataff, RemarkC);
-
-  //   final feedFormD = SaveFeedback_d(
-  //       QueManagementFrishking,
-  //       BehaviourofStaffBrownDress,
-  //       QueueManagementForVG,
-  //       BehaviourOfGRStaffBlackAndWhiteDress,
-  //       grname,
-  //       grcity,
-  //       grmobile,
-  //       grgroupsize,
-  //       RemarkD);
-
-  //   try {
-  //     // await FirebaseFirestore.instance
-  //     //     .collection('GuestRelation')
-  //     //     .add(feedFormC.toMap());
-  //     await FirebaseFirestore.instance
-  //         .collection('GuestRelation')
-  //         .add(feedFormD.toMap());
-  //     isFormB = true;
-  //   } on Exception catch (_) {
-  //     print("Enable To Save Feedback Form");
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  //   notifyListeners();
-  //   return isFormB;
-  // }
-
-  // Future<bool> savefeedbackformC() async {
-  //   bool isFormB = false;
-  //   final feedFormC = SaveFeedback_c(
-  //       BodyFrishking, BagFrishking, BahaviourofSecuritySataff, RemarkC);
-
-  //   // final feedFormD = SaveFeedback_d(
-  //   //     QueManagementFrishking,
-  //   //     BehaviourofStaffBrownDress,
-  //   //     QueueManagementForVG,
-  //   //     BehaviourOfGRStaffBlackAndWhiteDress,
-  //   //     RemarkD);
-
-  //   try {
-  //     await FirebaseFirestore.instance
-  //         .collection(auth.currentUser!.uid)
-  //         .add(feedFormC.toMap());
-  //     // await FirebaseFirestore.instance
-  //     //     .collection(auth.currentUser!.uid)
-  //     //     .add(feedFormD.toMap());
-  //     isFormB = true;
-  //   } on Exception catch (_) {
-  //     print("Enable To Save Feedback Form");
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  //   notifyListeners();
-  //   return isFormB;
-  // }
-
-  // String? TravelatorsBridge;
-  // String? Escalators;
-  // String? Elevators;
-  // String? Remarke;
-
-  // String? QualityExhibits;
-  // String? InteractivEquep;
-  // String? ContentExhi;
-  // String? remarkf;
-
-  // String? SeatingArrangements;
-  // String? AudioVideoContant;
-  // String? AudioQuality;
-  // String? VideoQuality;
-  // String? remarkg;
-
-  // Future<bool> savefeedbackformD() async {
-  //   bool isFormC = false;
-  //   final feedFormE =
-  //       SaveFeedback_e(TravelatorsBridge, Escalators, Elevators, Remarke);
-
-  //   final feedFormF =
-  //       SaveFeedback_f(QualityExhibits, InteractivEquep, ContentExhi, remarkf);
-
-  //   final feedFormG = SaveFeedback_g(SeatingArrangements, AudioVideoContant,
-  //       AudioQuality, VideoQuality, remarkg);
-
-  //   try {
-  //     await FirebaseFirestore.instance
-  //         .collection(auth.currentUser!.uid)
-  //         .add(feedFormE.toMap());
-  //     await FirebaseFirestore.instance
-  //         .collection(auth.currentUser!.uid)
-  //         .add(feedFormF.toMap());
-  //     await FirebaseFirestore.instance
-  //         .collection(auth.currentUser!.uid)
-  //         .add(feedFormG.toMap());
-  //     isFormC = true;
-  //   } on Exception catch (_) {
-  //     print("Enable To Save Feedback Form");
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  //   notifyListeners();
-  //   return isFormC;
-  // }
-
-  // String? CafeSeatingArrangements;
-  // String? CleanlinessOfSeatingArea;
-  // String? WashroomCleanliness;
-  // String? RemarkH;
-  // String? OtherSuggestions;
-
-  // Future<bool> savefeedbackformE() async {
-  //   bool isFormD = false;
-
-  //   final feedFormH = SaveFeedback_h(
-  //       CafeSeatingArrangements,
-  //       CleanlinessOfSeatingArea,
-  //       WashroomCleanliness,
-  //       RemarkH,
-  //       OtherSuggestions);
-
-  //   try {
-  //     await FirebaseFirestore.instance
-  //         .collection(auth.currentUser!.uid)
-  //         .add(feedFormH.toMap());
-  //     isFormD = true;
-  //   } on Exception catch (_) {
-  //     print("Enable To Save Feedback Form");
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  //   notifyListeners();
-  //   return isFormD;
-  // }
-
-  // Future<bool> checkCustomerExist(String mobile) async {
-  //   final QuerySnapshot result = await FirebaseFirestore.instance
-  //       .collection('Users')
-  //       .where('user_mobile_no', isEqualTo: mobile)
-  //       .get();
-  //   final List<DocumentSnapshot> documents = result.docs;
-  //   notifyListeners();
-  //   if (documents.isNotEmpty) {
-  //     isLoading = true;
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
-  // Future getSrno() async {
-  //   final QuerySnapshot result =
-  //       await FirebaseFirestore.instance.collection('form_no').get();
-  //   final List<DocumentSnapshot> documents = result.docs;
-  //   notifyListeners();
-  // }
-
-  // String? phoneNumber;
-  // String verificationid = "";
-  // String? otp, authStatus = "";
-  // String? authexception = "";
-  // bool isOtpsent = false;
-
-  // bool verifyOtp = false;
-
-  // Future<bool> verifyPhoneNumber(
-  //     BuildContext context, String phoneNumber) async {
-  //   await auth.verifyPhoneNumber(
-  //     phoneNumber: '+91$phoneNumber',
-  //     verificationCompleted: (AuthCredential authCredential) {
-  //       authCredential.providerId;
-
-  //       // authStatus = "Your account is successfully verified";
-  //     },
-  //     verificationFailed: (FirebaseAuthException authException) {
-  //       // print('>>>>>> Error $authException');
-  //       authexception = authException.toString();
-  //       authStatus = "Authentication failed";
-  //     },
-  //     codeSent: (String verId, [int? forceCodeResent]) {
-  //       // verId = verificationId!;
-  //       verificationid = verId;
-  //       authStatus = "OTP has been successfully send";
-  //       isOtpsent = true;
-  //     },
-  //     codeAutoRetrievalTimeout: (String  ) {
-  //       verificationid = verId;
-  //       // verId = verificationId!;
-  //       // authStatus = "TIMEOUT";
-  //       // setState(verificationId as ViewState);
-  //     },
-  //   );
-
-  //   // notifyListeners();
-  //   return isOtpsent;
-  // }
-
-  // Future VerifyOTP(String otp, String verificationid) async {
-  //   try {
-  //     print('....... verid $verificationid');
-  //     final AuthCredential credential = PhoneAuthProvider.credential(
-  //         verificationId: verificationid, smsCode: otp);
-
-  //     final UserCredential user = await auth.signInWithCredential(credential);
-
-  //     final User? currentUser = await auth.currentUser;
-
-  //     assert(user.user!.uid == currentUser!.uid);
-
-  //     redirectToPage(feedbackscreen);
-  //     notifyListeners();
-  //   } catch (e) {
-  //     print("=>>> Error $e");
-  //   }
-  // }
 }
