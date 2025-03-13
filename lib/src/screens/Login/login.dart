@@ -17,7 +17,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:SOUFEEDBACKAPP/locator.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
+// import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:stacked/stacked.dart';
 import 'package:SOUFEEDBACKAPP/src/screens/OTP Screen/OTP_Screen.dart';
 //import 'package:custom_qr_generator/custom_qr_generator.dart';
@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
   List<UsersViewModel>? _users;
   final TextEditingController _mobileno = TextEditingController();
   bool isScanned = false;
-  QRViewController? controller;
+  // QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
   @override
@@ -113,14 +113,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       //   ),
                       // ),
 
-                      SizedBox(
-                          height: 200,
-                          width: 200,
-                          //flex: 5,
-                          child: QRView(
-                            key: qrKey,
-                            onQRViewCreated: _onQRViewCreated,
-                          )),
+                      // SizedBox(
+                      //     height: 200,
+                      //     width: 200,
+                      //     //flex: 5,
+                      //     child: QRView(
+                      //       key: qrKey,
+                      //       onQRViewCreated: _onQRViewCreated,
+                      //     )),
                       Expanded(
                           flex: 1,
                           child: Center(
@@ -263,22 +263,22 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void _onQRViewCreated(QRViewController controller) {
-    setState(() {
-      controller = controller;
-    });
-    controller.scannedDataStream.listen((scanData) {
-      if (!isScanned) {
-        print('Scanned data: ${scanData.code}');
+  // void _onQRViewCreated(QRViewController controller) {
+  //   setState(() {
+  //     controller = controller;
+  //   });
+  //   controller.scannedDataStream.listen((scanData) {
+  //     if (!isScanned) {
+  //       print('Scanned data: ${scanData.code}');
 
-        _redirectBasedOnQRData(scanData.code.toString());
+  //       _redirectBasedOnQRData(scanData.code.toString());
 
-        setState(() {
-          isScanned = true;
-        });
-      }
-    });
-  }
+  //       setState(() {
+  //         isScanned = true;
+  //       });
+  //     }
+  //   });
+  // }
 
   void _redirectBasedOnQRData(String qrData) {
     if (qrData == 'HouseKeeping') {
@@ -294,17 +294,17 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
-    if (!p) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('no Permission')),
-      );
-    }
-  }
+  // void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
+  //   if (!p) {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(content: Text('no Permission')),
+  //     );
+  //   }
+  // }
 
   @override
   void dispose() {
-    controller?.dispose();
+    // controller?.dispose();
     super.dispose();
   }
 }

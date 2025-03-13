@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:SOUFEEDBACKAPP/constant/routename.dart';
 import 'package:SOUFEEDBACKAPP/locator.dart';
 import 'package:SOUFEEDBACKAPP/src/widgets/Cstmbtn.dart';
 import 'package:provider/provider.dart';

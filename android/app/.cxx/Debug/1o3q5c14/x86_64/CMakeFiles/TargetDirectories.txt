@@ -1,0 +1,2 @@
+E:/FeedBack/sou_feedback_app/android/app/.cxx/Debug/1o3q5c14/x86_64/CMakeFiles/edit_cache.dir
+E:/FeedBack/sou_feedback_app/android/app/.cxx/Debug/1o3q5c14/x86_64/CMakeFiles/rebuild_cache.dir

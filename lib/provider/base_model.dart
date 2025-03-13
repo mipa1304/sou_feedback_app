@@ -14,12 +14,13 @@ import 'package:SOUFEEDBACKAPP/src/models/save_feedback_model.dart';
 import 'package:SOUFEEDBACKAPP/src/models/save_users.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import '../locator.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'dart:io';
 
 class BaseModel extends ChangeNotifier {
   final navigationService = locator<NavigationService>();
@@ -37,13 +38,16 @@ class BaseModel extends ChangeNotifier {
   List<Srno> _srno = [];
   List<Srno> get srno => _srno;
   AnimationController? _animationController;
-  bool _isAnimating = false;
+  final bool _isAnimating = false;
   String? text = "";
   bool isMatchFound = false;
   final SpeechToText speech = SpeechToText();
   bool speechTest = false;
   PersistentBottomSheetController? _controller;
   bool isListening = true;
+
+  final storageRef = FirebaseStorage.instance.ref();
+  late final audioRef;
 
   Future<void> initRecorder() async {
     _recorder = FlutterSoundRecorder();
