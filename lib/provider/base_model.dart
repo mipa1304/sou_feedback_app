@@ -20,7 +20,6 @@ import '../locator.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'dart:io';
 
 class BaseModel extends ChangeNotifier {
   final navigationService = locator<NavigationService>();
@@ -46,12 +45,16 @@ class BaseModel extends ChangeNotifier {
   PersistentBottomSheetController? _controller;
   bool isListening = true;
 
+  String? filePath;
+  late final File file;
+
   final storageRef = FirebaseStorage.instance.ref();
   late final audioRef;
 
   Future<void> initRecorder() async {
     _recorder = FlutterSoundRecorder();
     await _recorder!.openRecorder();
+    print("Recorder initialized ${_recorder!.isStopped}");
   }
 
   bool isRecording = false;
@@ -63,23 +66,70 @@ class BaseModel extends ChangeNotifier {
     }
   }
 
+  Future<void> requestStoragePermission() async {
+    if (await Permission.storage.request().isGranted) {
+      print('Storage permission granted');
+    } else {
+      print('Storage permission denied');
+    }
+  }
+
+  // late final String filePath;
+  // late final File file;
+
+  Future<void> initializeFilePath() async {
+    final directory = await getExternalStorageDirectory();
+    final filePath = '${directory!.path}/${DateTime.now()}.aac';
+    print("File path initialized: $filePath");
+    file = File(filePath);
+    await file.create(recursive: true);
+  }
+
   Future<void> startRecording() async {
+    final directory = await getExternalStorageDirectory();
+    final filePath = '${directory!.path}/${DateTime.now()}.aac';
+
     await requestRecordingpermission();
 
-    final directory = await getApplicationDocumentsDirectory();
-    final path = '${directory.path}/audio_example.aac';
-    await _recorder!.startRecorder(toFile: path);
+    print("Directory: ${filePath}");
+    await _recorder!.startRecorder(
+      toFile: filePath,
+      codec: Codec.aacADTS,
+    );
     isRecording = true;
+    notifyListeners();
   }
 
-  Future<String?> stopRecording() async {
-    if (isRecording) {
-      final filepath = await _recorder!.stopRecorder();
-      isRecording = false;
-      return filepath!;
+  Future<void> stopRecording() async {
+    await requestStoragePermission();
+
+    final stoppedFilePath = await _recorder!.stopRecorder();
+
+    print("Recording stopped. File path: $stoppedFilePath");
+
+    isRecording = false;
+
+    if (stoppedFilePath != null) {
+      final recordedFile = File(stoppedFilePath);
+
+      if (await recordedFile.exists()) {
+        print("File exists: $stoppedFilePath");
+        final audioRef = storageRef.child('audio/${DateTime.now()}.aac');
+        await audioRef.putFile(recordedFile);
+        print("File uploaded successfully!");
+      } else {
+        print("File does not exist: $stoppedFilePath");
+      }
+    } else {
+      print("File path is null");
     }
-    return null;
+    notifyListeners();
   }
+
+  // void updateTextBoxWithAudioPath(String path) {
+  //   text = path;
+  //   notifyListeners();
+  // }
 
   Future<void> handleMicButtonPress() async {
     if (isRecording) {

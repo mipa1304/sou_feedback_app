@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, unused_import, avoid_print, non_constant_identifier_names, unused_field, use_build_context_synchronously, sized_box_for_whitespace, no_leading_underscores_for_local_identifiers, unused_element, unnecessary_brace_in_string_interps
 
 // import 'package:SOUFEEDBACKAPP/src/models/sr_view_model.dart';
+import 'package:SOUFEEDBACKAPP/provider/base_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:SOUFEEDBACKAPP/constant/routename.dart';
@@ -313,6 +314,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
   int sr_no = 0;
 
+  final BaseModel viewmodel = BaseModel();
+
   final TextEditingController _feedbackB = TextEditingController();
 
   static const snackBar = SnackBar(
@@ -320,6 +323,13 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   );
 
   // List<Srno>? _srno;
+
+  @override
+  void initState() {
+    super.initState();
+    viewmodel.initRecorder();
+    viewmodel.initializeFilePath();
+  }
 
   bool isData = false;
 
@@ -871,11 +881,17 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                           {viewModel.remark = str},
                                       controller: _feedbackA,
                                       decoration: InputDecoration(
-                                        suffixIcon: IconButton(
-                                            onPressed: () {
-                                              viewModel.handleMicButtonPress();
-                                            },
-                                            icon: Icon(Icons.mic_sharp)),
+                                        suffixIcon: viewModel.isRecording
+                                            ? IconButton(
+                                                onPressed: () {
+                                                  viewModel.stopRecording();
+                                                },
+                                                icon: Icon(Icons.stop))
+                                            : IconButton(
+                                                onPressed: () {
+                                                  viewModel.startRecording();
+                                                },
+                                                icon: Icon(Icons.mic)),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(20.0),
