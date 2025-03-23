@@ -66,11 +66,30 @@ class BaseModel extends ChangeNotifier {
     }
   }
 
+  Future<void> requestMediaPermissions() async {
+    var statusPhotos = await Permission.photos.request();
+    var statusVideos = await Permission.videos.request();
+    var statusAudio = await Permission.audio.request();
+    var statusStorage = await Permission.storage.request();
+
+    if (statusPhotos.isGranted &&
+        statusVideos.isGranted &&
+        statusAudio.isGranted &&
+        statusStorage.isGranted) {
+      print("Media & Storage permissions granted");
+    } else {
+      print("Media permissions denied");
+      // Handle denied permissions
+    }
+  }
+
   Future<void> requestStoragePermission() async {
-    if (await Permission.storage.request().isGranted) {
+    final status = await Permission.storage.request();
+    if (status.isGranted) {
       print('Storage permission granted');
     } else {
       print('Storage permission denied');
+      openAppSettings();
     }
   }
 
@@ -87,7 +106,10 @@ class BaseModel extends ChangeNotifier {
 
   Future<void> startRecording() async {
     final directory = await getExternalStorageDirectory();
-    final filePath = '${directory!.path}/${DateTime.now()}.aac';
+
+    print("directory ${directory!.path}");
+
+    final filePath = '${directory.path}/${DateTime.now()}.aac';
 
     await requestRecordingpermission();
 
