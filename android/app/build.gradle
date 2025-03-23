@@ -22,20 +22,6 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-//tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-//    sourceCompatibility = JavaVersion.VERSION_11_0_21
-//    targetCompatibility = JavaVersion.VERSION_11_0_21
-//
-//    kotlinOptions {
-//        jvmTarget = '11.0.21'
-//        apiVersion = '1.1'
-//        languageVersion = '1.1'
-//    }
-//}
-
-// apply plugin: 'com.android.application'
-// START: FlutterFire Configuration
-
 
 android {
     namespace "com.mihir.soufeedbackapp"
