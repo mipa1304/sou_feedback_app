@@ -329,7 +329,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     super.initState();
     viewmodel.initRecorder();
     viewmodel.initializeFilePath();
-    viewmodel.requestMediaPermissions();
+    // viewmodel.requestMediaPermissions();
   }
 
   bool isData = false;
@@ -346,7 +346,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
           builder: ((context, viewModel, child) {
             viewModel.getSrno();
             viewModel.initRecorder();
-            viewmodel.requestMediaPermissions();
+            // viewmodel.requestMediaPermissions();
             // viewModel.is
             return Scaffold(
               appBar: AppBar(
