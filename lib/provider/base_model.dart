@@ -20,6 +20,7 @@ import '../locator.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 class BaseModel extends ChangeNotifier {
   final navigationService = locator<NavigationService>();
@@ -45,7 +46,12 @@ class BaseModel extends ChangeNotifier {
   PersistentBottomSheetController? _controller;
   bool isListening = true;
 
-  String? filePath;
+  String? _stopfilePath;
+  String? get stopfilePath => _stopfilePath;
+  set stopfilePath(String? value) {
+    _stopfilePath = value;
+  }
+
   late final File file;
 
   final storageRef = FirebaseStorage.instance.ref();
@@ -66,35 +72,37 @@ class BaseModel extends ChangeNotifier {
     }
   }
 
-  Future<void> requestMediaPermissions() async {
-    var statusPhotos = await Permission.photos.request();
-    var statusVideos = await Permission.videos.request();
-    var statusAudio = await Permission.audio.request();
-    var statusStorage = await Permission.storage.request();
+  // Future<void> requestMediaPermissions() async {
+  //   final plugin = DeviceInfoPlugin();
+  //   final android = await plugin.androidInfo;
+  //   final statusStorage = android.version.sdkInt >= 30
+  //       ? await Permission.manageExternalStorage.request()
+  //       : await Permission.storage.request();
 
-    if (statusPhotos.isGranted &&
-        statusVideos.isGranted &&
-        statusAudio.isGranted &&
-        statusStorage.isGranted) {
+  //   if (statusStorage == PermissionStatus.granted) {
+  //     print("Media & Storage permissions granted");
+  //   } else {
+  //     print("Media permissions denied");
+  //     // Handle denied permissions
+  //     openAppSettings();
+  //   }
+  // }
+
+  Future<void> requestStoragePermission() async {
+    final plugin = DeviceInfoPlugin();
+    final android = await plugin.androidInfo;
+    final statusStorage = android.version.sdkInt >= 30
+        ? await Permission.manageExternalStorage.request()
+        : await Permission.storage.request();
+
+    if (statusStorage == PermissionStatus.granted) {
       print("Media & Storage permissions granted");
     } else {
       print("Media permissions denied");
       // Handle denied permissions
-    }
-  }
-
-  Future<void> requestStoragePermission() async {
-    final status = await Permission.storage.request();
-    if (status.isGranted) {
-      print('Storage permission granted');
-    } else {
-      print('Storage permission denied');
       openAppSettings();
     }
   }
-
-  // late final String filePath;
-  // late final File file;
 
   Future<void> initializeFilePath() async {
     final directory = await getExternalStorageDirectory();
@@ -118,6 +126,9 @@ class BaseModel extends ChangeNotifier {
       toFile: filePath,
       codec: Codec.aacADTS,
     );
+
+    stopfilePath = filePath;
+
     isRecording = true;
     notifyListeners();
   }
@@ -125,22 +136,25 @@ class BaseModel extends ChangeNotifier {
   Future<void> stopRecording() async {
     await requestStoragePermission();
 
-    final stoppedFilePath = await _recorder!.stopRecorder();
+    print("Recording Stope :-- ");
 
-    print("Recording stopped. File path: $stoppedFilePath");
+    final filePath = await _recorder?.stopRecorder();
+
+    print("Recording stopped. File path: $stopfilePath");
 
     isRecording = false;
 
-    if (stoppedFilePath != null) {
-      final recordedFile = File(stoppedFilePath);
+    if (stopfilePath != null) {
+      final file = File(stopfilePath!);
 
-      if (await recordedFile.exists()) {
-        print("File exists: $stoppedFilePath");
+      if (await file.exists()) {
+        print("File exists: ");
         final audioRef = storageRef.child('audio/${DateTime.now()}.aac');
-        await audioRef.putFile(recordedFile);
+        await audioRef.putFile(file);
         print("File uploaded successfully!");
+        updateTextBoxWithAudioPath(stopfilePath!);
       } else {
-        print("File does not exist: $stoppedFilePath");
+        print("File does not exist: $filePath");
       }
     } else {
       print("File path is null");
@@ -148,10 +162,13 @@ class BaseModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  // void updateTextBoxWithAudioPath(String path) {
-  //   text = path;
-  //   notifyListeners();
-  // }
+  void updateTextBoxWithAudioPath(String path) {
+    remark = path;
+
+    print("remark: $remark");
+
+    notifyListeners();
+  }
 
   Future<void> handleMicButtonPress() async {
     if (isRecording) {
