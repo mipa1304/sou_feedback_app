@@ -46,16 +46,14 @@ class BaseModel extends ChangeNotifier {
   PersistentBottomSheetController? _controller;
   bool isListening = true;
 
-  String? _stopfilePath;
-  String? get stopfilePath => _stopfilePath;
-  set stopfilePath(String? value) {
-    _stopfilePath = value;
-  }
+  String? stopfilePath;
 
   late final File file;
 
   final storageRef = FirebaseStorage.instance.ref();
   late final audioRef;
+
+  final TextEditingController fileRemarkController = TextEditingController();
 
   Future<void> initRecorder() async {
     _recorder = FlutterSoundRecorder();
@@ -71,22 +69,6 @@ class BaseModel extends ChangeNotifier {
       throw Exception('Recording permission not granted');
     }
   }
-
-  // Future<void> requestMediaPermissions() async {
-  //   final plugin = DeviceInfoPlugin();
-  //   final android = await plugin.androidInfo;
-  //   final statusStorage = android.version.sdkInt >= 30
-  //       ? await Permission.manageExternalStorage.request()
-  //       : await Permission.storage.request();
-
-  //   if (statusStorage == PermissionStatus.granted) {
-  //     print("Media & Storage permissions granted");
-  //   } else {
-  //     print("Media permissions denied");
-  //     // Handle denied permissions
-  //     openAppSettings();
-  //   }
-  // }
 
   Future<void> requestStoragePermission() async {
     final plugin = DeviceInfoPlugin();
@@ -140,7 +122,7 @@ class BaseModel extends ChangeNotifier {
 
     final filePath = await _recorder?.stopRecorder();
 
-    print("Recording stopped. File path: $stopfilePath");
+    print("Recording Stopped File Path: $stopfilePath");
 
     isRecording = false;
 
@@ -149,10 +131,16 @@ class BaseModel extends ChangeNotifier {
 
       if (await file.exists()) {
         print("File exists: ");
+
         final audioRef = storageRef.child('audio/${DateTime.now()}.aac');
+
         await audioRef.putFile(file);
+
         print("File uploaded successfully!");
+
         updateTextBoxWithAudioPath(stopfilePath!);
+
+        print("print StopfilePath: $stopfilePath");
       } else {
         print("File does not exist: $filePath");
       }
@@ -165,7 +153,11 @@ class BaseModel extends ChangeNotifier {
   void updateTextBoxWithAudioPath(String path) {
     remark = path;
 
-    print("remark: $remark");
+    // fileRemarkController.text = File(path.path).path;
+    var file = File(fileRemarkController.text);
+    // file = fileRemarkController.text.toString() as File;
+    print("fileRemarkController.text: ${fileRemarkController.text}");
+    // print("remark: $remark");
 
     notifyListeners();
   }
@@ -222,7 +214,7 @@ class BaseModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  String get recognizedText => text ?? '';
+  // String get recognizedText => text ?? '';
 
   redirectToPage(String routename, {dynamic arguments}) {
     if (arguments == null) {
