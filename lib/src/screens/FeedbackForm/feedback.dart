@@ -24,294 +24,7 @@ class FeedbackScreen extends StatefulWidget {
 }
 
 class _FeedbackScreenState extends State<FeedbackScreen> {
-  // (A)
-
-  bool isExHall = false;
-  String exHall = "No";
-
-  bool isExHall2 = false;
-  String exHall2 = "No";
-
-  bool isExHall3 = false;
-  String exHall3 = "No";
-
-  bool isLftLoby = false;
-  String LftLoby = "No";
-
-  bool isLftLoby2 = false;
-  String LftLoby2 = "No";
-
-  bool isLftLoby3 = false;
-  String LftLoby3 = "No";
-
-  bool isVG = false;
-  String VG = "No";
-
-  bool isVG2 = false;
-  String VG2 = "No";
-
-  bool isVG3 = false;
-  String VG3 = "No";
-
-  bool isEw = false;
-  String Ew = "No";
-
-  bool isEw2 = false;
-  String Ew2 = "No";
-
-  bool isEw3 = false;
-  String Ew3 = "No";
-
   final TextEditingController _feedbackA = TextEditingController();
-
-  // (B)
-
-  bool ishkex = false;
-  String hkex = "No";
-
-  bool ishkex2 = false;
-  String hkex2 = "No";
-
-  bool ishkex3 = false;
-  String hkex3 = "No";
-
-  bool ishkLftLoby = false;
-  String hkLftLoby = "No";
-
-  bool ishkLftLoby2 = false;
-  String hkLftLoby2 = "No";
-
-  bool ishkLftLoby3 = false;
-  String hkLftLoby3 = "No";
-
-  bool ishkVG = false;
-  String hkVG = "No";
-
-  bool ishkVG2 = false;
-  String hkVG2 = "No";
-
-  bool ishkVG3 = false;
-  String hkVG3 = "No";
-
-  bool iswtc = false;
-  String wtc = "No";
-
-  bool iswtc2 = false;
-  String wtc2 = "No";
-
-  bool iswtc3 = false;
-  String wtc3 = "No";
-
-  bool iswhkex = false;
-  String whkex = "No";
-
-  bool iswhkex2 = false;
-  String whkex2 = "No";
-
-  bool iswhkex3 = false;
-  String whkex3 = "No";
-
-  bool iswhkvg = false;
-  String whkvg = "No";
-
-  bool iswhkvg2 = false;
-  String whkvg2 = "No";
-
-  bool iswhkvg3 = false;
-  String whkvg3 = "No";
-
-  // (C)
-
-  bool isBodyFri = false;
-  String BodyFri = "No";
-
-  bool isBodyFri2 = false;
-  String BodyFri2 = "No";
-
-  bool isBodyFri3 = false;
-  String BodyFri3 = "No";
-
-  bool isBagFri = false;
-  String BagFri = "No";
-
-  bool isBagFri2 = false;
-  String BagFri2 = "No";
-
-  bool isBagFri3 = false;
-  String BagFri3 = "No";
-
-  bool isbehavSeqFri = false;
-  String behavSeqFri = "No";
-
-  bool isbehavSeqFri2 = false;
-  String behavSeqFri2 = "No";
-
-  bool isbehavSeqFri3 = false;
-  String behavSeqFri3 = "No";
-
-  // (D)
-
-  bool isqmgtfri = false;
-  String qmgtfri = "No";
-
-  bool isqmgtfri2 = false;
-  String qmgtfri2 = "No";
-
-  bool isqmgtfri3 = false;
-  String qmgtfri3 = "No";
-
-  bool isstaff_behav = false;
-  String staff_behav = "No";
-
-  bool isstaff_behav2 = false;
-  String staff_behav2 = "No";
-
-  bool isstaff_behav3 = false;
-  String staff_behav3 = "No";
-
-  bool isqmgtVG = false;
-  String qmgtVG = "No";
-
-  bool isqmgtVG2 = false;
-  String qmgtVG2 = "No";
-
-  bool isqmgtVG3 = false;
-  String qmgtVG3 = "No";
-
-  bool isgr_staff_behav = false;
-  String gr_staff_behav = "No";
-
-  bool isgr_staff_behav2 = false;
-  String gr_staff_behav2 = "No";
-
-  bool isgr_staff_behav3 = false;
-  String gr_staff_behav3 = "No";
-
-  //(E)
-
-  bool isTrave_Bridge = false;
-  String Trave_Bridge = "No";
-
-  bool isTrave_Bridge2 = false;
-
-  String Trave_Bridge2 = "No";
-
-  bool isTrave_Bridge3 = false;
-  String Trave_Bridge3 = "No";
-
-  bool isEscala = false;
-  String Escala = "No";
-
-  bool isEscala2 = false;
-  String Escala2 = "No";
-
-  bool isEscala3 = false;
-  String Escala3 = "No";
-
-  bool iselevators = false;
-  String elevators = "No";
-
-  bool iselevators2 = false;
-  String elevators2 = "No";
-
-  bool iselevators3 = false;
-  String elevators3 = "No";
-
-  //(f)
-
-  bool isqc_exhi = false;
-  String qc_exhi = "No";
-
-  bool isqc_exhi2 = false;
-  String qc_exhi2 = "No";
-
-  bool isqc_exhi3 = false;
-  String qc_exhi3 = "No";
-
-  bool isintr_actv_equ = false;
-  String intr_actv_equ = "No";
-
-  bool isintr_actv_equ2 = false;
-  String intr_actv_equ2 = "No";
-
-  bool isintr_actv_equ3 = false;
-  String intr_actv_equ3 = "No";
-
-  bool iscont_exhi = false;
-  String cont_exhi = "No";
-
-  bool iscont_exhi2 = false;
-  String cont_exhi2 = "No";
-
-  bool iscont_exhi3 = false;
-  String cont_exhi3 = "No";
-
-  // (G)
-
-  bool isseat_arrng = false;
-  String seat_arrng = "No";
-
-  bool isseat_arrng2 = false;
-  String seat_arrng2 = "No";
-
-  bool isseat_arrng3 = false;
-  String seat_arrng3 = "No";
-
-  bool isav_content = false;
-  String av_content = "No";
-
-  bool isav_content2 = false;
-  String av_content2 = "No";
-
-  bool isav_content3 = false;
-  String av_content3 = "No";
-
-  bool isaudi_qua = false;
-  String audi_qua = "No";
-
-  bool isaudi_qua2 = false;
-  String audi_qua2 = "No";
-
-  bool isaudi_qua3 = false;
-  String audi_qua3 = "No";
-
-  bool isvid_qc = false;
-  String vid_qc = "No";
-
-  bool isvid_qc2 = false;
-  String vid_qc2 = "No";
-
-  bool isvid_qc3 = false;
-  String vid_qc3 = "No";
-
-  // (H)
-
-  bool isseat_arreng = false;
-  String seat_arreng = "No";
-
-  bool isseat_arreng2 = false;
-  String seat_arreng2 = "No";
-
-  bool isseat_arreng3 = false;
-  String seat_arreng3 = "No";
-
-  bool iscleaning_Seat_Area = false;
-  String cleaning_Seat_Area = "No";
-
-  bool iscleaning_Seat_Area2 = false;
-  String cleaning_Seat_Area2 = "No";
-
-  bool iscleaning_Seat_Area3 = false;
-  String cleaning_Seat_Area3 = "No";
-
-  bool isWash_clean = false;
-  String Wash_clean = "No";
-
-  bool isWash_clean2 = false;
-  String Wash_clean2 = "No";
-
-  bool isWash_clean3 = false;
-  String Wash_clean3 = "No";
 
   int sr_no = 0;
 
@@ -347,8 +60,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
           builder: ((context, viewModel, child) {
             viewModel.getSrno();
             viewModel.initRecorder();
-            // viewmodel.requestMediaPermissions();
-            // viewModel.is
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: ThemeColors.bgColor,
@@ -646,508 +357,93 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Container(
-                                  margin: EdgeInsets.all(size.height * 0.01),
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    Languages.of(context)!.feedbackdept,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 15,
-                                        color: Colors.black),
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      width: size.width * 0.30,
-                                      alignment: Alignment.centerLeft,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!
-                                            .feedbackloacation,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            // fontSize: size.height * 0.3,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    Checkbox(
-                                      value: ishkex,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            ishkex = !ishkex;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              hkex = "Excellent";
-                                            } else {
-                                              hkex = "No";
-                                            }
+                                _buildSectionHeader(
+                                    Languages.of(context)!.feedbackdept),
 
-                                            viewModel.exhibition_Hall_b = hkex;
-                                            print(exHall);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel),
-                                    Checkbox(
-                                      value: ishkex2,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            ishkex2 = !ishkex2;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              hkex2 = "Good";
-                                            } else {
-                                              hkex2 = "No";
-                                            }
-                                            print(exHall2);
-                                            viewModel.exhibition_Hall_b = hkex2;
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel2),
-                                    Checkbox(
-                                      value: ishkex3,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            ishkex3 = !ishkex3;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              hkex3 = "Avg";
-                                            } else {
-                                              hkex3 = "No";
-                                            }
-                                            print(exHall3);
-                                            viewModel.exhibition_Hall_b = hkex3;
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel3),
-                                  ],
+                                // _buildSingleChoiceRow(context, title: Languages.of(context)!.feedbackloacation, options: ["Excellent", "Good", "Average"], selectedValue: selectedValue, onChanged: onChanged)
+
+                                _buildSingleChoiceRow(
+                                  context,
+                                  title:
+                                      Languages.of(context)!.feedbackloacation,
+                                  options: ["Excellent", "Good", "Average"],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      viewModel.exhibition_Hall_b = value!;
+                                    });
+                                  },
+                                  selectedValue: viewModel.exhibition_Hall_b,
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      width: size.width * 0.30,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!
-                                            .feedbackloacation2,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            // fontSize: size.height * 0.2,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    Checkbox(
-                                      value: ishkLftLoby,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            ishkLftLoby = !ishkLftLoby;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              hkLftLoby = "Excellent";
-                                            } else {
-                                              hkLftLoby = "No";
-                                            }
-                                            print(exHall);
-                                            viewModel.lift_lobi_b = hkLftLoby;
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel),
-                                    Checkbox(
-                                      value: ishkLftLoby2,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            ishkLftLoby2 = !ishkLftLoby2;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              hkLftLoby2 = "Good";
-                                            } else {
-                                              hkLftLoby2 = "No";
-                                            }
-                                            print(LftLoby2);
-                                            viewModel.lift_lobi_b = hkLftLoby2;
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    FittedBox(
-                                        child: Text(Languages.of(context)!
-                                            .feedbackReviewLabel2)),
-                                    Checkbox(
-                                      value: ishkLftLoby3,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            ishkLftLoby3 = !ishkLftLoby3;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              hkLftLoby3 = "Avg";
-                                            } else {
-                                              hkLftLoby3 = "No";
-                                            }
-                                            viewModel.lift_lobi_b = hkLftLoby3;
-                                            print(exHall3);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel3),
-                                  ],
+
+                                _buildSingleChoiceRow(
+                                  context,
+                                  title:
+                                      Languages.of(context)!.feedbackloacation2,
+                                  options: ["Excellent", "Good", "Average"],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      viewModel.lift_lobi_b = value!;
+                                    });
+                                  },
+                                  selectedValue: viewModel.lift_lobi_b,
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      width: size.width * 0.30,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!
-                                            .feedbackloacation3,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            // fontSize: size.height * 0.2,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    Checkbox(
-                                      value: ishkVG,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            ishkVG = !ishkVG;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              hkVG = "Excellent";
-                                            } else {
-                                              hkVG = "No";
-                                            }
-                                            print(isVG);
-                                          },
-                                        );
-                                        viewModel.viewing_gallery_b = hkVG;
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel),
-                                    Checkbox(
-                                      value: ishkVG2,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            ishkVG2 = !ishkVG2;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              hkVG2 = "Good";
-                                            } else {
-                                              hkVG2 = "No";
-                                            }
-                                            print(LftLoby2);
-                                            viewModel.viewing_gallery_b = hkVG2;
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    FittedBox(
-                                        child: Text(Languages.of(context)!
-                                            .feedbackReviewLabel2)),
-                                    Checkbox(
-                                      value: ishkVG3,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            ishkVG3 = !ishkVG3;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              hkVG3 = "Avg";
-                                            } else {
-                                              hkVG3 = "No";
-                                            }
-                                            print(exHall3);
-                                          },
-                                        );
-                                        viewModel.viewing_gallery_b = hkVG3;
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel3),
-                                  ],
+
+                                _buildSingleChoiceRow(
+                                  context,
+                                  title:
+                                      Languages.of(context)!.feedbackloacation3,
+                                  options: ["Excellent", "Good", "Average"],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      viewModel.viewing_gallery_b = value!;
+                                    });
+                                  },
+                                  selectedValue: viewModel.viewing_gallery_b,
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      width: size.width * 0.30,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!
-                                            .feedbackloacation4,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            // fontSize: size.height * 0.2,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    Checkbox(
-                                      value: iswtc,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            iswtc = !iswtc;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              wtc = "Excellent";
-                                            } else {
-                                              wtc = "No";
-                                            }
-                                            print(isVG);
-                                          },
-                                        );
-                                        viewModel.washroom_at_ticket_counter =
-                                            wtc;
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel),
-                                    Checkbox(
-                                      value: iswtc2,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            iswtc2 = !iswtc2;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              wtc2 = "Good";
-                                            } else {
-                                              wtc2 = "No";
-                                            }
-                                            print(LftLoby2);
-                                          },
-                                        );
-                                        viewModel.washroom_at_ticket_counter =
-                                            wtc2;
-                                      },
-                                    ),
-                                    FittedBox(
-                                        child: Text(Languages.of(context)!
-                                            .feedbackReviewLabel2)),
-                                    Checkbox(
-                                      value: iswtc3,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            iswtc3 = !iswtc3;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              wtc3 = "Avg";
-                                            } else {
-                                              wtc3 = "No";
-                                            }
-                                            print(exHall3);
-                                          },
-                                        );
-                                        viewModel.washroom_at_ticket_counter =
-                                            wtc3;
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel3),
-                                  ],
+
+                                _buildSingleChoiceRow(
+                                  context,
+                                  title:
+                                      Languages.of(context)!.feedbackloacation4,
+                                  options: ["Excellent", "Good", "Average"],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      viewModel.washroom_at_ticket_counter =
+                                          value!;
+                                    });
+                                  },
+                                  selectedValue:
+                                      viewModel.washroom_at_ticket_counter,
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      width: size.width * 0.30,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!
-                                            .feedbackloacation5,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            // fontSize: size.height * 0.2,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    Checkbox(
-                                      value: iswhkex,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            iswhkex = !iswhkex;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              whkex = "Excellent";
-                                            } else {
-                                              whkex = "No";
-                                            }
-                                            print(isVG);
-                                          },
-                                        );
-                                        viewModel.washroom_at_exhibition_hall =
-                                            whkex;
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel),
-                                    Checkbox(
-                                      value: iswhkex2,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            iswhkex2 = !iswhkex2;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              whkex2 = "Good";
-                                            } else {
-                                              whkex2 = "No";
-                                            }
-                                            print(LftLoby2);
-                                          },
-                                        );
-                                        viewModel.washroom_at_exhibition_hall =
-                                            whkex2;
-                                      },
-                                    ),
-                                    FittedBox(
-                                        child: Text(Languages.of(context)!
-                                            .feedbackReviewLabel2)),
-                                    Checkbox(
-                                      value: iswhkex3,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            iswhkex3 = !iswhkex3;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              whkex3 = "Avg";
-                                            } else {
-                                              whkex3 = "No";
-                                            }
-                                            print(exHall3);
-                                          },
-                                        );
-                                        viewModel.washroom_at_exhibition_hall =
-                                            whkex3;
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel3),
-                                  ],
+
+                                _buildSingleChoiceRow(
+                                  context,
+                                  title:
+                                      Languages.of(context)!.feedbackloacation5,
+                                  options: ["Excellent", "Good", "Average"],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      viewModel.washroom_at_exhibition_hall =
+                                          value!;
+                                    });
+                                  },
+                                  selectedValue:
+                                      viewModel.washroom_at_exhibition_hall,
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      width: size.width * 0.30,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!
-                                            .feedbackloacation6,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            // fontSize: size.height * 0.2,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    Checkbox(
-                                      value: iswhkvg,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            iswhkvg = !iswhkvg;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              whkvg = "Excellent";
-                                            } else {
-                                              whkvg = "No";
-                                            }
-                                            print(isVG);
-                                          },
-                                        );
-                                        viewModel.washroom_at_vg = whkvg;
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel),
-                                    Checkbox(
-                                      value: iswhkvg2,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            iswhkvg2 = !iswhkvg2;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              whkvg2 = "Good";
-                                            } else {
-                                              whkvg2 = "No";
-                                            }
-                                            print(LftLoby2);
-                                          },
-                                        );
-                                        viewModel.washroom_at_vg = whkvg2;
-                                      },
-                                    ),
-                                    FittedBox(
-                                        child: Text(Languages.of(context)!
-                                            .feedbackReviewLabel2)),
-                                    Checkbox(
-                                      value: iswhkvg3,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            iswhkvg3 = !iswhkvg3;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              whkvg3 = "Avg";
-                                            } else {
-                                              whkvg3 = "No";
-                                            }
-                                          },
-                                        );
-                                        viewModel.washroom_at_vg = whkvg3;
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel3),
-                                  ],
+
+                                _buildSingleChoiceRow(
+                                  context,
+                                  title:
+                                      Languages.of(context)!.feedbackloacation6,
+                                  options: ["Excellent", "Good", "Average"],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      viewModel.washroom_at_vg = value!;
+                                    });
+                                  },
+                                  selectedValue: viewModel.washroom_at_vg,
                                 ),
+
                                 Container(
                                   margin: EdgeInsets.only(
                                       left: size.height * 0.02,
@@ -1193,260 +489,43 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                             ),
                             Column(
                               children: <Widget>[
-                                Container(
-                                  margin: EdgeInsets.all(size.height * 0.01),
-                                  child: Text(
-                                    Languages.of(context)!
-                                        .c_security_checking_confiscating_gutka_pan_smoking_material_alcoholic_beverages_etc,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 15,
-                                        color: Colors.black),
-                                  ),
+                                _buildSectionHeader(Languages.of(context)!
+                                    .c_security_checking_confiscating_gutka_pan_smoking_material_alcoholic_beverages_etc),
+                                _buildSingleChoiceRow(
+                                  context,
+                                  title: Languages.of(context)!.body_frisking,
+                                  options: ["Excellent", "Good", "Average"],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      viewModel.body_frisking = value!;
+                                    });
+                                  },
+                                  selectedValue: viewModel.body_frisking,
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      width: size.width * 0.30,
-                                      alignment: Alignment.centerLeft,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!.body_frisking,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            // fontSize: size.height * 0.3,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    Checkbox(
-                                      value: isBodyFri,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isBodyFri = !isBodyFri;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              BodyFri = "Excellent";
-                                            } else {
-                                              BodyFri = "No";
-                                            }
-                                            viewModel.body_frisking = BodyFri;
-                                            print(BodyFri);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel),
-                                    Checkbox(
-                                      value: isBodyFri2,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isBodyFri2 = !isBodyFri2;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              BodyFri2 = "Good";
-                                            } else {
-                                              BodyFri2 = "No";
-                                            }
-                                            print(BodyFri);
-                                            viewModel.body_frisking = BodyFri2;
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel2),
-                                    Checkbox(
-                                      value: isBodyFri3,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isBodyFri3 = !isBodyFri3;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              BodyFri3 = "Avg";
-                                            } else {
-                                              BodyFri3 = "No";
-                                            }
-                                            print(BodyFri3);
-                                            viewModel.body_frisking = BodyFri3;
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel3),
-                                  ],
+                                _buildSingleChoiceRow(
+                                  context,
+                                  title: Languages.of(context)!.bag_frisking,
+                                  options: ["Excellent", "Good", "Average"],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      viewModel.bag_frisking = value!;
+                                    });
+                                  },
+                                  selectedValue: viewModel.bag_frisking,
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      width: size.width * 0.30,
-                                      alignment: Alignment.centerLeft,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!.bag_frisking,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            // fontSize: size.height * 0.3,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    Checkbox(
-                                      value: isBagFri,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isBagFri = !isBagFri;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              BagFri = "Excellent";
-                                            } else {
-                                              BagFri = "No";
-                                            }
-                                            print(BagFri);
-                                            viewModel.bag_frisking = BagFri;
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel),
-                                    Checkbox(
-                                      value: isBagFri2,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isBagFri2 = !isBagFri2;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              BagFri2 = "Good";
-                                            } else {
-                                              BagFri2 = "No";
-                                            }
-                                            print(BodyFri);
-                                            viewModel.bag_frisking = BagFri2;
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel2),
-                                    Checkbox(
-                                      value: isBagFri3,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isBagFri3 = !isBagFri3;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              BagFri3 = "Avg";
-                                            } else {
-                                              BagFri3 = "No";
-                                            }
-                                            print(BodyFri3);
-                                            viewModel.bag_frisking = BagFri3;
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel3),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      width: size.width * 0.30,
-                                      alignment: Alignment.centerLeft,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!
-                                            .behavior_of_security_staff,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            // fontSize: size.height * 0.3,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    Checkbox(
-                                      value: isbehavSeqFri,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isbehavSeqFri = !isbehavSeqFri;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              behavSeqFri = "Excellent";
-                                            } else {
-                                              behavSeqFri = "No";
-                                            }
-                                            print(BagFri);
-                                            viewModel
-                                                    .behaviour_of_security_staff =
-                                                behavSeqFri;
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel),
-                                    Checkbox(
-                                      value: isbehavSeqFri2,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isbehavSeqFri2 = !isbehavSeqFri2;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              behavSeqFri2 = "Good";
-                                            } else {
-                                              behavSeqFri2 = "No";
-                                            }
-                                            print(BodyFri);
-                                            viewModel
-                                                    .behaviour_of_security_staff =
-                                                behavSeqFri2;
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel2),
-                                    Checkbox(
-                                      value: isbehavSeqFri3,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isbehavSeqFri3 = !isbehavSeqFri3;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              behavSeqFri3 = "Avg";
-                                            } else {
-                                              behavSeqFri3 = "No";
-                                            }
-                                            print(BodyFri3);
-                                            viewModel
-                                                    .behaviour_of_security_staff =
-                                                behavSeqFri3;
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel3),
-                                  ],
+                                _buildSingleChoiceRow(
+                                  context,
+                                  title: Languages.of(context)!
+                                      .behavior_of_security_staff,
+                                  options: ["Excellent", "Good", "Average"],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      viewModel.behaviour_of_security_staff =
+                                          value!;
+                                    });
+                                  },
+                                  selectedValue:
+                                      viewModel.behaviour_of_security_staff,
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(
@@ -1494,357 +573,60 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
-                                Container(
-                                  alignment: Alignment.centerLeft,
-                                  margin: EdgeInsets.all(size.height * 0.01),
-                                  child: Text(
-                                    Languages.of(context)!
-                                        .gr_queue_management_guest_relationetc,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 15,
-                                        color: Colors.black),
-                                  ),
+                                _buildSectionHeader(Languages.of(context)!
+                                    .gr_queue_management_guest_relationetc),
+                                _buildSingleChoiceRow(
+                                  context,
+                                  title: Languages.of(context)!
+                                      .gr_queue_management_at_friskingpoint,
+                                  options: ["Excellent", "Good", "Average"],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      viewModel.que_manag_at_frisking_point =
+                                          value!;
+                                    });
+                                  },
+                                  selectedValue:
+                                      viewModel.que_manag_at_frisking_point,
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      width: size.width * 0.30,
-                                      alignment: Alignment.centerLeft,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!
-                                            .gr_queue_management_at_friskingpoint,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            // fontSize: size.height * 0.3,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    Checkbox(
-                                      value: isqmgtfri,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isqmgtfri = !isqmgtfri;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              qmgtfri = "Excellent";
-                                            } else {
-                                              qmgtfri = "No";
-                                            }
-
-                                            viewModel
-                                                    .que_manag_at_frisking_point =
-                                                qmgtfri;
-
-                                            // print(exHall);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel),
-                                    Checkbox(
-                                      value: isqmgtfri2,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isqmgtfri2 = !isqmgtfri2;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              qmgtfri2 = "Good";
-                                            } else {
-                                              qmgtfri2 = "No";
-                                            }
-                                            viewModel
-                                                    .que_manag_at_frisking_point =
-                                                qmgtfri2;
-                                            // print(exHall2);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel2),
-                                    Checkbox(
-                                      value: isqmgtfri3,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isqmgtfri3 = !isqmgtfri3;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              qmgtfri3 = "Avg";
-                                            } else {
-                                              qmgtfri3 = "No";
-                                            }
-                                            viewModel
-                                                    .que_manag_at_frisking_point =
-                                                qmgtfri3;
-                                            // print(exHall3);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel3),
-                                  ],
+                                _buildSingleChoiceRow(
+                                  context,
+                                  title: Languages.of(context)!
+                                      .gr_behaviour_of_staff_brown_dressed,
+                                  options: ["Excellent", "Good", "Average"],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      viewModel.behaviour_of_staff = value!;
+                                    });
+                                  },
+                                  selectedValue: viewModel.behaviour_of_staff,
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      width: size.width * 0.30,
-                                      alignment: Alignment.centerLeft,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!
-                                            .gr_behaviour_of_staff_brown_dressed,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            // fontSize: size.height * 0.3,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    Checkbox(
-                                      value: isstaff_behav,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isstaff_behav = !isstaff_behav;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              staff_behav = "Excellent";
-                                            } else {
-                                              staff_behav = "No";
-                                            }
-                                            viewModel.behaviour_of_staff =
-                                                staff_behav;
-                                            // print(exHall);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel),
-                                    Checkbox(
-                                      value: isstaff_behav2,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isstaff_behav2 = !isstaff_behav2;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              staff_behav2 = "Good";
-                                            } else {
-                                              staff_behav2 = "No";
-                                            }
-                                            viewModel.behaviour_of_staff =
-                                                staff_behav2;
-                                            // print(exHall2);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel2),
-                                    Checkbox(
-                                      value: isstaff_behav3,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isstaff_behav3 = !isstaff_behav3;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              staff_behav3 = "Avg";
-                                            } else {
-                                              staff_behav3 = "No";
-                                            }
-                                            viewModel.behaviour_of_staff =
-                                                staff_behav3;
-                                            // print(exHall3);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel3),
-                                  ],
+                                _buildSingleChoiceRow(
+                                  context,
+                                  title: Languages.of(context)!
+                                      .gr_queue_management_for_viewing_gallery,
+                                  options: ["Excellent", "Good", "Average"],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      viewModel.que_manage_vg = value!;
+                                    });
+                                  },
+                                  selectedValue: viewModel.que_manage_vg,
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      width: size.width * 0.30,
-                                      alignment: Alignment.centerLeft,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!
-                                            .gr_queue_management_for_viewing_gallery,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            // fontSize: size.height * 0.3,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    Checkbox(
-                                      value: isqmgtVG,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isqmgtVG = !isqmgtVG;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              qmgtVG = "Excellent";
-                                            } else {
-                                              qmgtVG = "No";
-                                            }
-                                            viewModel.que_manage_vg = qmgtVG;
-                                            // print(exHall);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel),
-                                    Checkbox(
-                                      value: isqmgtVG2,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isqmgtVG2 = !isqmgtVG2;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              qmgtVG2 = "Good";
-                                            } else {
-                                              qmgtVG2 = "No";
-                                            }
-                                            viewModel.que_manage_vg = qmgtVG2;
-                                            // print(exHall2);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel2),
-                                    Checkbox(
-                                      value: isqmgtVG3,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isqmgtVG3 = !isqmgtVG3;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              qmgtVG3 = "Avg";
-                                            } else {
-                                              qmgtVG3 = "No";
-                                            }
-                                            viewModel.que_manage_vg = qmgtVG3;
-                                            // print(exHall3);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel3),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      width: size.width * 0.30,
-                                      alignment: Alignment.centerLeft,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!
-                                            .gr_behavior_of_guest_relation_staff_black_white_dressed,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            // fontSize: size.height * 0.3,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    Checkbox(
-                                      value: isgr_staff_behav,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isgr_staff_behav =
-                                                !isgr_staff_behav;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              gr_staff_behav = "Excellent";
-                                            } else {
-                                              gr_staff_behav = "No";
-                                            }
-                                            viewModel
-                                                    .behaviour_of_gr_staff_black_white =
-                                                gr_staff_behav;
-                                            // print(exHall);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel),
-                                    Checkbox(
-                                      value: isgr_staff_behav2,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isgr_staff_behav2 =
-                                                !isgr_staff_behav2;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              gr_staff_behav2 = "Good";
-                                            } else {
-                                              gr_staff_behav2 = "No";
-                                            }
-                                            viewModel
-                                                    .behaviour_of_gr_staff_black_white =
-                                                gr_staff_behav2;
-                                            // print(exHall2);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel2),
-                                    Checkbox(
-                                      value: isgr_staff_behav3,
-                                      onChanged: (newValue) {
-                                        setState(
-                                          () {
-                                            isgr_staff_behav3 =
-                                                !isgr_staff_behav3;
-                                            print(newValue);
-                                            if (newValue == true) {
-                                              gr_staff_behav3 = "Avg";
-                                            } else {
-                                              gr_staff_behav3 = "No";
-                                            }
-                                            viewModel
-                                                    .behaviour_of_gr_staff_black_white =
-                                                gr_staff_behav3;
-                                            // print(exHall3);
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Text(Languages.of(context)!
-                                        .feedbackReviewLabel3),
-                                  ],
+                                _buildSingleChoiceRow(
+                                  context,
+                                  title: Languages.of(context)!
+                                      .gr_behavior_of_guest_relation_staff_black_white_dressed,
+                                  options: ["Excellent", "Good", "Average"],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      viewModel
+                                              .behaviour_of_gr_staff_black_white =
+                                          value!;
+                                    });
+                                  },
+                                  selectedValue: viewModel
+                                      .behaviour_of_gr_staff_black_white,
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(
@@ -1886,272 +668,44 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 ),
                                 Column(
                                   children: <Widget>[
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!.facility,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w900,
-                                            fontSize: 15,
-                                            color: Colors.black),
-                                      ),
+                                    _buildSectionHeader(
+                                        Languages.of(context)!.facility),
+                                    _buildSingleChoiceRow(
+                                      context,
+                                      title: Languages.of(context)!
+                                          .facility_travelators_on_the_bridge,
+                                      options: ["Excellent", "Good", "Average"],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          viewModel.travelators_on_bridge =
+                                              value!;
+                                        });
+                                      },
+                                      selectedValue:
+                                          viewModel.travelators_on_bridge,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          width: size.width * 0.30,
-                                          alignment: Alignment.centerLeft,
-                                          margin: EdgeInsets.all(
-                                              size.height * 0.01),
-                                          child: Text(
-                                            Languages.of(context)!
-                                                .facility_travelators_on_the_bridge,
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                // fontSize: size.height * 0.3,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                        Checkbox(
-                                          value: isTrave_Bridge,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isTrave_Bridge =
-                                                    !isTrave_Bridge;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  Trave_Bridge = "Excellent";
-                                                } else {
-                                                  Trave_Bridge = "No";
-                                                }
-                                                viewModel
-                                                        .travelators_on_bridge =
-                                                    Trave_Bridge;
-                                                print(exHall);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel),
-                                        Checkbox(
-                                          value: isTrave_Bridge2,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isTrave_Bridge2 =
-                                                    !isTrave_Bridge2;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  Trave_Bridge2 = "Good";
-                                                } else {
-                                                  Trave_Bridge2 = "No";
-                                                }
-                                                // print(exHall2);
-                                                viewModel
-                                                        .travelators_on_bridge =
-                                                    Trave_Bridge2;
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel2),
-                                        Checkbox(
-                                          value: isTrave_Bridge3,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isTrave_Bridge3 =
-                                                    !isTrave_Bridge3;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  Trave_Bridge3 = "Avg";
-                                                } else {
-                                                  Trave_Bridge3 = "No";
-                                                }
-                                                // print(exHall3);
-                                                viewModel
-                                                        .travelators_on_bridge =
-                                                    Trave_Bridge3;
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel3),
-                                      ],
+                                    _buildSingleChoiceRow(
+                                      context,
+                                      title: Languages.of(context)!.escalators,
+                                      options: ["Excellent", "Good", "Average"],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          viewModel.escalators = value!;
+                                        });
+                                      },
+                                      selectedValue: viewModel.escalators,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          width: size.width * 0.30,
-                                          alignment: Alignment.centerLeft,
-                                          margin: EdgeInsets.all(
-                                              size.height * 0.01),
-                                          child: Text(
-                                            Languages.of(context)!.escalators,
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                // fontSize: size.height * 0.3,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                        Checkbox(
-                                          value: isEscala,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isEscala = !isEscala;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  Escala = "Excellent";
-                                                } else {
-                                                  Escala = "No";
-                                                }
-                                                viewModel.escalators = Escala;
-                                                // print(exHall);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel),
-                                        Checkbox(
-                                          value: isEscala2,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isEscala2 = !isEscala2;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  Escala2 = "Good";
-                                                } else {
-                                                  Escala2 = "No";
-                                                }
-                                                viewModel.escalators = Escala2;
-                                                // print(exHall2);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel2),
-                                        Checkbox(
-                                          value: isEscala3,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isEscala3 = !isEscala3;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  Escala3 = "Avg";
-                                                } else {
-                                                  Escala3 = "No";
-                                                }
-                                                viewModel.escalators = Escala3;
-                                                // print(exHall3);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel3),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          width: size.width * 0.30,
-                                          alignment: Alignment.centerLeft,
-                                          margin: EdgeInsets.all(
-                                              size.height * 0.01),
-                                          child: Text(
-                                            Languages.of(context)!
-                                                .elevators_Lifts,
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                // fontSize: size.height * 0.3,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                        Checkbox(
-                                          value: iselevators,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                iselevators = !iselevators;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  elevators = "Excellent";
-                                                } else {
-                                                  elevators = "No";
-                                                }
-                                                viewModel.escalators =
-                                                    elevators;
-                                                // print(exHall);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel),
-                                        Checkbox(
-                                          value: iselevators2,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                iselevators2 = !iselevators2;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  elevators2 = "Good";
-                                                } else {
-                                                  elevators2 = "No";
-                                                }
-                                                // print(exHall2);
-                                                viewModel.escalators =
-                                                    elevators2;
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel2),
-                                        Checkbox(
-                                          value: iselevators3,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                iselevators3 = !iselevators3;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  elevators3 = "Avg";
-                                                } else {
-                                                  elevators3 = "No";
-                                                }
-
-                                                viewModel.escalators =
-                                                    elevators3;
-                                                // print(exHall3);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel3),
-                                      ],
+                                    _buildSingleChoiceRow(
+                                      context,
+                                      title: Languages.of(context)!
+                                          .elevators_Lifts,
+                                      options: ["Excellent", "Good", "Average"],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          viewModel.escalators = value!;
+                                        });
+                                      },
+                                      selectedValue: viewModel.escalators,
                                     ),
                                     Container(
                                       margin: EdgeInsets.only(
@@ -2196,272 +750,43 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!
-                                            .f_museum_exhibits,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w900,
-                                            fontSize: 15,
-                                            color: Colors.black),
-                                      ),
+                                    _buildSectionHeader(Languages.of(context)!
+                                        .f_museum_exhibits),
+                                    _buildSingleChoiceRow(
+                                      context,
+                                      title: Languages.of(context)!
+                                          .quality_of_exhibits,
+                                      options: ["Excellent", "Good", "Average"],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          viewModel.qc_exhibits = value!;
+                                        });
+                                      },
+                                      selectedValue: viewModel.qc_exhibits,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          width: size.width * 0.30,
-                                          alignment: Alignment.centerLeft,
-                                          margin: EdgeInsets.all(
-                                              size.height * 0.01),
-                                          child: Text(
-                                            Languages.of(context)!
-                                                .quality_of_exhibits,
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                // fontSize: size.height * 0.3,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                        Checkbox(
-                                          value: isqc_exhi,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isqc_exhi = !isqc_exhi;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  qc_exhi = "Excellent";
-                                                } else {
-                                                  qc_exhi = "No";
-                                                }
-                                                viewModel.qc_exhibits = qc_exhi;
-                                                // print(exHall);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel),
-                                        Checkbox(
-                                          value: isqc_exhi2,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isqc_exhi2 = !isqc_exhi2;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  qc_exhi2 = "Good";
-                                                } else {
-                                                  qc_exhi2 = "No";
-                                                }
-                                                viewModel.qc_exhibits =
-                                                    qc_exhi2;
-                                                // print(exHall2);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel2),
-                                        Checkbox(
-                                          value: isqc_exhi3,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isqc_exhi3 = !isqc_exhi3;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  qc_exhi3 = "Avg";
-                                                } else {
-                                                  qc_exhi3 = "No";
-                                                }
-                                                viewModel.qc_exhibits =
-                                                    qc_exhi3;
-                                                // print(exHall3);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel3),
-                                      ],
+                                    _buildSingleChoiceRow(
+                                      context,
+                                      title: Languages.of(context)!
+                                          .interactive_equipment,
+                                      options: ["Excellent", "Good", "Average"],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          viewModel.intrective_equip = value!;
+                                        });
+                                      },
+                                      selectedValue: viewModel.intrective_equip,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          width: size.width * 0.30,
-                                          alignment: Alignment.centerLeft,
-                                          margin: EdgeInsets.all(
-                                              size.height * 0.01),
-                                          child: Text(
-                                            Languages.of(context)!
-                                                .interactive_equipment,
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                // fontSize: size.height * 0.3,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                        Checkbox(
-                                          value: isintr_actv_equ,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isintr_actv_equ =
-                                                    !isintr_actv_equ;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  intr_actv_equ = "Excellent";
-                                                } else {
-                                                  intr_actv_equ = "No";
-                                                }
-                                                viewModel.intrective_equip =
-                                                    intr_actv_equ;
-                                                // print(exHall);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel),
-                                        Checkbox(
-                                          value: isintr_actv_equ2,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isintr_actv_equ2 =
-                                                    !isintr_actv_equ2;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  intr_actv_equ2 = "Good";
-                                                } else {
-                                                  intr_actv_equ2 = "No";
-                                                }
-                                                viewModel.intrective_equip =
-                                                    intr_actv_equ2;
-                                                // print(exHall2);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel2),
-                                        Checkbox(
-                                          value: isintr_actv_equ3,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isintr_actv_equ3 =
-                                                    !isintr_actv_equ3;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  intr_actv_equ3 = "Avg";
-                                                } else {
-                                                  intr_actv_equ3 = "No";
-                                                }
-                                                viewModel.intrective_equip =
-                                                    intr_actv_equ3;
-                                                // print(exHall3);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel3),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          width: size.width * 0.30,
-                                          alignment: Alignment.centerLeft,
-                                          margin: EdgeInsets.all(
-                                              size.height * 0.01),
-                                          child: Text(
-                                            Languages.of(context)!
-                                                .content_of_Exhibits,
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                // fontSize: size.height * 0.3,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                        Checkbox(
-                                          value: iscont_exhi,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                iscont_exhi = !iscont_exhi;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  cont_exhi = "Excellent";
-                                                } else {
-                                                  cont_exhi = "No";
-                                                }
-                                                viewModel.content_exhibits =
-                                                    cont_exhi;
-                                                // print(exHall);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel),
-                                        Checkbox(
-                                          value: iscont_exhi2,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                iscont_exhi2 = !iscont_exhi2;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  cont_exhi2 = "Good";
-                                                } else {
-                                                  cont_exhi2 = "No";
-                                                }
-                                                viewModel.content_exhibits =
-                                                    cont_exhi2;
-                                                // print(exHall2);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel2),
-                                        Checkbox(
-                                          value: iscont_exhi3,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                iscont_exhi3 = !iscont_exhi3;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  cont_exhi3 = "Avg";
-                                                } else {
-                                                  cont_exhi3 = "No";
-                                                }
-                                                viewModel.content_exhibits =
-                                                    cont_exhi3;
-                                                // print(exHall3);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel3),
-                                      ],
+                                    _buildSingleChoiceRow(
+                                      context,
+                                      title: Languages.of(context)!
+                                          .content_of_Exhibits,
+                                      options: ["Excellent", "Good", "Average"],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          viewModel.content_exhibits = value!;
+                                        });
+                                      },
+                                      selectedValue: viewModel.content_exhibits,
                                     ),
                                     Container(
                                       margin: EdgeInsets.only(
@@ -2506,348 +831,57 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!
-                                            .g_projection_mapping_show,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w900,
-                                            fontSize: 15,
-                                            color: Colors.black),
-                                      ),
+                                    _buildSectionHeader(Languages.of(context)!
+                                        .g_projection_mapping_show),
+                                    _buildSingleChoiceRow(
+                                      context,
+                                      title: Languages.of(context)!
+                                          .Seating_arrangements,
+                                      options: ["Excellent", "Good", "Average"],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          viewModel.seating_arrangements =
+                                              value!;
+                                        });
+                                      },
+                                      selectedValue:
+                                          viewModel.seating_arrangements,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          width: size.width * 0.30,
-                                          alignment: Alignment.centerLeft,
-                                          margin: EdgeInsets.all(
-                                              size.height * 0.01),
-                                          child: Text(
-                                            Languages.of(context)!
-                                                .Seating_arrangements,
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                // fontSize: size.height * 0.3,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                        Checkbox(
-                                          value: isseat_arrng,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isseat_arrng = !isseat_arrng;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  seat_arrng = "Excellent";
-                                                } else {
-                                                  seat_arrng = "No";
-                                                }
-                                                viewModel.seating_arrangements =
-                                                    seat_arrng;
-                                                // print(exHall);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel),
-                                        Checkbox(
-                                          value: isseat_arrng2,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isseat_arrng2 = !isseat_arrng2;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  seat_arrng2 = "Good";
-                                                } else {
-                                                  seat_arrng2 = "No";
-                                                }
-                                                viewModel.seating_arrangements =
-                                                    seat_arrng2;
-                                                // print(exHall2);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel2),
-                                        Checkbox(
-                                          value: isseat_arrng3,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isseat_arrng3 = !isseat_arrng3;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  seat_arrng3 = "Avg";
-                                                } else {
-                                                  seat_arrng3 = "No";
-                                                }
-                                                viewModel.seating_arrangements =
-                                                    seat_arrng3;
-                                                // print(exHall3);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel3),
-                                      ],
+                                    _buildSingleChoiceRow(
+                                      context,
+                                      title: Languages.of(context)!
+                                          .audio_video_content,
+                                      options: ["Excellent", "Good", "Average"],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          viewModel.avcontant = value!;
+                                        });
+                                      },
+                                      selectedValue: viewModel.avcontant,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          width: size.width * 0.30,
-                                          alignment: Alignment.centerLeft,
-                                          margin: EdgeInsets.all(
-                                              size.height * 0.01),
-                                          child: Text(
-                                            Languages.of(context)!
-                                                .audio_video_content,
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                // fontSize: size.height * 0.3,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                        Checkbox(
-                                          value: isav_content,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isav_content = !isav_content;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  av_content = "Excellent";
-                                                } else {
-                                                  av_content = "No";
-                                                }
-                                                viewModel.avcontant =
-                                                    av_content;
-                                                // print(exHall);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel),
-                                        Checkbox(
-                                          value: isav_content2,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isav_content2 = !isav_content2;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  av_content2 = "Good";
-                                                } else {
-                                                  av_content2 = "No";
-                                                }
-                                                viewModel.avcontant =
-                                                    av_content2;
-                                                // print(exHall2);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel2),
-                                        Checkbox(
-                                          value: isav_content3,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isav_content3 = !isav_content3;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  av_content3 = "Avg";
-                                                } else {
-                                                  av_content3 = "No";
-                                                }
-                                                viewModel.avcontant =
-                                                    av_content3;
-                                                // print(exHall3);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel3),
-                                      ],
+                                    _buildSingleChoiceRow(
+                                      context,
+                                      title:
+                                          Languages.of(context)!.audio_quality,
+                                      options: ["Excellent", "Good", "Average"],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          viewModel.audio_qc = value!;
+                                        });
+                                      },
+                                      selectedValue: viewModel.audio_qc,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          width: size.width * 0.30,
-                                          alignment: Alignment.centerLeft,
-                                          margin: EdgeInsets.all(
-                                              size.height * 0.01),
-                                          child: Text(
-                                            Languages.of(context)!
-                                                .audio_quality,
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                // fontSize: size.height * 0.3,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                        Checkbox(
-                                          value: isaudi_qua,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isaudi_qua = !isaudi_qua;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  audi_qua = "Excellent";
-                                                } else {
-                                                  audi_qua = "No";
-                                                }
-                                                viewModel.audio_qc = audi_qua;
-                                                // print(exHall);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel),
-                                        Checkbox(
-                                          value: isaudi_qua2,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isaudi_qua2 = !isaudi_qua2;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  audi_qua2 = "Good";
-                                                } else {
-                                                  audi_qua2 = "No";
-                                                }
-                                                viewModel.audio_qc = audi_qua2;
-                                                // print(exHall2);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel2),
-                                        Checkbox(
-                                          value: isaudi_qua3,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isaudi_qua3 = !isaudi_qua3;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  audi_qua3 = "Avg";
-                                                } else {
-                                                  audi_qua3 = "No";
-                                                }
-                                                viewModel.audio_qc = audi_qua3;
-                                                // print(exHall3);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel3),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          width: size.width * 0.30,
-                                          alignment: Alignment.centerLeft,
-                                          margin: EdgeInsets.all(
-                                              size.height * 0.01),
-                                          child: Text(
-                                            Languages.of(context)!
-                                                .video_quality,
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                // fontSize: size.height * 0.3,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                        Checkbox(
-                                          value: isvid_qc,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isvid_qc = !isvid_qc;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  vid_qc = "Excellent";
-                                                } else {
-                                                  vid_qc = "No";
-                                                }
-                                                viewModel.video_qc = vid_qc;
-                                                // print(exHall);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel),
-                                        Checkbox(
-                                          value: isvid_qc2,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isvid_qc2 = !isvid_qc2;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  vid_qc2 = "Good";
-                                                } else {
-                                                  vid_qc2 = "No";
-                                                }
-                                                // print(exHall2);
-                                                viewModel.video_qc = vid_qc2;
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel2),
-                                        Checkbox(
-                                          value: isvid_qc3,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isvid_qc3 = !isvid_qc3;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  vid_qc3 = "Avg";
-                                                } else {
-                                                  vid_qc3 = "No";
-                                                }
-                                                viewModel.video_qc = vid_qc3;
-                                                // print(exHall3);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel3),
-                                      ],
+                                    _buildSingleChoiceRow(
+                                      context,
+                                      title:
+                                          Languages.of(context)!.video_quality,
+                                      options: ["Excellent", "Good", "Average"],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          viewModel.video_qc = value!;
+                                        });
+                                      },
+                                      selectedValue: viewModel.video_qc,
                                     ),
                                     Container(
                                       margin: EdgeInsets.only(
@@ -2894,284 +928,49 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 ),
                                 Column(
                                   children: <Widget>[
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      margin:
-                                          EdgeInsets.all(size.height * 0.01),
-                                      child: Text(
-                                        Languages.of(context)!.h_Cafeteria,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w900,
-                                            fontSize: 15,
-                                            color: Colors.black),
-                                      ),
+                                    _buildSectionHeader(
+                                        Languages.of(context)!.h_Cafeteria),
+                                    _buildSingleChoiceRow(
+                                      context,
+                                      title: Languages.of(context)!
+                                          .seating_arrangements_cafe,
+                                      options: ["Excellent", "Good", "Average"],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          viewModel.seating_arrangements_h =
+                                              value!;
+                                        });
+                                      },
+                                      selectedValue:
+                                          viewModel.seating_arrangements_h,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          width: size.width * 0.30,
-                                          alignment: Alignment.centerLeft,
-                                          margin: EdgeInsets.all(
-                                              size.height * 0.01),
-                                          child: Text(
-                                            Languages.of(context)!
-                                                .seating_arrangements_cafe,
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                // fontSize: size.height * 0.3,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                        Checkbox(
-                                          value: isseat_arreng,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isseat_arreng = !isseat_arreng;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  seat_arreng = "Excellent";
-                                                } else {
-                                                  seat_arreng = "No";
-                                                }
-                                                // print(exHall);
-                                                viewModel
-                                                        .seating_arrangements_h =
-                                                    seat_arreng;
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel),
-                                        Checkbox(
-                                          value: isseat_arreng2,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isseat_arreng2 =
-                                                    !isseat_arreng2;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  seat_arreng2 = "Good";
-                                                } else {
-                                                  seat_arreng2 = "No";
-                                                }
-                                                viewModel
-                                                        .seating_arrangements_h =
-                                                    seat_arreng2;
-                                                // print(exHall2);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel2),
-                                        Checkbox(
-                                          value: isseat_arreng3,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isseat_arreng3 =
-                                                    !isseat_arreng3;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  seat_arreng3 = "Avg";
-                                                } else {
-                                                  seat_arreng3 = "No";
-                                                }
-                                                viewModel
-                                                        .seating_arrangements_h =
-                                                    seat_arreng3;
-                                                // print(exHall3);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel3),
-                                      ],
+                                    _buildSingleChoiceRow(
+                                      context,
+                                      title: Languages.of(context)!
+                                          .cleanliness_of_seating_area,
+                                      options: ["Excellent", "Good", "Average"],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          viewModel.cleanliness_of_seatarea =
+                                              value!;
+                                        });
+                                      },
+                                      selectedValue:
+                                          viewModel.cleanliness_of_seatarea,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          width: size.width * 0.30,
-                                          alignment: Alignment.centerLeft,
-                                          margin: EdgeInsets.all(
-                                              size.height * 0.01),
-                                          child: Text(
-                                            Languages.of(context)!
-                                                .cleanliness_of_seating_area,
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                // fontSize: size.height * 0.3,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                        Checkbox(
-                                          value: iscleaning_Seat_Area,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                iscleaning_Seat_Area =
-                                                    !iscleaning_Seat_Area;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  cleaning_Seat_Area =
-                                                      "Excellent";
-                                                } else {
-                                                  cleaning_Seat_Area = "No";
-                                                }
-                                                viewModel
-                                                        .cleanliness_of_seatarea =
-                                                    cleaning_Seat_Area;
-                                                // print(exHall);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel),
-                                        Checkbox(
-                                          value: iscleaning_Seat_Area2,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                iscleaning_Seat_Area2 =
-                                                    !iscleaning_Seat_Area2;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  cleaning_Seat_Area2 = "Good";
-                                                } else {
-                                                  cleaning_Seat_Area2 = "No";
-                                                }
-                                                viewModel
-                                                        .cleanliness_of_seatarea =
-                                                    cleaning_Seat_Area2;
-                                                // print(exHall2);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel2),
-                                        Checkbox(
-                                          value: iscleaning_Seat_Area3,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                iscleaning_Seat_Area3 =
-                                                    !iscleaning_Seat_Area3;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  cleaning_Seat_Area3 = "Avg";
-                                                } else {
-                                                  cleaning_Seat_Area3 = "No";
-                                                }
-                                                // print(exHall3);
-                                                viewModel
-                                                        .cleanliness_of_seatarea =
-                                                    cleaning_Seat_Area3;
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel3),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Container(
-                                          width: size.width * 0.30,
-                                          alignment: Alignment.centerLeft,
-                                          margin: EdgeInsets.all(
-                                              size.height * 0.01),
-                                          child: Text(
-                                            Languages.of(context)!
-                                                .washroom_cleanliness,
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                // fontSize: size.height * 0.3,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                        Checkbox(
-                                          value: isWash_clean,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isWash_clean = !isWash_clean;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  Wash_clean = "Excellent";
-                                                } else {
-                                                  Wash_clean = "No";
-                                                }
-                                                viewModel
-                                                        .washroom_cleanliness_h =
-                                                    Wash_clean;
-                                                // print(exHall);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel),
-                                        Checkbox(
-                                          value: isWash_clean2,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isWash_clean2 = !isWash_clean2;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  Wash_clean2 = "Good";
-                                                } else {
-                                                  Wash_clean2 = "No";
-                                                }
-                                                viewModel
-                                                        .washroom_cleanliness_h =
-                                                    Wash_clean2;
-                                                // print(exHall2);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel2),
-                                        Checkbox(
-                                          value: isWash_clean3,
-                                          onChanged: (newValue) {
-                                            setState(
-                                              () {
-                                                isWash_clean3 = !isWash_clean3;
-                                                print(newValue);
-                                                if (newValue == true) {
-                                                  Wash_clean3 = "Avg";
-                                                } else {
-                                                  Wash_clean3 = "No";
-                                                }
-                                                viewModel
-                                                        .washroom_cleanliness_h =
-                                                    Wash_clean3;
-                                                // print(exHall3);
-                                              },
-                                            );
-                                          },
-                                        ),
-                                        Text(Languages.of(context)!
-                                            .feedbackReviewLabel3),
-                                      ],
+                                    _buildSingleChoiceRow(
+                                      context,
+                                      title: Languages.of(context)!
+                                          .washroom_cleanliness,
+                                      options: ["Excellent", "Good", "Average"],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          viewModel.washroom_cleanliness_h =
+                                              value!;
+                                        });
+                                      },
+                                      selectedValue:
+                                          viewModel.washroom_cleanliness_h,
                                     ),
                                     Container(
                                       margin: EdgeInsets.only(
@@ -3310,36 +1109,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 txtColor: ThemeColors.textBoxOutlineBorder,
                               ),
                             ),
-                            // Container(
-                            //   margin: EdgeInsets.all(size.height * 0.01),
-                            //   child: CustomBtn(
-                            //     width: size.width * 0.8,
-                            //     height: size.height * 0.05,
-                            //     str: Languages.of(context)!.feedbackbtnlabel,
-                            //     fontWeight: FontWeight.bold,
-                            //     btnColor: ThemeColors.appDarkPrimaryColor,
-                            //     btnPressed: () async {
-                            //       // viewModel.getSrno();
-
-                            //       final isFormA =
-                            //           await viewModel.savefeedbackform();
-
-                            //       if (isFormA) {
-                            //         // ScaffoldMessenger.of(context)
-                            //         //     .showSnackBar(snackBar);
-                            //         viewModel.redirectToPage(homescreen);
-                            //       } else {
-                            //         print("Please Check Form Properly");
-                            //       }
-                            //     },
-                            //     borderRadius: 10,
-                            //     btnBorderColor:
-                            //         ThemeColors.textBoxOutlineBorder,
-                            //     fontSize: 20,
-                            //     // fontWeight: FontWeight.w300,
-                            //     txtColor: ThemeColors.textBoxOutlineBorder,
-                            //   ),
-                            // ),
                           ],
                         ),
                       ),
@@ -3354,6 +1123,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
   Widget _buildSectionHeader(String title) {
     return Container(
+      alignment: Alignment.centerLeft,
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       child: Text(
         title,
@@ -3410,4 +1180,27 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
       ),
     );
   }
+
+  // Widget _buildRemarksField(
+  //   BuildContext context, {
+  //   required String hintText,
+  //   required ValueChanged<String> onChanged,
+  // }) {
+  //   return Padding(
+  //     padding: EdgeInsets.only(
+  //       left: MediaQuery.of(context).size.width * 0.05,
+  //       right: MediaQuery.of(context).size.width * 0.05,
+  //     ),
+  //     child: TextField(
+  //       maxLines: 3,
+  //       onChanged: onChanged,
+  //       decoration: InputDecoration(
+  //         hintText: hintText,
+  //         border: OutlineInputBorder(
+  //           borderRadius: BorderRadius.circular(20.0),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 }
