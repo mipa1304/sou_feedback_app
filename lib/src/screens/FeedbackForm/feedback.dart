@@ -259,7 +259,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 _buildSingleChoiceRow(
                                   context,
                                   title: Languages.of(context)!.exhibition_hall,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.exhibition_Hall = value!;
@@ -270,7 +274,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 _buildSingleChoiceRow(
                                   context,
                                   title: Languages.of(context)!.lift_loby,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.lift_lobi = value!;
@@ -281,7 +289,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 _buildSingleChoiceRow(
                                   context,
                                   title: Languages.of(context)!.viewing_gallery,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.viewing_gallery = value!;
@@ -293,7 +305,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   context,
                                   title:
                                       Languages.of(context)!.external_walkways,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.external_walkways = value!;
@@ -366,7 +382,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   context,
                                   title:
                                       Languages.of(context)!.feedbackloacation,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.exhibition_Hall_b = value!;
@@ -379,7 +399,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   context,
                                   title:
                                       Languages.of(context)!.feedbackloacation2,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.lift_lobi_b = value!;
@@ -392,7 +416,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   context,
                                   title:
                                       Languages.of(context)!.feedbackloacation3,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.viewing_gallery_b = value!;
@@ -405,7 +433,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   context,
                                   title:
                                       Languages.of(context)!.feedbackloacation4,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.washroom_at_ticket_counter =
@@ -420,7 +452,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   context,
                                   title:
                                       Languages.of(context)!.feedbackloacation5,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.washroom_at_exhibition_hall =
@@ -435,7 +471,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   context,
                                   title:
                                       Languages.of(context)!.feedbackloacation6,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.washroom_at_vg = value!;
@@ -494,7 +534,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 _buildSingleChoiceRow(
                                   context,
                                   title: Languages.of(context)!.body_frisking,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.body_frisking = value!;
@@ -505,7 +549,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 _buildSingleChoiceRow(
                                   context,
                                   title: Languages.of(context)!.bag_frisking,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.bag_frisking = value!;
@@ -517,7 +565,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   context,
                                   title: Languages.of(context)!
                                       .behavior_of_security_staff,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.behaviour_of_security_staff =
@@ -579,7 +631,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   context,
                                   title: Languages.of(context)!
                                       .gr_queue_management_at_friskingpoint,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.que_manag_at_frisking_point =
@@ -593,7 +649,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   context,
                                   title: Languages.of(context)!
                                       .gr_behaviour_of_staff_brown_dressed,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.behaviour_of_staff = value!;
@@ -605,7 +665,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   context,
                                   title: Languages.of(context)!
                                       .gr_queue_management_for_viewing_gallery,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel.que_manage_vg = value!;
@@ -617,7 +681,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   context,
                                   title: Languages.of(context)!
                                       .gr_behavior_of_guest_relation_staff_black_white_dressed,
-                                  options: ["Excellent", "Good", "Average"],
+                                  options: [
+                                    Languages.of(context)!.feedbackReviewLabel,
+                                    Languages.of(context)!.feedbackReviewLabel2,
+                                    Languages.of(context)!.feedbackReviewLabel3
+                                  ],
                                   onChanged: (value) {
                                     setState(() {
                                       viewModel
@@ -674,7 +742,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       context,
                                       title: Languages.of(context)!
                                           .facility_travelators_on_the_bridge,
-                                      options: ["Excellent", "Good", "Average"],
+                                      options: [
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel2,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel3
+                                      ],
                                       onChanged: (value) {
                                         setState(() {
                                           viewModel.travelators_on_bridge =
@@ -687,7 +762,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                     _buildSingleChoiceRow(
                                       context,
                                       title: Languages.of(context)!.escalators,
-                                      options: ["Excellent", "Good", "Average"],
+                                      options: [
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel2,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel3
+                                      ],
                                       onChanged: (value) {
                                         setState(() {
                                           viewModel.escalators = value!;
@@ -699,7 +781,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       context,
                                       title: Languages.of(context)!
                                           .elevators_Lifts,
-                                      options: ["Excellent", "Good", "Average"],
+                                      options: [
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel2,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel3
+                                      ],
                                       onChanged: (value) {
                                         setState(() {
                                           viewModel.escalators = value!;
@@ -756,7 +845,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       context,
                                       title: Languages.of(context)!
                                           .quality_of_exhibits,
-                                      options: ["Excellent", "Good", "Average"],
+                                      options: [
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel2,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel3
+                                      ],
                                       onChanged: (value) {
                                         setState(() {
                                           viewModel.qc_exhibits = value!;
@@ -768,7 +864,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       context,
                                       title: Languages.of(context)!
                                           .interactive_equipment,
-                                      options: ["Excellent", "Good", "Average"],
+                                      options: [
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel2,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel3
+                                      ],
                                       onChanged: (value) {
                                         setState(() {
                                           viewModel.intrective_equip = value!;
@@ -780,7 +883,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       context,
                                       title: Languages.of(context)!
                                           .content_of_Exhibits,
-                                      options: ["Excellent", "Good", "Average"],
+                                      options: [
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel2,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel3
+                                      ],
                                       onChanged: (value) {
                                         setState(() {
                                           viewModel.content_exhibits = value!;
@@ -837,7 +947,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       context,
                                       title: Languages.of(context)!
                                           .Seating_arrangements,
-                                      options: ["Excellent", "Good", "Average"],
+                                      options: [
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel2,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel3
+                                      ],
                                       onChanged: (value) {
                                         setState(() {
                                           viewModel.seating_arrangements =
@@ -851,7 +968,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       context,
                                       title: Languages.of(context)!
                                           .audio_video_content,
-                                      options: ["Excellent", "Good", "Average"],
+                                      options: [
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel2,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel3
+                                      ],
                                       onChanged: (value) {
                                         setState(() {
                                           viewModel.avcontant = value!;
@@ -863,7 +987,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       context,
                                       title:
                                           Languages.of(context)!.audio_quality,
-                                      options: ["Excellent", "Good", "Average"],
+                                      options: [
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel2,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel3
+                                      ],
                                       onChanged: (value) {
                                         setState(() {
                                           viewModel.audio_qc = value!;
@@ -875,7 +1006,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       context,
                                       title:
                                           Languages.of(context)!.video_quality,
-                                      options: ["Excellent", "Good", "Average"],
+                                      options: [
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel2,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel3
+                                      ],
                                       onChanged: (value) {
                                         setState(() {
                                           viewModel.video_qc = value!;
@@ -934,7 +1072,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       context,
                                       title: Languages.of(context)!
                                           .seating_arrangements_cafe,
-                                      options: ["Excellent", "Good", "Average"],
+                                      options: [
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel2,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel3
+                                      ],
                                       onChanged: (value) {
                                         setState(() {
                                           viewModel.seating_arrangements_h =
@@ -948,7 +1093,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       context,
                                       title: Languages.of(context)!
                                           .cleanliness_of_seating_area,
-                                      options: ["Excellent", "Good", "Average"],
+                                      options: [
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel2,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel3
+                                      ],
                                       onChanged: (value) {
                                         setState(() {
                                           viewModel.cleanliness_of_seatarea =
@@ -962,7 +1114,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       context,
                                       title: Languages.of(context)!
                                           .washroom_cleanliness,
-                                      options: ["Excellent", "Good", "Average"],
+                                      options: [
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel2,
+                                        Languages.of(context)!
+                                            .feedbackReviewLabel3
+                                      ],
                                       onChanged: (value) {
                                         setState(() {
                                           viewModel.washroom_cleanliness_h =
@@ -1124,7 +1283,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   Widget _buildSectionHeader(String title) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: const EdgeInsets.symmetric(vertical: 8.0),
+      margin: const EdgeInsets.all(8),
       child: Text(
         title,
         style: TextStyle(
@@ -1180,27 +1339,4 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
       ),
     );
   }
-
-  // Widget _buildRemarksField(
-  //   BuildContext context, {
-  //   required String hintText,
-  //   required ValueChanged<String> onChanged,
-  // }) {
-  //   return Padding(
-  //     padding: EdgeInsets.only(
-  //       left: MediaQuery.of(context).size.width * 0.05,
-  //       right: MediaQuery.of(context).size.width * 0.05,
-  //     ),
-  //     child: TextField(
-  //       maxLines: 3,
-  //       onChanged: onChanged,
-  //       decoration: InputDecoration(
-  //         hintText: hintText,
-  //         border: OutlineInputBorder(
-  //           borderRadius: BorderRadius.circular(20.0),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
 }
