@@ -4,6 +4,7 @@ import 'package:SOUFEEDBACKAPP/Localization/language/languages.dart';
 import 'package:SOUFEEDBACKAPP/Localization/locale_constants.dart';
 import 'package:SOUFEEDBACKAPP/src/models/language_model.dart';
 import 'package:SOUFEEDBACKAPP/src/screens/ChangeLanguageScreen/change_language_screen_model.dart';
+import 'package:SOUFEEDBACKAPP/src/screens/FeedbackForm/feedback.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:SOUFEEDBACKAPP/locator.dart';
@@ -59,7 +60,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
       ),
       child: Padding(
         padding: const EdgeInsets.only(left: 10, right: 10),
-        child: DropdownButton<LanguageModel>(
+        child: DropdownButton<LanguageModel?>(
           iconSize: 30,
           underline: SizedBox(),
           hint: Text(Languages.of(context)!.labelSelectLanguage),
@@ -68,7 +69,12 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
             setState(() {
               _selectedLanguage = language;
             });
-            changeLanguage(context, language!.languageCode);
+            changeLanguage(context, language!.languageCode!);
+
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => FeedbackScreen()),
+            );
 
             print(language.languageCode);
           },
@@ -80,10 +86,10 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       Text(
-                        e.flag,
+                        e.flag!,
                         style: TextStyle(fontSize: 30),
                       ),
-                      Text(e.name)
+                      Text(e.name!)
                     ],
                   ),
                 ),
