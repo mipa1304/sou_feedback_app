@@ -151,11 +151,14 @@ class BaseModel extends ChangeNotifier {
   }
 
   void updateTextBoxWithAudioPath(String path) {
-    remark = path;
+    // remark = fileRemarkController.text;
 
     // fileRemarkController.text = File(path.path).path;
-    var file = File(fileRemarkController.text);
+    // var remark = fileRemarkController.text;
     // file = fileRemarkController.text.toString() as File;
+
+    path = fileRemarkController.text;
+    fileRemarkController.text = path;
     print("fileRemarkController.text: ${fileRemarkController.text}");
     // print("remark: $remark");
 

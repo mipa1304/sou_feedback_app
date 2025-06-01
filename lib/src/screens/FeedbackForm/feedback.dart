@@ -43,7 +43,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     super.initState();
     viewmodel.initRecorder();
     viewmodel.initializeFilePath();
-    // viewmodel.requestMediaPermissions();
   }
 
   bool isData = false;
@@ -151,32 +150,45 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                         fontSize: 18),
                                   ),
                                 ),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                    left: size.height * 0.09,
-                                  ),
-                                  child: SizedBox(
-                                      height: 25,
-                                      width: 40,
-                                      child: ListView.builder(
-                                          itemCount: viewModel.srno.length,
-                                          itemBuilder: (context, index) {
-                                            sr_no = int.parse(
-                                                viewModel.srno[index].srno);
+                                viewModel.srno.isEmpty
+                                    ? Container(
+                                        margin: EdgeInsets.only(
+                                          left: size.height * 0.09,
+                                        ),
+                                        child: Center(
+                                          child: CircularProgressIndicator(
+                                              color: ThemeColors
+                                                  .textBoxOutlineBorder),
+                                        ),
+                                      )
+                                    : Container(
+                                        margin: EdgeInsets.only(
+                                          left: size.height * 0.09,
+                                        ),
+                                        child: SizedBox(
+                                            height: 25,
+                                            width: 40,
+                                            child: ListView.builder(
+                                                itemCount:
+                                                    viewModel.srno.length,
+                                                itemBuilder: (context, index) {
+                                                  sr_no = int.parse(viewModel
+                                                      .srno[index].srno);
 
-                                            return Text(
-                                              viewModel.srno[index].srno
-                                                  .toString(),
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: ThemeColors
-                                                    .textBoxOutlineBorder,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 18,
-                                              ),
-                                            );
-                                          })),
-                                ),
+                                                  return Text(
+                                                    viewModel.srno[index].srno
+                                                        .toString(),
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      color: ThemeColors
+                                                          .textBoxOutlineBorder,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 18,
+                                                    ),
+                                                  );
+                                                })),
+                                      ),
                               ],
                             ),
                             SizedBox(
@@ -327,7 +339,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       maxLines: 3,
                                       onChanged: (String str) =>
                                           {viewModel.remark = str},
-                                      // controller: _feedbackA,
                                       decoration: InputDecoration(
                                         suffixIcon: viewModel.isRecording
                                             ? IconButton(

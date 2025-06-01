@@ -1,7 +1,7 @@
 class LanguageModel {
-  final String flag;
-  final String name;
-  final String languageCode;
+  final String? flag;
+  final String? name;
+  final String? languageCode;
 
   LanguageModel(
     this.flag,
@@ -14,7 +14,17 @@ class LanguageModel {
       LanguageModel("🇺🇸", "English", 'en'),
       LanguageModel("🇮🇳", "हिंदी", 'hi'),
       LanguageModel("🇮🇳", "ગુજરાતી", 'gu'),
-      LanguageModel("🇮🇳", "தமிழ்", 'ta'),
     ];
   }
+
+  // Override equality operator
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is LanguageModel &&
+          runtimeType == other.runtimeType &&
+          languageCode == other.languageCode;
+
+  @override
+  int get hashCode => languageCode.hashCode;
 }
