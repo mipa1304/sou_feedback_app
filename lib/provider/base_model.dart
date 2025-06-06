@@ -21,6 +21,7 @@ import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class BaseModel extends ChangeNotifier {
   final navigationService = locator<NavigationService>();
@@ -46,6 +47,8 @@ class BaseModel extends ChangeNotifier {
   PersistentBottomSheetController? _controller;
   bool isListening = true;
 
+  final FlutterTts flutterTts = FlutterTts();
+
   String? stopfilePath;
 
   late final File file;
@@ -54,6 +57,12 @@ class BaseModel extends ChangeNotifier {
   late final audioRef;
 
   final TextEditingController fileRemarkController = TextEditingController();
+
+  Future<void> speakText(String text) async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.setPitch(1.0);
+    await flutterTts.speak(text);
+  }
 
   Future<void> initRecorder() async {
     _recorder = FlutterSoundRecorder();

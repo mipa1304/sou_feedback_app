@@ -268,6 +268,19 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                               children: [
                                 _buildSectionHeader(Languages.of(context)!
                                     .a_ambiance_general_lights),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    // Define the text you want to convert to audio
+                                    String selectedText = Languages.of(context)!
+                                        .a_ambiance_general_lights;
+                                    viewModel.speakText(
+                                        selectedText); // selectedText is the text you want to convert to audio
+                                  },
+                                  child: Icon(
+                                    Icons.volume_up,
+                                    color: Colors.white,
+                                  ),
+                                ),
                                 _buildSingleChoiceRow(
                                   context,
                                   title: Languages.of(context)!.exhibition_hall,
