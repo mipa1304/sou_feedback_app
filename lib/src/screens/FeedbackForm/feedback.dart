@@ -269,6 +269,12 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 _buildSectionHeader(Languages.of(context)!
                                     .a_ambiance_general_lights),
                                 ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.transparent,
+                                    shadowColor: Colors.transparent,
+                                    shape: CircleBorder(),
+                                    // padding: EdgeInsets.all(10),
+                                  ),
                                   onPressed: () {
                                     // Define the text you want to convert to audio
                                     String selectedText = Languages.of(context)!
@@ -278,7 +284,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   },
                                   child: Icon(
                                     Icons.volume_up,
-                                    color: Colors.white,
+                                    color:
+                                        const Color.fromARGB(255, 10, 10, 10),
                                   ),
                                 ),
                                 _buildSingleChoiceRow(
@@ -1308,13 +1315,17 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     return Container(
       alignment: Alignment.centerLeft,
       margin: const EdgeInsets.all(8),
-      child: Text(
-        title,
-        style: TextStyle(
-          fontWeight: FontWeight.w900,
-          fontSize: 15,
-          color: Colors.black,
-        ),
+      child: Row(
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              fontWeight: FontWeight.w900,
+              fontSize: 15,
+              color: Colors.black,
+            ),
+          ),
+        ],
       ),
     );
   }
