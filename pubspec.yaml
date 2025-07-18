@@ -60,6 +60,7 @@ dependencies:
   firebase_storage: ^12.4.4
   device_info_plus: ^11.3.3
   flutter_tts: ^4.2.3
+  flutter_riverpod: ^2.6.1
   # qr_flutter: ^4.1.0
 
 dev_dependencies:
