@@ -266,27 +266,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                _buildSectionHeader(Languages.of(context)!
-                                    .a_ambiance_general_lights),
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.transparent,
-                                    shadowColor: Colors.transparent,
-                                    shape: CircleBorder(),
-                                    // padding: EdgeInsets.all(10),
-                                  ),
-                                  onPressed: () {
-                                    // Define the text you want to convert to audio
+                                _buildSectionHeader(
+                                  Languages.of(context)!
+                                      .a_ambiance_general_lights,
+                                  () {
                                     String selectedText = Languages.of(context)!
                                         .a_ambiance_general_lights;
-                                    viewModel.speakText(
-                                        selectedText); // selectedText is the text you want to convert to audio
+                                    viewModel.speakText(selectedText);
                                   },
-                                  child: Icon(
-                                    Icons.volume_up,
-                                    color:
-                                        const Color.fromARGB(255, 10, 10, 10),
-                                  ),
                                 ),
                                 _buildSingleChoiceRow(
                                   context,
@@ -405,7 +392,13 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 _buildSectionHeader(
-                                    Languages.of(context)!.feedbackdept),
+                                  Languages.of(context)!.feedbackdept,
+                                  () {
+                                    String selectedText =
+                                        Languages.of(context)!.feedbackdept;
+                                    viewModel.speakText(selectedText);
+                                  },
+                                ),
 
                                 // _buildSingleChoiceRow(context, title: Languages.of(context)!.feedbackloacation, options: ["Excellent", "Good", "Average"], selectedValue: selectedValue, onChanged: onChanged)
 
@@ -560,8 +553,15 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                             ),
                             Column(
                               children: <Widget>[
-                                _buildSectionHeader(Languages.of(context)!
-                                    .c_security_checking_confiscating_gutka_pan_smoking_material_alcoholic_beverages_etc),
+                                _buildSectionHeader(
+                                  Languages.of(context)!
+                                      .c_security_checking_confiscating_gutka_pan_smoking_material_alcoholic_beverages_etc,
+                                  () {
+                                    String selectedText = Languages.of(context)!
+                                        .c_security_checking_confiscating_gutka_pan_smoking_material_alcoholic_beverages_etc;
+                                    viewModel.speakText(selectedText);
+                                  },
+                                ),
                                 _buildSingleChoiceRow(
                                   context,
                                   title: Languages.of(context)!.body_frisking,
@@ -656,8 +656,15 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
-                                _buildSectionHeader(Languages.of(context)!
-                                    .gr_queue_management_guest_relationetc),
+                                _buildSectionHeader(
+                                  Languages.of(context)!
+                                      .gr_queue_management_guest_relationetc,
+                                  () {
+                                    String selectedText = Languages.of(context)!
+                                        .gr_queue_management_guest_relationetc;
+                                    viewModel.speakText(selectedText);
+                                  },
+                                ),
                                 _buildSingleChoiceRow(
                                   context,
                                   title: Languages.of(context)!
@@ -768,7 +775,13 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 Column(
                                   children: <Widget>[
                                     _buildSectionHeader(
-                                        Languages.of(context)!.facility),
+                                      Languages.of(context)!.facility,
+                                      () {
+                                        String selectedText =
+                                            Languages.of(context)!.facility;
+                                        viewModel.speakText(selectedText);
+                                      },
+                                    ),
                                     _buildSingleChoiceRow(
                                       context,
                                       title: Languages.of(context)!
@@ -870,8 +883,15 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    _buildSectionHeader(Languages.of(context)!
-                                        .f_museum_exhibits),
+                                    _buildSectionHeader(
+                                      Languages.of(context)!.f_museum_exhibits,
+                                      () {
+                                        String selectedText =
+                                            Languages.of(context)!
+                                                .f_museum_exhibits;
+                                        viewModel.speakText(selectedText);
+                                      },
+                                    ),
                                     _buildSingleChoiceRow(
                                       context,
                                       title: Languages.of(context)!
@@ -972,8 +992,16 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    _buildSectionHeader(Languages.of(context)!
-                                        .g_projection_mapping_show),
+                                    _buildSectionHeader(
+                                      Languages.of(context)!
+                                          .g_projection_mapping_show,
+                                      () {
+                                        String selectedText =
+                                            Languages.of(context)!
+                                                .g_projection_mapping_show;
+                                        viewModel.speakText(selectedText);
+                                      },
+                                    ),
                                     _buildSingleChoiceRow(
                                       context,
                                       title: Languages.of(context)!
@@ -1098,7 +1126,13 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 Column(
                                   children: <Widget>[
                                     _buildSectionHeader(
-                                        Languages.of(context)!.h_Cafeteria),
+                                      Languages.of(context)!.h_Cafeteria,
+                                      () {
+                                        String selectedText =
+                                            Languages.of(context)!.h_Cafeteria;
+                                        viewmodel.speakText(selectedText);
+                                      },
+                                    ),
                                     _buildSingleChoiceRow(
                                       context,
                                       title: Languages.of(context)!
@@ -1311,18 +1345,37 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     );
   }
 
-  Widget _buildSectionHeader(String title) {
+  Widget _buildSectionHeader(String title, VoidCallback? onPressed) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: const EdgeInsets.all(8),
+      margin: const EdgeInsets.all(3),
       child: Row(
         children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontWeight: FontWeight.w900,
-              fontSize: 15,
-              color: Colors.black,
+          Flexible(
+            fit: FlexFit.tight,
+            child: Text(
+              title,
+              // overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontWeight: FontWeight.w900,
+                fontSize: 15,
+                color: Colors.black,
+              ),
+              softWrap: true,
+            ),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              shadowColor: Colors.transparent,
+              shape: CircleBorder(),
+
+              // padding: EdgeInsets.all(10),
+            ),
+            onPressed: onPressed,
+            child: Icon(
+              Icons.volume_up,
+              color: const Color.fromARGB(255, 10, 10, 10),
             ),
           ),
         ],
