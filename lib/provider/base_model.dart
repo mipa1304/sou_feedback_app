@@ -22,6 +22,8 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:firebase_ai/firebase_ai.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class BaseModel extends ChangeNotifier {
   final navigationService = locator<NavigationService>();
@@ -57,6 +59,9 @@ class BaseModel extends ChangeNotifier {
   late final audioRef;
 
   final TextEditingController fileRemarkController = TextEditingController();
+
+  final modelAI =
+      FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
 
   Future<void> speakText(String text) async {
     await flutterTts.setLanguage("en-US");

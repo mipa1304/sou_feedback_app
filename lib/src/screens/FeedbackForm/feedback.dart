@@ -3,6 +3,7 @@
 // import 'package:SOUFEEDBACKAPP/src/models/sr_view_model.dart';
 import 'package:SOUFEEDBACKAPP/provider/base_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_ai/firebase_ai.dart';
 import 'package:flutter/material.dart';
 import 'package:SOUFEEDBACKAPP/constant/routename.dart';
 import 'package:SOUFEEDBACKAPP/locator.dart';
@@ -14,7 +15,6 @@ import 'package:stacked/stacked.dart';
 import 'package:SOUFEEDBACKAPP/config/app_config.dart';
 import 'package:SOUFEEDBACKAPP/src/widgets/Cstmchkbtn.dart';
 import 'package:SOUFEEDBACKAPP/Localization/language/languages.dart';
-import 'package:SOUFEEDBACKAPP/src/widgets/widgets.dart';
 
 class FeedbackScreen extends StatefulWidget {
   const FeedbackScreen({Key? key}) : super(key: key);
@@ -49,6 +49,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
   bool isRecording = false;
 
+  final modelAI =
+      FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
@@ -59,6 +62,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
           builder: ((context, viewModel, child) {
             viewModel.getSrno();
             viewModel.initRecorder();
+
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: ThemeColors.bgColor,
