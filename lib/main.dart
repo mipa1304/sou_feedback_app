@@ -15,6 +15,7 @@ import 'package:SOUFEEDBACKAPP/constant/routename.dart';
 import 'firebase_options.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:firebase_ai/firebase_ai.dart';
 import 'Localization/locale_constants.dart';
 
 void main() async {
@@ -26,6 +27,8 @@ void main() async {
 
   runApp(const MyApp());
 }
+
+// final model = FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
 
 RouteSettings? settings;
 
