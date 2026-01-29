@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 // import 'package:flutter_mvvm_with_getit/config/app_config.dart';
-import 'package:SOUFEEDBACKAPP/config/size_config2.dart';
+import 'package:sou_feedback_app/config/size_config2.dart';
 
 class CustomBtn extends StatefulWidget {
   double height;

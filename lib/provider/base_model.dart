@@ -1,17 +1,17 @@
 // ignore_for_file: unused_import, non_constant_identifier_names, empty_catches, unused_local_variable, await_only_futures, avoid_print, dead_code, unused_field, unnecessary_brace_in_string_interps, unused_element, unnecessary_string_interpolations
 
 import 'dart:io';
-import 'package:SOUFEEDBACKAPP/constant/routename.dart';
-import 'package:SOUFEEDBACKAPP/enum/view_state.dart';
-import 'package:SOUFEEDBACKAPP/provider/getit.dart';
-import 'package:SOUFEEDBACKAPP/provider/getusers_model.dart';
-import 'package:SOUFEEDBACKAPP/services/dialogService.dart';
-import 'package:SOUFEEDBACKAPP/services/navigation_service.dart';
-import 'package:SOUFEEDBACKAPP/src/models/Srno.dart';
+import 'package:sou_feedback_app/constant/routename.dart';
+import 'package:sou_feedback_app/enum/view_state.dart';
+import 'package:sou_feedback_app/provider/getit.dart';
+import 'package:sou_feedback_app/provider/getusers_model.dart';
+import 'package:sou_feedback_app/services/dialogService.dart';
+import 'package:sou_feedback_app/services/navigation_service.dart';
+import 'package:sou_feedback_app/src/models/Srno.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:SOUFEEDBACKAPP/src/models/save_feedback_model.dart';
-import 'package:SOUFEEDBACKAPP/src/models/save_users.dart';
+import 'package:sou_feedback_app/src/models/save_feedback_model.dart';
+import 'package:sou_feedback_app/src/models/save_users.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';

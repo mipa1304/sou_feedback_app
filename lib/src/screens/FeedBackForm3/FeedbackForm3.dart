@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:SOUFEEDBACKAPP/locator.dart';
-import 'package:SOUFEEDBACKAPP/src/widgets/Cstmbtn.dart';
+import 'package:sou_feedback_app/locator.dart';
+import 'package:sou_feedback_app/src/widgets/Cstmbtn.dart';
 import 'package:provider/provider.dart';
-import 'package:SOUFEEDBACKAPP/src/screens/FeedBackForm3/Feedback_form3_model.dart';
+import 'package:sou_feedback_app/src/screens/FeedBackForm3/Feedback_form3_model.dart';
 import 'package:stacked/stacked.dart';
-import 'package:SOUFEEDBACKAPP/config/app_config.dart';
+import 'package:sou_feedback_app/config/app_config.dart';
 
 class FeedbackForm3 extends StatefulWidget {
   const FeedbackForm3({Key? key}) : super(key: key);

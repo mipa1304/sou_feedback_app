@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:SOUFEEDBACKAPP/Localization/language/language_eng.dart';
-import 'package:SOUFEEDBACKAPP/Localization/language/language_hindi.dart';
-import 'package:SOUFEEDBACKAPP/Localization/language/language_gujarati.dart';
-import 'package:SOUFEEDBACKAPP/Localization/language/language_tamil.dart';
-import 'package:SOUFEEDBACKAPP/Localization/language/languages.dart';
+import 'package:sou_feedback_app/Localization/language/language_eng.dart';
+import 'package:sou_feedback_app/Localization/language/language_hindi.dart';
+import 'package:sou_feedback_app/Localization/language/language_gujarati.dart';
+import 'package:sou_feedback_app/Localization/language/language_tamil.dart';
+import 'package:sou_feedback_app/Localization/language/languages.dart';
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
   const AppLocalizationsDelegate();

@@ -1,15 +1,15 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, non_constant_identifier_names, avoid_print, prefer_typing_uninitialized_variables, use_build_context_synchronously, unused_field, unused_local_variable, unused_import
 
-import 'package:SOUFEEDBACKAPP/src/widgets/TextFieldWithPostFixIcon.dart';
+import 'package:sou_feedback_app/src/widgets/TextFieldWithPostFixIcon.dart';
 import 'package:flutter/material.dart';
-import 'package:SOUFEEDBACKAPP/config/app_config.dart';
-import 'package:SOUFEEDBACKAPP/constant/routename.dart';
-import 'package:SOUFEEDBACKAPP/src/screens/FeedBackForm2/feedback_model.dart';
-import 'package:SOUFEEDBACKAPP/src/widgets/Cstmbtn.dart';
+import 'package:sou_feedback_app/config/app_config.dart';
+import 'package:sou_feedback_app/constant/routename.dart';
+import 'package:sou_feedback_app/src/screens/FeedBackForm2/feedback_model.dart';
+import 'package:sou_feedback_app/src/widgets/Cstmbtn.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
-import 'package:SOUFEEDBACKAPP/locator.dart';
-import 'package:SOUFEEDBACKAPP/Localization/language/languages.dart';
+import 'package:sou_feedback_app/locator.dart';
+import 'package:sou_feedback_app/Localization/language/languages.dart';
 
 class Feedback2 extends StatefulWidget {
   final a_exhihall;

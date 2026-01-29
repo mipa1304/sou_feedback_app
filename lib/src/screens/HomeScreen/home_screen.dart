@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:SOUFEEDBACKAPP/locator.dart';
-import 'package:SOUFEEDBACKAPP/src/screens/HomeScreen/home_screen_model.dart';
+import 'package:sou_feedback_app/locator.dart';
+import 'package:sou_feedback_app/src/screens/HomeScreen/home_screen_model.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
