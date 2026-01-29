@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, avoid_print, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:SOUFEEDBACKAPP/config/app_config.dart';
-import 'package:SOUFEEDBACKAPP/locator.dart';
-import 'package:SOUFEEDBACKAPP/src/screens/FeedBackForm4/feedback_form_model4.dart';
-import 'package:SOUFEEDBACKAPP/src/widgets/Cstmbtn.dart';
+import 'package:sou_feedback_app/config/app_config.dart';
+import 'package:sou_feedback_app/locator.dart';
+import 'package:sou_feedback_app/src/screens/FeedBackForm4/feedback_form_model4.dart';
+import 'package:sou_feedback_app/src/widgets/Cstmbtn.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 

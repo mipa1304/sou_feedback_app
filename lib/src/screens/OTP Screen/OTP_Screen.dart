@@ -2,14 +2,14 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:SOUFEEDBACKAPP/constant/routename.dart';
-import 'package:SOUFEEDBACKAPP/locator.dart';
-import 'package:SOUFEEDBACKAPP/src/widgets/Cstmbtn.dart';
-import 'package:SOUFEEDBACKAPP/src/widgets/TextFieldWithPostFixIcon.dart';
+import 'package:sou_feedback_app/constant/routename.dart';
+import 'package:sou_feedback_app/locator.dart';
+import 'package:sou_feedback_app/src/widgets/Cstmbtn.dart';
+import 'package:sou_feedback_app/src/widgets/TextFieldWithPostFixIcon.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 import 'OTP_model.dart';
-import 'package:SOUFEEDBACKAPP/config/app_config.dart';
+import 'package:sou_feedback_app/config/app_config.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 
 class OTPScreen extends StatefulWidget {

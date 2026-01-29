@@ -2,7 +2,7 @@
 
 // import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
-import 'package:SOUFEEDBACKAPP/src/models/save_users.dart';
+import 'package:sou_feedback_app/src/models/save_users.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UsersViewModel {

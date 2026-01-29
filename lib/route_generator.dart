@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unused_import
 
-import 'package:SOUFEEDBACKAPP/src/screens/Login%20GR/gr_login.dart';
+import 'package:sou_feedback_app/src/screens/Login%20GR/gr_login.dart';
 import 'package:flutter/material.dart';
-import 'package:SOUFEEDBACKAPP/src/screens/FeedBackForm2/feedback2.dart';
-import 'package:SOUFEEDBACKAPP/src/screens/FeedBackForm4/FeedBackForm4.dart';
-// import 'package:SOUFEEDBACKAPP/src/screens/HomeScreen/home_screen.dart';
-// import 'package:SOUFEEDBACKAPP/src/screens/home_screen.dart';
-import 'package:SOUFEEDBACKAPP/src/screens/FeedbackForm/feedback.dart';
-import 'package:SOUFEEDBACKAPP/constant/routename.dart';
+import 'package:sou_feedback_app/src/screens/FeedBackForm2/feedback2.dart';
+import 'package:sou_feedback_app/src/screens/FeedBackForm4/FeedBackForm4.dart';
+// import 'package:sou_feedback_app/src/screens/HomeScreen/home_screen.dart';
+// import 'package:sou_feedback_app/src/screens/home_screen.dart';
+import 'package:sou_feedback_app/src/screens/FeedbackForm/feedback.dart';
+import 'package:sou_feedback_app/constant/routename.dart';
 import 'package:fimber/fimber.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:SOUFEEDBACKAPP/src/screens/SignUp/Signup.dart';
+import 'package:sou_feedback_app/src/screens/SignUp/Signup.dart';
 import 'src/screens/FeedBackForm3/FeedbackForm3.dart';
 import 'src/screens/OTP Screen/OTP_Screen.dart';
-import 'package:SOUFEEDBACKAPP/src/screens/Login/login.dart';
-import 'package:SOUFEEDBACKAPP/src/screens/ChangeLanguageScreen/change_language_screen.dart';
+import 'package:sou_feedback_app/src/screens/Login/login.dart';
+import 'package:sou_feedback_app/src/screens/ChangeLanguageScreen/change_language_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings, {dynamic args}) {
   switch (settings.name) {

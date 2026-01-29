@@ -1,6 +1,5 @@
-package com.mihir.soufeedbackapp
+package com.example.sou_feedback_app
 
 import io.flutter.embedding.android.FlutterActivity
 
-class MainActivity: FlutterActivity() {
-}
+class MainActivity : FlutterActivity()

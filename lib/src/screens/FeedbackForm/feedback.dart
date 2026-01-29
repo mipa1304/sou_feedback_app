@@ -1,20 +1,20 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, unused_import, avoid_print, non_constant_identifier_names, unused_field, use_build_context_synchronously, sized_box_for_whitespace, no_leading_underscores_for_local_identifiers, unused_element, unnecessary_brace_in_string_interps
 
 // import 'package:SOUFEEDBACKAPP/src/models/sr_view_model.dart';
-import 'package:SOUFEEDBACKAPP/provider/base_model.dart';
+import 'package:sou_feedback_app/provider/base_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_ai/firebase_ai.dart';
 import 'package:flutter/material.dart';
-import 'package:SOUFEEDBACKAPP/constant/routename.dart';
-import 'package:SOUFEEDBACKAPP/locator.dart';
-import 'package:SOUFEEDBACKAPP/src/screens/FeedbackForm/feedback_form_model.dart';
-import 'package:SOUFEEDBACKAPP/src/widgets/Cstmbtn.dart';
-import 'package:SOUFEEDBACKAPP/src/widgets/TextFieldWithPostFixIcon.dart';
+import 'package:sou_feedback_app/constant/routename.dart';
+import 'package:sou_feedback_app/locator.dart';
+import 'package:sou_feedback_app/src/screens/FeedbackForm/feedback_form_model.dart';
+import 'package:sou_feedback_app/src/widgets/Cstmbtn.dart';
+import 'package:sou_feedback_app/src/widgets/TextFieldWithPostFixIcon.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
-import 'package:SOUFEEDBACKAPP/config/app_config.dart';
-import 'package:SOUFEEDBACKAPP/src/widgets/Cstmchkbtn.dart';
-import 'package:SOUFEEDBACKAPP/Localization/language/languages.dart';
+import 'package:sou_feedback_app/config/app_config.dart';
+import 'package:sou_feedback_app/src/widgets/Cstmchkbtn.dart';
+import 'package:sou_feedback_app/Localization/language/languages.dart';
 
 class FeedbackScreen extends StatefulWidget {
   const FeedbackScreen({Key? key}) : super(key: key);

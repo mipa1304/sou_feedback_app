@@ -1,22 +1,23 @@
 // ignore_for_file: unused_import, unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
-import 'package:SOUFEEDBACKAPP/Localization/localization_delegate.dart';
+import 'package:sou_feedback_app/Localization/localization_delegate.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:SOUFEEDBACKAPP/Managers/DialogManager.dart';
-// import 'package:SOUFEEDBACKAPP/provider/getit.dart';
-// import 'package:SOUFEEDBACKAPP/route_generator.dart';
-import 'package:SOUFEEDBACKAPP/services/dialogService.dart';
-import 'package:SOUFEEDBACKAPP/services/navigation_service.dart';
+import 'package:sou_feedback_app/Managers/DialogManager.dart';
+// import 'package:sou_feedback_app/provider/getit.dart';
+// import 'package:sou_feedback_app/route_generator.dart';
+import 'package:sou_feedback_app/services/dialogService.dart';
+import 'package:sou_feedback_app/services/navigation_service.dart';
 // import 'constant/routename.dart';
 import 'locator.dart';
 import 'route_generator.dart';
-import 'package:SOUFEEDBACKAPP/constant/routename.dart';
+import 'package:sou_feedback_app/constant/routename.dart';
 import 'firebase_options.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_ai/firebase_ai.dart';
 import 'Localization/locale_constants.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +28,8 @@ void main() async {
 
   runApp(const MyApp());
 }
+
+final model = FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
 
 // final model = FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
 

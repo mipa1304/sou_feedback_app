@@ -1,10 +1,10 @@
 // ignore_for_file: library_private_types_in_public_api, unused_import
 
-import 'package:SOUFEEDBACKAPP/provider/getit.dart';
+import 'package:sou_feedback_app/provider/getit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'base_model.dart';
-import 'package:SOUFEEDBACKAPP/locator.dart';
+import 'package:sou_feedback_app/locator.dart';
 
 class BaseView<T extends BaseModel> extends StatefulWidget {
   final Widget Function(BuildContext context, T model, Widget? child) builder;

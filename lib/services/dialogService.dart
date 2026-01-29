@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'dart:async';
-import 'package:SOUFEEDBACKAPP/src/models/dialog_model.dart';
+import 'package:sou_feedback_app/src/models/dialog_model.dart';
 
 class DialogService {
   final GlobalKey<NavigatorState> _dialogNavigationKey =

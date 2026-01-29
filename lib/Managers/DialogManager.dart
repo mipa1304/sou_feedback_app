@@ -1,10 +1,10 @@
 // ignore_for_file: unused_field, prefer_const_constructors, avoid_unnecessary_containers, unused_local_variable, deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:SOUFEEDBACKAPP/locator.dart';
-import 'package:SOUFEEDBACKAPP/services/dialogService.dart';
-import 'package:SOUFEEDBACKAPP/src/models/dialog_model.dart';
-import 'package:SOUFEEDBACKAPP/config/app_config.dart';
+import 'package:sou_feedback_app/locator.dart';
+import 'package:sou_feedback_app/services/dialogService.dart';
+import 'package:sou_feedback_app/src/models/dialog_model.dart';
+import 'package:sou_feedback_app/config/app_config.dart';
 
 class DialogManager extends StatefulWidget {
   final Widget child;

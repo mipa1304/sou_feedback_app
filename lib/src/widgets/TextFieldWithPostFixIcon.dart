@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:SOUFEEDBACKAPP/config/app_config.dart';
+import 'package:sou_feedback_app/config/app_config.dart';
 
 class TextFieldWithPostFixIcon extends StatelessWidget {
   final TextEditingController? controller;

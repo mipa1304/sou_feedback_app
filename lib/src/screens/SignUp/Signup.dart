@@ -1,14 +1,14 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print, avoid_unnecessary_containers, sized_box_for_whitespace, unused_import, unused_element
 
 import 'package:flutter/material.dart';
-import 'package:SOUFEEDBACKAPP/constant/routename.dart';
-import 'package:SOUFEEDBACKAPP/src/widgets/Cstmbtn.dart';
+import 'package:sou_feedback_app/constant/routename.dart';
+import 'package:sou_feedback_app/src/widgets/Cstmbtn.dart';
 import 'package:provider/provider.dart';
-import 'package:SOUFEEDBACKAPP/locator.dart';
-import 'package:SOUFEEDBACKAPP/src/screens/SignUp/sign_up_model.dart';
+import 'package:sou_feedback_app/locator.dart';
+import 'package:sou_feedback_app/src/screens/SignUp/sign_up_model.dart';
 import 'package:stacked/stacked.dart';
-import 'package:SOUFEEDBACKAPP/config/app_config.dart';
-import 'package:SOUFEEDBACKAPP/src/widgets/TextFieldWithPostFixIcon.dart';
+import 'package:sou_feedback_app/config/app_config.dart';
+import 'package:sou_feedback_app/src/widgets/TextFieldWithPostFixIcon.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
