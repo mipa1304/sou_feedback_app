@@ -1,0 +1,43 @@
+mutation CreateUser @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  user_insert(data: {
+    displayName: "New User",
+    createdAt_expr: "request.time"
+  })
+}
+
+query ListAnalysisReports @auth(level: USER) {
+  analysisReports {
+    id
+    reportName
+    positivePercentage
+    negativePercentage
+    outstandingPercentage
+    createdAt
+    user {
+      id
+      displayName
+    }
+  }
+}
+
+mutation UpdateAnalysisReport($id: UUID!, $positivePercentage: Float!, $negativePercentage: Float!, $outstandingPercentage: Float!) @auth(level: USER) {
+  analysisReport_update(
+    id: $id,
+    data: {
+      positivePercentage: $positivePercentage,
+      negativePercentage: $negativePercentage,
+      outstandingPercentage: $outstandingPercentage
+    }
+  )
+}
+
+query GetAIModels @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  aIModels {
+    id
+    modelName
+    version
+    description
+    isActive
+    createdAt
+  }
+}

@@ -1,0 +1,37 @@
+type User @table {
+  displayName: String!
+  createdAt: Timestamp!
+  email: String
+  photoUrl: String
+}
+
+type AnalysisReport @table {
+  user: User!
+  reportName: String!
+  createdAt: Timestamp!
+  positivePercentage: Float!
+  negativePercentage: Float!
+  outstandingPercentage: Float!
+  sourceFileName: String
+}
+
+type AnalyzedText @table {
+  analysisReport: AnalysisReport!
+  fullText: String!
+}
+
+type TextSegmentSentiment @table {
+  analysisReport: AnalysisReport!
+  analyzedText: AnalyzedText!
+  segmentText: String!
+  sentimentLabel: String!
+  sentimentScore: Float!
+}
+
+type AIModel @table {
+  modelName: String!
+  version: String!
+  createdAt: Timestamp!
+  description: String
+  isActive: Boolean
+}
