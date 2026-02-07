@@ -1,0 +1,88 @@
+mutation CreateSeedData @transaction @auth(level: PUBLIC, insecureReason: "This mutation is used to populate the database with seed data.") {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      displayName: "demouser1",
+      createdAt: "2024-04-26T12:00:00Z",
+      email: "demouser1@example.com",
+      photoUrl: "https://example.com/demouser1.jpg"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      displayName: "demouser2",
+      createdAt: "2024-04-26T13:00:00Z",
+      email: "demouser2@example.com",
+      photoUrl: "https://example.com/demouser2.jpg"
+    }
+  ])
+  aIModel_insertMany(data: [
+    {
+      id: "650e8400-e29b-41d4-a716-446655440000",
+      createdAt: "2024-04-26T12:00:00Z",
+      description: "An example AI model",
+      isActive: true,
+      modelName: "ExampleModel",
+      version: "1.0"
+    },
+    {
+      id: "650e8400-e29b-41d4-a716-446655440001",
+      createdAt: "2024-04-26T13:00:00Z",
+      description: "Another example AI model",
+      isActive: false,
+      modelName: "AnotherModel",
+      version: "2.0"
+    }
+  ])
+  analysisReport_insertMany(data: [
+    {
+      id: "750e8400-e29b-41d4-a716-446655440000",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      createdAt: "2024-04-26T14:00:00Z",
+      negativePercentage: 0.1,
+      outstandingPercentage: 0.2,
+      positivePercentage: 0.7,
+      reportName: "Report1",
+      sourceFileName: "file1.txt"
+    },
+    {
+      id: "750e8400-e29b-41d4-a716-446655440001",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      createdAt: "2024-04-26T15:00:00Z",
+      negativePercentage: 0.3,
+      outstandingPercentage: 0.4,
+      positivePercentage: 0.3,
+      reportName: "Report2",
+      sourceFileName: "file2.txt"
+    }
+  ])
+  analyzedText_insertMany(data: [
+    {
+      id: "850e8400-e29b-41d4-a716-446655440000",
+      analysisReportId: "750e8400-e29b-41d4-a716-446655440000",
+      fullText: "This is an example of analyzed text."
+    },
+    {
+      id: "850e8400-e29b-41d4-a716-446655440001",
+      analysisReportId: "750e8400-e29b-41d4-a716-446655440001",
+      fullText: "This is another example of analyzed text."
+    }
+  ])
+  textSegmentSentiment_insertMany(data: [
+    {
+      id: "950e8400-e29b-41d4-a716-446655440000",
+      analysisReportId: "750e8400-e29b-41d4-a716-446655440000",
+      analyzedTextId: "850e8400-e29b-41d4-a716-446655440000",
+      segmentText: "This is an example.",
+      sentimentLabel: "positive",
+      sentimentScore: 0.8
+    },
+    {
+      id: "950e8400-e29b-41d4-a716-446655440001",
+      analysisReportId: "750e8400-e29b-41d4-a716-446655440001",
+      analyzedTextId: "850e8400-e29b-41d4-a716-446655440001",
+      segmentText: "This is another example.",
+      sentimentLabel: "negative",
+      sentimentScore: 0.2
+    }
+  ])
+}

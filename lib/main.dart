@@ -17,7 +17,7 @@ import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_ai/firebase_ai.dart';
 import 'Localization/locale_constants.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,8 +30,6 @@ void main() async {
 }
 
 final model = FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
-
-// final model = FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
 
 RouteSettings? settings;
 
