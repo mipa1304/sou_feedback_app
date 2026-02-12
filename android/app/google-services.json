@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "746635633854",
+    "project_id": "sou-feedback-app",
+    "storage_bucket": "sou-feedback-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746635633854:android:4d382e4308649db295aaef",
+        "android_client_info": {
+          "package_name": "com.mihir.soufeedbackapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNyjZL-Sw8r-kyIYmLg-9a3m70aOgxqS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
