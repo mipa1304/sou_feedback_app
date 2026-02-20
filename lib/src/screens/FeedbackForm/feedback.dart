@@ -65,10 +65,21 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
             return Scaffold(
               appBar: AppBar(
-                backgroundColor: ThemeColors.bgColor,
+                flexibleSpace: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        ThemeColors.bgColor,
+                        ThemeColors.bgColor2,
+                      ],
+                    ),
+                  ),
+                ),
                 actions: [
                   Container(
-                    color: Color.fromARGB(0, 0, 0, 0),
+                    color: const Color.fromARGB(0, 255, 255, 255),
                     width: size.width * 0.999,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -839,10 +850,10 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                       ],
                                       onChanged: (value) {
                                         setState(() {
-                                          viewModel.escalators = value!;
+                                          viewModel.elevators_lifts = value!;
                                         });
                                       },
-                                      selectedValue: viewModel.escalators,
+                                      selectedValue: viewModel.elevators_lifts,
                                     ),
                                     Container(
                                       margin: EdgeInsets.only(
