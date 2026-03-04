@@ -20,7 +20,16 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   String? dob = "Your Birth Day";
   DateTime currentDate = DateTime.now();
-  String? genderradiobtn;
+  // String? genderradiobtn;
+  // String? username;
+  // String? userBirthDay;
+  // String? userCity;
+  // String? userGender;
+  // String? userMobileNo;
+  // String? userGroupSize;
+  // String? userProfession;
+  // String? email_id;
+  // String? password;
   final _formKey = GlobalKey<FormState>();
 
   Future<void> _selectDate(BuildContext context) async {
@@ -90,7 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           return null;
                         },
                         onTextChanged: (value) => {
-                          // model.Username = value,
+                          model.Username = value,
                         },
                         hinText: "Your Name",
                         postfixIconColor: Colors.white24,
@@ -138,7 +147,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       TextFieldWithPostFixIcon(
                         postfixIconTap: () => {},
                         onTextChanged: (value) => {
-                          // model.UserCity = value,
+                          model.UserCity = value,
                         },
                         onvalidate: (value) {
                           if (value.isEmpty) {
@@ -183,11 +192,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     value: "Male",
                                     onChanged: (value) {
                                       setState(() {
-                                        genderradiobtn = value.toString();
+                                        model.UserGender = value.toString();
                                         // model.UserGender = value.toString();
                                       });
                                     },
-                                    groupValue: genderradiobtn,
+                                    groupValue: model.UserGender,
                                   ),
                                   const Text(
                                     "Male",
@@ -201,11 +210,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     value: "Female",
                                     onChanged: (value) {
                                       setState(() {
-                                        genderradiobtn = value.toString();
+                                        model.UserGender = value.toString();
                                         // model.UserGender = value.toString();
                                       });
                                     },
-                                    groupValue: genderradiobtn,
+                                    groupValue: model.UserGender,
                                   ),
                                   const Text(
                                     "Female",
@@ -227,7 +236,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       TextFieldWithPostFixIcon(
                         postfixIconTap: () => {},
                         onTextChanged: (value) => {
-                          // model.UserMobile = value,
+                          model.UserMobile = value,
                         },
                         onvalidate: (value) {
                           if (value.isEmpty) {
@@ -245,7 +254,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         postfixIconTap: () => {},
                         hinText: "Group Size",
                         onTextChanged: (value) => {
-                          // model.UserGrpSize = value,
+                          model.UserGrpSize = value,
                         },
                         onvalidate: (value) {
                           if (value.isEmpty) {
@@ -261,12 +270,46 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       TextFieldWithPostFixIcon(
                         postfixIconTap: () => {},
                         onTextChanged: (value) => {
-                          // model.UserProfession = value
+                          model.UserProfession = value,
                         },
                         hinText: "Profession",
                         onvalidate: (value) {
                           if (value.isEmpty) {
                             return "Please enter Your Profession";
+                          }
+                          return null;
+                        },
+                        postfixIconColor: Colors.white24,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextFieldWithPostFixIcon(
+                        postfixIconTap: () => {},
+                        onTextChanged: (value) => {
+                          model.email_id = value,
+                        },
+                        hinText: "Email ID",
+                        onvalidate: (value) {
+                          if (value.isEmpty) {
+                            return "Please enter Your Email ID";
+                          }
+                          return null;
+                        },
+                        postfixIconColor: Colors.white24,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextFieldWithPostFixIcon(
+                        postfixIconTap: () => {},
+                        onTextChanged: (value) => {
+                          model.password = value,
+                        },
+                        hinText: "Password",
+                        onvalidate: (value) {
+                          if (value.isEmpty) {
+                            return "Please enter Your Password";
                           }
                           return null;
                         },
@@ -282,12 +325,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         fontWeight: FontWeight.bold,
                         btnColor: ThemeColors.appDarkPrimaryColor,
                         btnPressed: () async {
-                          // if (_formKey.currentState!.validate()) {
-                          //   final isSaved = await model.saveusers();
-                          //   if (isSaved) {
-                          //     model.redirectToPage(homescreen);
-                          //   }
-                          // }
+                          if (_formKey.currentState!.validate()) {
+                            final isSaved = await model.saveusers();
+                            if (isSaved) {
+                              model.signUp(model.email_id.toString(),
+                                  model.password.toString());
+                              model.redirectToPage(homescreen);
+                            }
+                          }
                         },
                         borderRadius: 10,
                         btnBorderColor: ThemeColors.textBoxOutlineBorder,

@@ -1,7 +1,9 @@
 // ignore_for_file: unused_import, non_constant_identifier_names, empty_catches, unused_local_variable, await_only_futures, avoid_print, dead_code, unused_field, unnecessary_brace_in_string_interps, unused_element, unnecessary_string_interpolations
 
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:sou_feedback_app/constant/routename.dart';
+import 'package:sou_feedback_app/dataconnect_generated/generated.dart';
 import 'package:sou_feedback_app/enum/view_state.dart';
 import 'package:sou_feedback_app/provider/getit.dart';
 import 'package:sou_feedback_app/provider/getusers_model.dart';
@@ -23,7 +25,9 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:firebase_ai/firebase_ai.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_data_connect/firebase_data_connect.dart';
+// import 'package:sou_feedback_app/dataconnect_generated/generated.dart'
 
 class BaseModel extends ChangeNotifier {
   final navigationService = locator<NavigationService>();
@@ -48,6 +52,10 @@ class BaseModel extends ChangeNotifier {
   bool speechTest = false;
   PersistentBottomSheetController? _controller;
   bool isListening = true;
+  bool isLoading = false;
+
+  late final Future<QueryResult<ListAnalysisReportsData?, void>>
+      _reportListFuture;
 
   final FlutterTts flutterTts = FlutterTts();
 
@@ -96,6 +104,18 @@ class BaseModel extends ChangeNotifier {
     } else {
       print("Media permissions denied");
       // Handle denied permissions
+      openAppSettings();
+    }
+  }
+
+  Future<void> requestSmsPermission() async {
+    final statusSms = await Permission.sms.request();
+    if (statusSms == PermissionStatus.granted) {
+      print("SMS permissions granted");
+    } else if (statusSms == PermissionStatus.denied) {
+      print("SMS permissions denied");
+    } else if (statusSms == PermissionStatus.permanentlyDenied) {
+      print("SMS permissions permanently denied, opening app settings");
       openAppSettings();
     }
   }
@@ -164,6 +184,171 @@ class BaseModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<bool> checkCustomerExist(String mobile) async {
+    if (mobile.trim().isEmpty) return false;
+    try {
+      final result = await FirebaseFirestore.instance
+          .collection('Users')
+          .where('user_mobile_no', isEqualTo: mobile)
+          .get();
+      return result.docs.isNotEmpty;
+    } on FirebaseException catch (e) {
+      if (e.code == 'permission-denied') {
+        print("Permission denied to access Firestore: ${e.message}");
+      }
+      return false;
+    }
+  }
+
+  String? phoneNumber;
+  String verificationid = "";
+  String? otp, authStatus = "";
+  String? authexception = "";
+  bool isOtpsent = false;
+
+  Future<bool> loginWithEmailPassword(
+      BuildContext context, String email, String password) async {
+    try {
+      final UserCredential userCredential = await auth
+          .signInWithEmailAndPassword(email: email.trim(), password: password);
+
+      final User? user = userCredential.user;
+
+      if (user != null) {
+        authStatus = "Logged in successfully";
+        notifyListeners();
+        return true;
+      } else {
+        authStatus = "Login failed";
+        notifyListeners();
+        return false;
+      }
+    } on FirebaseAuthException catch (e) {
+      authexception = e.message;
+      authStatus = e.code;
+      print('Login error: $e');
+      notifyListeners();
+      return false;
+    } catch (e) {
+      print('Unexpected login error: $e');
+      authStatus = "Login failed";
+      notifyListeners();
+      return false;
+    }
+  }
+
+  Future VerifyOTP(String otp, String verificationid) async {
+    try {
+      print('....... verid $verificationid');
+      final AuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: verificationid, smsCode: otp);
+
+      final UserCredential user = await auth.signInWithCredential(credential);
+
+      final User? currentUser = await auth.currentUser;
+
+      assert(user.user!.uid == currentUser!.uid);
+
+      // redirectToPage(feedbackscreen);
+
+      notifyListeners();
+    } catch (e) {
+      print("=>>> Error $e");
+    }
+  }
+
+  String Username = "";
+  String UserBirthDay = "";
+  String UserCity = "";
+  String UserGender = "";
+  String UserMobile = "";
+  String UserGrpSize = "";
+  String UserProfession = "";
+  String Massage = "";
+  String email_id = "";
+  String password = "";
+
+  Future<bool> saveusers() async {
+    bool isSaved = false;
+    final users = SaveUsers(Username, UserBirthDay, UserCity, UserGender,
+        UserMobile, UserGrpSize, UserProfession, email_id, password);
+    try {
+      await FirebaseFirestore.instance.collection("Users").add(users.toMap());
+      isSaved = true;
+    } on Exception catch (_) {
+      Massage = "Unable to save the Users";
+    } catch (e) {
+      Massage = "Error occured!";
+    }
+
+    notifyListeners();
+
+    return isSaved;
+  }
+
+  Future<User?> signUp(String email, String password) async {
+    try {
+      // Create user with email and password
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return userCredential.user;
+    } on FirebaseAuthException catch (e) {
+      // Handle errors like weak-password or email-already-in-use
+      print('Firebase Auth Error: ${e.code}');
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
+
+// ... in your widget or an authentication service class
+
+  Future<void> signOut() async {
+    try {
+      // If you need to fetch reports, do it only while the user is still
+      // authenticated. Calling ExampleConnector after sign-out can produce
+      // an UNAUTHENTICATED gRPC error because the request requires a
+      // signed-in user.
+      if (FirebaseAuth.instance.currentUser != null) {
+        try {
+          _reportListFuture =
+              ExampleConnector.instance.listAnalysisReports().execute();
+
+          _reportListFuture.then(
+            (result) {
+              if (kDebugMode) {
+                print('Report list future completed');
+              }
+            },
+            onError: (error) {
+              if (kDebugMode) {
+                print('Report list future failed with error: $error');
+              }
+            },
+          );
+        } catch (e) {
+          if (kDebugMode) print('Failed to fetch report list: $e');
+        }
+      } else {
+        if (kDebugMode) print('Skipping report fetch: no authenticated user');
+      }
+
+      // Now sign out the user
+      await FirebaseAuth.instance.signOut();
+
+      print("User signed out successfully");
+    } on FirebaseAuthException catch (e) {
+      // Handle specific Firebase Auth errors
+      print('Error signing out: $e');
+    } catch (e) {
+      // Handle other errors
+      print(e.toString());
+    }
+  }
+
   void updateTextBoxWithAudioPath(String path) {
     // remark = fileRemarkController.text;
 
@@ -200,12 +385,6 @@ class BaseModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setState(ViewState viewState) {
-    _state = viewState;
-    _initspeech();
-    notifyListeners();
-  }
-
   void _initspeech() async {
     bool available = await speech.initialize();
     if (available) {
@@ -214,6 +393,12 @@ class BaseModel extends ChangeNotifier {
     } else {
       speechTest = false;
     }
+  }
+
+  void setState(ViewState viewState) {
+    _state = viewState;
+    _initspeech();
+    notifyListeners();
   }
 
   void startListening() {
