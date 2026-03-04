@@ -1,0 +1,31 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow authenticated users to read and write their own user documents
+    match /Users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Allow authenticated users to query the Users collection (for checking existence)
+    match /Users {
+      allow read: if request.auth != null;
+    }
+
+    // Allow authenticated users to add feedback
+    match /Feedback/{feedbackId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+    }
+
+    // Allow authenticated users to query and read form_no collection
+    match /form_no {
+      allow read: if request.auth != null;
+    }
+
+    // Allow authenticated users to read and update individual form_no documents
+    match /form_no/{formId} {
+      allow read: if request.auth != null;
+      allow update: if request.auth != null;
+    }
+  }
+}

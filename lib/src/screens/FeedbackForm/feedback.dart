@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, unused_import, avoid_print, non_constant_identifier_names, unused_field, use_build_context_synchronously, sized_box_for_whitespace, no_leading_underscores_for_local_identifiers, unused_element, unnecessary_brace_in_string_interps
 
 // import 'package:SOUFEEDBACKAPP/src/models/sr_view_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:sou_feedback_app/provider/base_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_ai/firebase_ai.dart';
@@ -15,6 +16,8 @@ import 'package:stacked/stacked.dart';
 import 'package:sou_feedback_app/config/app_config.dart';
 import 'package:sou_feedback_app/src/widgets/Cstmchkbtn.dart';
 import 'package:sou_feedback_app/Localization/language/languages.dart';
+import 'package:firebase_data_connect/firebase_data_connect.dart';
+import 'package:sou_feedback_app/dataconnect_generated/generated.dart';
 
 class FeedbackScreen extends StatefulWidget {
   const FeedbackScreen({Key? key}) : super(key: key);
@@ -31,6 +34,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   final BaseModel viewmodel = BaseModel();
 
   final TextEditingController _feedbackB = TextEditingController();
+
+  late final Future<QueryResult<ListAnalysisReportsData?, void>>
+      _reportListFuture;
 
   static const snackBar = SnackBar(
     content: Text('Your Valuable FeedBack Saved SuccessFully'),
@@ -1312,6 +1318,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(snackBar);
+
+                                        viewModel.signOut();
 
                                         viewModel.redirectToPage(homescreen);
                                       } else {

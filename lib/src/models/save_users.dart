@@ -10,6 +10,8 @@ class SaveUsers {
   String? user_mobile_no;
   String? user_group_size;
   String? user_profession;
+  String? email_id;
+  String? password;
   DocumentReference? referance;
 
   SaveUsers(
@@ -20,6 +22,8 @@ class SaveUsers {
       this.user_mobile_no,
       this.user_group_size,
       this.user_profession,
+      this.email_id,
+      this.password,
       [this.referance]);
 
   String get userId {
@@ -35,6 +39,8 @@ class SaveUsers {
       "user_mobile_no": user_mobile_no,
       "user_group_size": user_group_size,
       "user_profession": user_profession,
+      "email_id": email_id,
+      "password": password,
     };
   }
 
@@ -47,6 +53,8 @@ class SaveUsers {
         doc["user_mobile_no"],
         doc["user_group_size"],
         doc["user_profession"],
+        doc["email_id"],
+        doc["password"],
         doc.reference);
   }
 }

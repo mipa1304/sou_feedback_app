@@ -36,7 +36,9 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   List<UsersViewModel>? _users;
-  final TextEditingController _mobileno = TextEditingController();
+  // final TextEditingController _mobileno = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
   bool isScanned = false;
   // QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
@@ -121,29 +123,29 @@ class _LoginScreenState extends State<LoginScreen> {
                       //       key: qrKey,
                       //       onQRViewCreated: _onQRViewCreated,
                       //     )),
-                      Expanded(
-                          flex: 1,
-                          child: Center(
-                            child: isScanned
-                                ? Text('QR Code Scanned!')
-                                : Text('Please scan a QR code'),
-                          )),
+                      // Expanded(
+                      //     flex: 1,
+                      //     child: Center(
+                      //       child: isScanned
+                      //           ? Text('QR Code Scanned!')
+                      //           : Text('Please scan a QR code'),
+                      //     )),
 
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => FeedbackScreen()),
-                          );
-                        },
-                        child: SizedBox(
-                            child: QrImageView(
-                          data: 'HouseKeeping',
-                          version: QrVersions.auto,
-                          size: 200.0,
-                        )),
-                      )
+                      // GestureDetector(
+                      //   onTap: () {
+                      //     Navigator.pushReplacement(
+                      //       context,
+                      //       MaterialPageRoute(
+                      //           builder: (context) => FeedbackScreen()),
+                      //     );
+                      //   },
+                      //   child: SizedBox(
+                      //       child: QrImageView(
+                      //     data: 'HouseKeeping',
+                      //     version: QrVersions.auto,
+                      //     size: 200.0,
+                      //   )),
+                      // ),
 
                       // Expanded(
                       //     flex: 5,
@@ -161,99 +163,141 @@ class _LoginScreenState extends State<LoginScreen> {
                       //           : Text('eScan a cod')),
                       // )
 
-                      // Container(
-                      //   margin: EdgeInsets.only(bottom: size.height * 0.06),
-                      //   child: Text(
-                      //     'LogIn',
-                      //     textAlign: TextAlign.center,
-                      //     style: TextStyle(
-                      //         color: Colors.white,
-                      //         fontWeight: FontWeight.bold,
-                      //         fontSize: 18),
-                      //   ),
-                      // ),
-                      // Column(
-                      //   mainAxisAlignment: MainAxisAlignment.center,
-                      //   children: <Widget>[
-                      //     TextFieldWithPostFixIcon(
-                      //       postfixIconTap: () => {},
-                      //       controller: _mobileno,
-                      //       postfixIcon: dialpad,
-                      //       hinText: "Enter Mobile Number",
-                      //       postfixIconColor: Colors.white24,
-                      //     ),
-                      //     SizedBox(
-                      //       height: 10,
-                      //     ),
-                      //     Container(
-                      //       alignment: Alignment.centerRight,
-                      //       color: Colors.transparent,
-                      //       height: size.height * 0.05,
-                      //       width: size.width * 0.7,
-                      //       child: TextButton(
-                      //         onPressed: () {
-                      //           model.redirectToPage(signupScreen);
-                      //         },
-                      //         child: const Text(
-                      //           'New User? CreateAccount',
-                      //           textAlign: TextAlign.right,
-                      //           style: TextStyle(
-                      //             color: Colors.black,
-                      //             fontSize: 15,
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     SizedBox(
-                      //       height: 20,
-                      //     ),
-                      //     CustomBtn(
-                      //       height: size.height * 0.05,
-                      //       width: size.width * 0.6,
-                      //       str: 'Log In Now',
-                      //       btnColor: ThemeColors.appDarkPrimaryColor,
-                      //       fontWeight: FontWeight.bold,
-                      //       btnPressed: () async {
-                      //         final isExistusers = await model
-                      //             .checkCustomerExist(_mobileno.text);
-                      //         if (isExistusers == true) {
-                      //           final isOtpsent = await model.verifyPhoneNumber(
-                      //               context, _mobileno.text.toString().trim());
+                      Container(
+                        margin: EdgeInsets.only(bottom: size.height * 0.06),
+                        child: Text(
+                          'LogIn',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18),
+                        ),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          TextFieldWithPostFixIcon(
+                            postfixIconTap: () => {},
+                            controller: _email,
+                            // postfixIcon: dialpad,
+                            hinText: "Enter Email",
+                            postfixIconColor: Colors.white24,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          TextFieldWithPostFixIcon(
+                            postfixIconTap: () => {},
+                            controller: _password,
+                            // postfixIcon: dialpad,
+                            hinText: "Enter Password",
+                            postfixIconColor: Colors.white24,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            alignment: Alignment.centerRight,
+                            color: Colors.transparent,
+                            height: size.height * 0.05,
+                            width: size.width * 0.7,
+                            child: TextButton(
+                              onPressed: () {
+                                model.redirectToPage(signupScreen);
+                              },
+                              child: const Text(
+                                'New User? CreateAccount',
+                                textAlign: TextAlign.right,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          CustomBtn(
+                            height: size.height * 0.05,
+                            width: size.width * 0.6,
+                            str: 'Log In Now',
+                            btnColor: ThemeColors.appDarkPrimaryColor,
+                            fontWeight: FontWeight.bold,
 
-                      //           ScaffoldMessenger.of(context).showSnackBar(
-                      //               SnackBar(
-                      //                   content: Text(
-                      //                       model.authexception.toString())));
+                            btnPressed: () {
+                              if (_email.text.isEmpty ||
+                                  _password.text.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content:
+                                        Text('Please enter email and password'),
+                                  ),
+                                );
+                                return;
+                              } else {
+                                model.loginWithEmailPassword(
+                                    context,
+                                    _email.text.toString().trim(),
+                                    _password.text.toString().trim());
 
-                      //           if (isOtpsent) {
-                      //             setState(() {
-                      //               verid = model.verificationid.toString();
-                      //             });
-                      //             Navigator.push(
-                      //               context,
-                      //               MaterialPageRoute(
-                      //                   builder: (context) =>
-                      //                       OTPScreen(verId: verid)),
-                      //             );
-                      //           } else {
-                      //             ScaffoldMessenger.of(context).showSnackBar(
-                      //                 SnackBar(
-                      //                     content: Text("Didn't get OTP")));
-                      //           }
-                      //         } else {
-                      //           ScaffoldMessenger.of(context).showSnackBar(
-                      //               SnackBar(
-                      //                   content: Text("user is not exist")));
-                      //         }
-                      //       },
-                      //       borderRadius: 10,
-                      //       btnBorderColor: ThemeColors.textBoxOutlineBorder,
-                      //       fontSize: 18,
-                      //       // fontWeight: FontWeight.w300,
-                      //       txtColor: ThemeColors.textBoxOutlineBorder,
-                      //     ),
-                      //   ],
-                      // ),
+                                if (model.authStatus ==
+                                    "Logged in successfully") {
+                                  model.redirectToPage(feedbackscreen);
+                                } else {
+                                  print(model.authStatus);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content:
+                                          Text(model.authStatus.toString()),
+                                    ),
+                                  );
+                                }
+                              }
+                            },
+                            // btnPressed: () async {
+                            //   final isExistusers = await model
+                            //       .checkCustomerExist(_mobileno.text);
+
+                            // if (isExistusers == true) {
+                            // final isOtpsent = await model.loginWithEmailPassword(
+                            //     context, _mobileno.text.toString().trim(), );
+
+                            // ScaffoldMessenger.of(context).showSnackBar(
+                            //     SnackBar(
+                            //         content: Text(
+                            //             model.authexception.toString())));
+
+                            //   if (isOtpsent) {
+                            //     setState(() {
+                            //       verid = model.verificationid.toString();
+                            //     });
+                            //     Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //           builder: (context) =>
+                            //               OTPScreen(verId: verid)),
+                            //     );
+                            //   } else {
+                            //     ScaffoldMessenger.of(context).showSnackBar(
+                            //         SnackBar(
+                            //             content: Text("Didn't get OTP")));
+                            //   }
+                            // } else {
+                            //   ScaffoldMessenger.of(context).showSnackBar(
+                            //       SnackBar(
+                            //           content: Text("user is not exist")));
+                            // }
+                            // },
+                            borderRadius: 10,
+                            btnBorderColor: ThemeColors.textBoxOutlineBorder,
+                            fontSize: 18,
+                            // fontWeight: FontWeight.w300,
+                            txtColor: ThemeColors.textBoxOutlineBorder,
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
