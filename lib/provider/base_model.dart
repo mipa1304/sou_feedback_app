@@ -25,9 +25,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:firebase_ai/firebase_ai.dart';
-// import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_data_connect/firebase_data_connect.dart';
-// import 'package:sou_feedback_app/dataconnect_generated/generated.dart'
 
 class BaseModel extends ChangeNotifier {
   final navigationService = locator<NavigationService>();
@@ -35,8 +33,8 @@ class BaseModel extends ChangeNotifier {
 
   ViewState _state = ViewState.idle;
   BuildContext? context;
-  ViewState get state => _state;
-  DialogService get dialogService => _dialogService;
+  // ViewState get state => _state;
+  // DialogService get dialogService => _dialogService;
   FirebaseAuth auth = FirebaseAuth.instance;
   QuerySnapshot? snapshot;
   FlutterSoundRecorder? _recorder;
@@ -53,21 +51,14 @@ class BaseModel extends ChangeNotifier {
   PersistentBottomSheetController? _controller;
   bool isListening = true;
   bool isLoading = false;
-
   late final Future<QueryResult<ListAnalysisReportsData?, void>>
       _reportListFuture;
-
   final FlutterTts flutterTts = FlutterTts();
-
   String? stopfilePath;
-
   late final File file;
-
   final storageRef = FirebaseStorage.instance.ref();
-  late final audioRef;
-
+  // late final audioRef;
   final TextEditingController fileRemarkController = TextEditingController();
-
   final modelAI =
       FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
 
@@ -130,50 +121,33 @@ class BaseModel extends ChangeNotifier {
 
   Future<void> startRecording() async {
     final directory = await getExternalStorageDirectory();
-
     print("directory ${directory!.path}");
-
     final filePath = '${directory.path}/${DateTime.now()}.aac';
-
     await requestRecordingpermission();
-
     print("Directory: ${filePath}");
     await _recorder!.startRecorder(
       toFile: filePath,
       codec: Codec.aacADTS,
     );
-
     stopfilePath = filePath;
-
     isRecording = true;
     notifyListeners();
   }
 
   Future<void> stopRecording() async {
     await requestStoragePermission();
-
     print("Recording Stope :-- ");
-
     final filePath = await _recorder?.stopRecorder();
-
     print("Recording Stopped File Path: $stopfilePath");
-
     isRecording = false;
-
     if (stopfilePath != null) {
       final file = File(stopfilePath!);
-
       if (await file.exists()) {
         print("File exists: ");
-
         final audioRef = storageRef.child('audio/${DateTime.now()}.aac');
-
         await audioRef.putFile(file);
-
         print("File uploaded successfully!");
-
         updateTextBoxWithAudioPath(stopfilePath!);
-
         print("print StopfilePath: $stopfilePath");
       } else {
         print("File does not exist: $filePath");
@@ -237,25 +211,20 @@ class BaseModel extends ChangeNotifier {
     }
   }
 
-  Future VerifyOTP(String otp, String verificationid) async {
-    try {
-      print('....... verid $verificationid');
-      final AuthCredential credential = PhoneAuthProvider.credential(
-          verificationId: verificationid, smsCode: otp);
-
-      final UserCredential user = await auth.signInWithCredential(credential);
-
-      final User? currentUser = await auth.currentUser;
-
-      assert(user.user!.uid == currentUser!.uid);
-
-      // redirectToPage(feedbackscreen);
-
-      notifyListeners();
-    } catch (e) {
-      print("=>>> Error $e");
-    }
-  }
+  // Future VerifyOTP(String otp, String verificationid) async {
+  //   try {
+  //     print('....... verid $verificationid');
+  //     final AuthCredential credential = PhoneAuthProvider.credential(
+  //         verificationId: verificationid, smsCode: otp);
+  //     final UserCredential user = await auth.signInWithCredential(credential);
+  //     final User? currentUser = await auth.currentUser;
+  //     assert(user.user!.uid == currentUser!.uid);
+  //     // redirectToPage(feedbackscreen);
+  //     notifyListeners();
+  //   } catch (e) {
+  //     print("=>>> Error $e");
+  //   }
+  // }
 
   String Username = "";
   String UserBirthDay = "";
@@ -304,19 +273,12 @@ class BaseModel extends ChangeNotifier {
     return null;
   }
 
-// ... in your widget or an authentication service class
-
   Future<void> signOut() async {
     try {
-      // If you need to fetch reports, do it only while the user is still
-      // authenticated. Calling ExampleConnector after sign-out can produce
-      // an UNAUTHENTICATED gRPC error because the request requires a
-      // signed-in user.
       if (FirebaseAuth.instance.currentUser != null) {
         try {
           _reportListFuture =
               ExampleConnector.instance.listAnalysisReports().execute();
-
           _reportListFuture.then(
             (result) {
               if (kDebugMode) {
@@ -335,16 +297,11 @@ class BaseModel extends ChangeNotifier {
       } else {
         if (kDebugMode) print('Skipping report fetch: no authenticated user');
       }
-
-      // Now sign out the user
       await FirebaseAuth.instance.signOut();
-
       print("User signed out successfully");
     } on FirebaseAuthException catch (e) {
-      // Handle specific Firebase Auth errors
       print('Error signing out: $e');
     } catch (e) {
-      // Handle other errors
       print(e.toString());
     }
   }
