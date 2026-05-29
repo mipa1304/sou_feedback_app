@@ -2,6 +2,7 @@
 
 import 'dart:io';
 import 'package:flutter/foundation.dart';
+import 'package:sou_feedback_app/constant/appconstant.dart';
 import 'package:sou_feedback_app/constant/routename.dart';
 import 'package:sou_feedback_app/dataconnect_generated/generated.dart';
 import 'package:sou_feedback_app/enum/view_state.dart';
@@ -26,6 +27,8 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:firebase_ai/firebase_ai.dart';
 import 'package:firebase_data_connect/firebase_data_connect.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class BaseModel extends ChangeNotifier {
   final navigationService = locator<NavigationService>();
@@ -61,6 +64,22 @@ class BaseModel extends ChangeNotifier {
   final TextEditingController fileRemarkController = TextEditingController();
   final modelAI =
       FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
+
+  final modelAI2 = FirebaseAI.googleAI().templateGenerativeModel();
+
+  var customerName = 'Mihir';
+
+  Future<GenerateContentResponse> getResponse() async {
+    print("getResponse called with customerName: ====> $customerName");
+    return await modelAI2.generateContent(
+      'blank-template',
+      inputs: {
+        'customerName': customerName,
+      },
+    );
+
+    print("getResponse called with customerName: $customerName");
+  }
 
   Future<void> speakText(String text) async {
     await flutterTts.setLanguage("en-US");
@@ -161,6 +180,7 @@ class BaseModel extends ChangeNotifier {
   Future<bool> checkCustomerExist(String mobile) async {
     if (mobile.trim().isEmpty) return false;
     try {
+      await _ensureAuthenticated();
       final result = await FirebaseFirestore.instance
           .collection('Users')
           .where('user_mobile_no', isEqualTo: mobile)
@@ -283,11 +303,14 @@ class BaseModel extends ChangeNotifier {
             (result) {
               if (kDebugMode) {
                 print('Report list future completed');
+                AppConstant.showSuccessToast(
+                    'Report list future completed successfully');
               }
             },
             onError: (error) {
               if (kDebugMode) {
-                print('Report list future failed with error: $error');
+                AppConstant.showFailToast(
+                    'Failed to fetch report list with error: $error');
               }
             },
           );
@@ -303,6 +326,23 @@ class BaseModel extends ChangeNotifier {
       print('Error signing out: $e');
     } catch (e) {
       print(e.toString());
+    }
+  }
+
+  Future<void> _ensureAuthenticated() async {
+    try {
+      if (auth.currentUser == null) {
+        await auth.signInAnonymously();
+        print('Signed in anonymously to Firestore');
+        AppConstant.showSuccessToast('Signed in anonymously to Firestore');
+      }
+    } on FirebaseAuthException catch (e) {
+      print('Anonymous sign-in failed: ${e.message}');
+      AppConstant.showFailToast('Anonymous sign-in failed: ${e.message}');
+    } catch (e) {
+      AppConstant.showFailToast(
+          'Unexpected error during anonymous sign-in: $e');
+      print('Unexpected error during anonymous sign-in: $e');
     }
   }
 
@@ -331,15 +371,26 @@ class BaseModel extends ChangeNotifier {
   }
 
   Future<void> getSrno() async {
-    final querySnapshot = await _firestore.collection('form_no').get();
-    final srnos =
-        querySnapshot.docs.map((doc) => Srno.fromMap(doc.data())).toList();
+    try {
+      await _ensureAuthenticated();
+      final querySnapshot = await _firestore.collection('form_no').get();
+      final srnos =
+          querySnapshot.docs.map((doc) => Srno.fromMap(doc.data())).toList();
 
-    _srno = srnos;
+      _srno = srnos;
 
-    print("=>>> sr nos ${_srno}");
-
-    notifyListeners();
+      print("=>>> sr nos ${_srno}");
+    } on FirebaseException catch (e) {
+      if (e.code == 'permission-denied') {
+        print('Permission denied when reading form_no: ${e.message}');
+      } else {
+        print('Failed to get srno: ${e.message}');
+      }
+    } catch (e) {
+      print('Unexpected error getting srno: $e');
+    } finally {
+      notifyListeners();
+    }
   }
 
   void _initspeech() async {
@@ -385,14 +436,19 @@ class BaseModel extends ChangeNotifier {
 
   final update_Srno = FirebaseFirestore.instance.collection('form_no');
 
-  Future<void> updateSrno(String newSrno) {
+  Future<void> updateSrno(String newSrno) async {
     print(" ===> Sr. no $newSrno");
-
-    return update_Srno
-        .doc('CXXxGjqj3C0fyaCNSfqG')
-        .update({'sr_no': '$newSrno'})
-        .then((value) => print("Sr No Update Successfully"))
-        .catchError((e) => print("Failed to update Sr No: $e"));
+    try {
+      await _ensureAuthenticated();
+      await update_Srno
+          .doc('CXXxGjqj3C0fyaCNSfqG')
+          .update({'sr_no': '$newSrno'});
+      print("Sr No Update Successfully");
+    } on FirebaseException catch (e) {
+      print("Failed to update Sr No: ${e.message}");
+    } catch (e) {
+      print("Failed to update Sr No: $e");
+    }
   }
 
   // bool isLoading = false;
@@ -490,6 +546,7 @@ class BaseModel extends ChangeNotifier {
     );
 
     try {
+      await _ensureAuthenticated();
       await FirebaseFirestore.instance
           .collection('Feedback')
           .add(feedForm.toMap());
@@ -505,5 +562,34 @@ class BaseModel extends ChangeNotifier {
     notifyListeners();
 
     return isFormA;
+  }
+
+  /// Trigger the Cloud Function that processes Firestore collections with AI.
+  /// `functionUrl` is the full HTTPS function URL (deployed function).
+  Future<bool> triggerAiProcessing(String functionUrl,
+      {String? functionSecret}) async {
+    try {
+      final headers = {'Content-Type': 'application/json'};
+      if (functionSecret != null && functionSecret.isNotEmpty) {
+        headers['Authorization'] = 'Bearer $functionSecret';
+      }
+
+      final resp = await http.post(
+        Uri.parse(functionUrl),
+        headers: headers,
+        body: jsonEncode({'action': 'process_all_collections'}),
+      );
+
+      if (resp.statusCode == 200) {
+        print('AI processing triggered successfully');
+        return true;
+      } else {
+        print('AI trigger failed: ${resp.statusCode} ${resp.body}');
+        return false;
+      }
+    } catch (e) {
+      print('Error triggering AI processing: $e');
+      return false;
+    }
   }
 }

@@ -24,8 +24,10 @@
   },
   "homepage": "https://github.com/mipa1304/sou_feedback_app#readme",
   "dependencies": {
+    "@genkit-ai/googleai": "^1.28.0",
     "cors": "^2.8.6",
     "express": "^5.2.1",
-    "firebase-admin": "^13.6.1"
+    "firebase-admin": "^13.6.1",
+    "genkit": "^1.35.0"
   }
 }

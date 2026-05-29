@@ -13,6 +13,7 @@ import 'package:sou_feedback_app/src/widgets/TextFieldWithPostFixIcon.dart';
 import 'package:sou_feedback_app/config/app_config.dart';
 import 'package:sou_feedback_app/src/widgets/Cstmbtn.dart';
 import 'package:sou_feedback_app/constant/routename.dart';
+import 'package:sou_feedback_app/constant/appconstant.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -247,12 +248,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                   model.redirectToPage(feedbackscreen);
                                 } else {
                                   print(model.authStatus);
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content:
-                                          Text(model.authStatus.toString()),
-                                    ),
-                                  );
+                                  // ScaffoldMessenger.of(context).showSnackBar(
+                                  //   SnackBar(
+                                  //     content:
+                                  //         Text(model.authStatus.toString()),
+                                  //   ),
+                                  // );
+
+                                  AppConstant.showFailToast(
+                                      model.authStatus.toString());
                                 }
                               }
                             },
