@@ -1,0 +1,267 @@
+extend type Query {
+  """
+  ✨ Look up a single `AIModel` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  aIModel(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: AIModel_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: AIModel_FirstRow
+  ): AIModel @fdc_generated(from: "AIModel", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `AnalysisReport` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  analysisReport(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: AnalysisReport_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: AnalysisReport_FirstRow
+  ): AnalysisReport @fdc_generated(from: "AnalysisReport", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `AnalyzedText` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  analyzedText(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: AnalyzedText_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: AnalyzedText_FirstRow
+  ): AnalyzedText @fdc_generated(from: "AnalyzedText", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `TextSegmentSentiment` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  textSegmentSentiment(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: TextSegmentSentiment_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: TextSegmentSentiment_FirstRow
+  ): TextSegmentSentiment @fdc_generated(from: "TextSegmentSentiment", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `User` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  user(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User @fdc_generated(from: "User", purpose: QUERY_SINGLE)
+  """
+  ✨ List `AIModel` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  aIModels(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: AIModel_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [AIModel_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: AIModel_Having
+  ): [AIModel!]! @fdc_generated(from: "AIModel", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `AnalysisReport` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  analysisReports(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: AnalysisReport_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [AnalysisReport_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: AnalysisReport_Having
+  ): [AnalysisReport!]! @fdc_generated(from: "AnalysisReport", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `AnalyzedText` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  analyzedTexts(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: AnalyzedText_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [AnalyzedText_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: AnalyzedText_Having
+  ): [AnalyzedText!]! @fdc_generated(from: "AnalyzedText", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `TextSegmentSentiment` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  textSegmentSentiments(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: TextSegmentSentiment_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [TextSegmentSentiment_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: TextSegmentSentiment_Having
+  ): [TextSegmentSentiment!]! @fdc_generated(from: "TextSegmentSentiment", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `User` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  users(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: User_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [User_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: User_Having
+  ): [User!]! @fdc_generated(from: "User", purpose: QUERY_MULTIPLE)
+}

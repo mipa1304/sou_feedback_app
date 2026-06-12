@@ -47,6 +47,20 @@ Example: process a collection locally via emulator (after starting emulators):
 curl -X POST "http://localhost:5001/YOUR_PROJECT/us-central1/processCollection" -H "Content-Type: application/json" -d '{"collection":"Feedback"}'
 ```
 
+Example: save feedback to SQL (placeholder implementation writes to Firestore queue):
+
+```bash
+curl -X POST "http://localhost:5001/YOUR_PROJECT/us-east4/saveFeedbackToSql" \
+    -H "Content-Type: application/json" \
+    -d '{"your_name":"Alice", "your_city":"City"}'
+```
+
+If deployed to production, the function URL will be:
+
+```
+https://us-east4-sou-feedback-app.cloudfunctions.net/saveFeedbackToSql
+```
+
 3. Deploy:
 
 ```bash

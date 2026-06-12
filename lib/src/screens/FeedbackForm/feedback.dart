@@ -39,8 +39,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   late final Future<QueryResult<ListAnalysisReportsData?, void>>
       _reportListFuture;
 
-
-
   // List<Srno>? _srno;
 
   @override

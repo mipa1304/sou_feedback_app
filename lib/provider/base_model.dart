@@ -564,6 +564,95 @@ class BaseModel extends ChangeNotifier {
     return isFormA;
   }
 
+  // Build the feedback map from current fields so it can be reused.
+  Map<String, dynamic> _buildFeedbackFormMap() {
+    final feedForm = SaveFeedback_a(
+      your_name,
+      your_city,
+      Your_mobile,
+      group_size,
+      exhibition_Hall,
+      lift_lobi,
+      viewing_gallery,
+      external_walkways,
+      remark,
+      exhibition_Hall_b,
+      lift_lobi_b,
+      viewing_gallery_b,
+      washroom_at_ticket_counter,
+      washroom_at_exhibition_hall,
+      washroom_at_vg,
+      remark_b,
+      body_frisking,
+      bag_frisking,
+      behaviour_of_security_staff,
+      remark_c,
+      que_manag_at_frisking_point,
+      behaviour_of_staff,
+      que_manage_vg,
+      behaviour_of_gr_staff_black_white,
+      remark_d,
+      travelators_on_bridge,
+      escalators,
+      elevators_lifts,
+      remark_e,
+      qc_exhibits,
+      intrective_equip,
+      content_exhibits,
+      remark_f,
+      seating_arrangements,
+      avcontant,
+      audio_qc,
+      video_qc,
+      remark_g,
+      seating_arrangements_h,
+      cleanliness_of_seatarea,
+      washroom_cleanliness_h,
+      other_suggestion,
+      remark_h,
+    );
+
+    return feedForm.toMap();
+  }
+
+  /// Save feedback by POSTing the feedback JSON to an HTTP endpoint.
+  ///
+  /// Use this to send the feedback to a Cloud Function / REST API which
+  /// performs the SQL insert into your Cloud SQL instance. Provide the
+  /// full `functionUrl`. If your function requires a secret token, pass
+  /// it in `functionSecret` and it will be sent as a Bearer token.
+  Future<bool> saveFeedbackToSql(String functionUrl,
+      {String? functionSecret}) async {
+    bool success = false;
+
+    final body = _buildFeedbackFormMap();
+
+    try {
+      final headers = {'Content-Type': 'application/json'};
+      if (functionSecret != null && functionSecret.isNotEmpty) {
+        headers['Authorization'] = 'Bearer $functionSecret';
+      }
+
+      final resp = await http.post(
+        Uri.parse(functionUrl),
+        headers: headers,
+        body: jsonEncode(body),
+      );
+
+      if (resp.statusCode >= 200 && resp.statusCode < 300) {
+        success = true;
+        print('Feedback posted to SQL endpoint successfully');
+      } else {
+        print('Failed to post feedback to SQL endpoint: '
+            '${resp.statusCode} ${resp.body}');
+      }
+    } catch (e) {
+      print('Error posting feedback to SQL endpoint: $e');
+    }
+
+    return success;
+  }
+
   /// Trigger the Cloud Function that processes Firestore collections with AI.
   /// `functionUrl` is the full HTTPS function URL (deployed function).
   Future<bool> triggerAiProcessing(String functionUrl,

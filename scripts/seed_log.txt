@@ -1,0 +1,4 @@
+2026-06-11T04:52:24.070Z Connected to Postgres at postgresql://127.0.0.1:5432/fdcdb
+2026-06-11T04:52:24.075Z Found tables: a_i_model, user, analysis_report, analyzed_text, text_segment_sentiment
+2026-06-11T04:52:24.082Z Inserting into user id,email
+2026-06-11T04:52:24.088Z ERROR: error: null value in column "created_at" of relation "user" violates not-null constraint

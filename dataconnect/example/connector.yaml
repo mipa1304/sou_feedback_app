@@ -3,3 +3,10 @@ generate:
   dartSdk:
     - outputDir: ..\..\lib\dataconnect_generated
       package: dataconnect_generated/generated.dart
+  adminNodeSdk:
+    - outputDir: ..\..\src\dataconnect-admin-generated
+      package: "@dataconnect/admin-generated"
+      packageJsonDir: ..\..
+    - outputDir: ..\..\functions\src\dataconnect-admin-generated
+      package: "@dataconnect/admin-generated"
+      packageJsonDir: ..\..\functions

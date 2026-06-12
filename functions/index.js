@@ -26,6 +26,13 @@ async function getSecretValue(secretId) {
 
 admin.initializeApp();
 
+// Data Connect admin connector config (matches generated SDK)
+const dcConnectorConfig = {
+  connector: 'example',
+  serviceId: 'soufeedbackapp',
+  location: 'us-east4'
+};
+
 // HTTP function to process all top-level collections, call an AI provider,
 // and write summaries back into Firestore under `ai_summaries`.
 exports.processAllCollections = functions.https.onRequest(async (req, res) => {
@@ -98,6 +105,40 @@ exports.processCollection = functions.https.onRequest(async (req, res) => {
   }
 });
 
+// HTTP function to accept feedback JSON and forward to Cloud SQL processing.
+// This function is exported in region 'us-east4' so its URL will use that region.
+// Currently this implementation writes the incoming payload to Firestore under
+// `feedback_sql_queue` as a placeholder. Replace the placeholder with your
+// Cloud SQL insert logic or Data Connect call when ready.
+exports.saveFeedbackToSql = functions.region('us-east4').https.onRequest(async (req, res) => {
+  try {
+    if (req.method !== 'POST') {
+      return res.status(405).json({ error: 'Method not allowed' });
+    }
+
+    const payload = req.body || {};
+
+    // Optional auth: check Authorization header against secret.
+    const secret = (await getSecretValue('FUNCTION_SECRET')) || process.env.FUNCTION_SECRET;
+    const authHeader = req.get('authorization') || '';
+    if (secret && authHeader !== `Bearer ${secret}`) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    // Placeholder: enqueue into Firestore for later SQL processing.
+    const firestore = admin.firestore();
+    await firestore.collection('feedback_sql_queue').add({
+      payload,
+      receivedAt: admin.firestore.FieldValue.serverTimestamp(),
+    });
+
+    return res.status(200).json({ ok: true });
+  } catch (err) {
+    console.error('saveFeedbackToSql error', err);
+    return res.status(500).json({ error: err.message || String(err) });
+  }
+});
+
 // Helper to get embeddings from AI provider (basic OpenAI REST example)
 async function callAiEmbedding(text) {
   const provider = process.env.AI_PROVIDER || (await getSecretValue('AI_PROVIDER')) || 'openai';
@@ -117,6 +158,69 @@ async function callAiEmbedding(text) {
   }
   return null;
 }
+
+// HTTP function to seed the Data Connect (Postgres) DB using the seed GraphQL.
+exports.seedData = functions.region('us-east4').https.onRequest(async (req, res) => {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const gqlPath = path.join(__dirname, '..', 'dataconnect', 'seed_data.gql');
+    const gql = fs.readFileSync(gqlPath, 'utf8');
+
+    // Dynamically require Data Connect admin helper so function definition
+    // doesn't fail on startup if the subpath isn't exported in this environment.
+    let validateAdminArgs;
+    try {
+      validateAdminArgs = require('firebase-admin/data-connect').validateAdminArgs;
+    } catch (err) {
+      return res.status(500).json({ ok: false, error: 'firebase-admin/data-connect not available in this environment', details: String(err) });
+    }
+
+    const { dc: dcInstance } = validateAdminArgs(dcConnectorConfig, undefined, undefined, undefined);
+
+    // Try a few fallback ways to execute the seed GraphQL against the Data Connect instance.
+    const attempts = [];
+
+    if (typeof dcInstance.executeMutation === 'function') {
+      try {
+        const r = await dcInstance.executeMutation('CreateSeedData');
+        return res.status(200).json({ ok: true, method: 'executeMutation by name', result: r });
+      } catch (e) {
+        attempts.push({ method: 'executeMutation by name', error: String(e) });
+      }
+      try {
+        const r = await dcInstance.executeMutation(undefined, undefined, { document: gql });
+        return res.status(200).json({ ok: true, method: 'executeMutation with document option', result: r });
+      } catch (e) {
+        attempts.push({ method: 'executeMutation with document', error: String(e) });
+      }
+    }
+
+    if (typeof dcInstance.execute === 'function') {
+      try {
+        const r = await dcInstance.execute({ document: gql });
+        return res.status(200).json({ ok: true, method: 'execute', result: r });
+      } catch (e) {
+        attempts.push({ method: 'execute', error: String(e) });
+      }
+    }
+
+    if (typeof dcInstance.executeRaw === 'function') {
+      try {
+        const r = await dcInstance.executeRaw(gql);
+        return res.status(200).json({ ok: true, method: 'executeRaw', result: r });
+      } catch (e) {
+        attempts.push({ method: 'executeRaw', error: String(e) });
+      }
+    }
+
+    // If none of the above succeeded, return diagnostic info so we can iterate.
+    return res.status(500).json({ ok: false, message: 'Unable to execute seed via Data Connect instance', attempts });
+  } catch (err) {
+    console.error('seedData error', err);
+    return res.status(500).json({ error: err.message || String(err) });
+  }
+});
 
 async function callAiProvider(text) {
   const provider = process.env.AI_PROVIDER || 'stub';

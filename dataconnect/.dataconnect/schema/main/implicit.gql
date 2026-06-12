@@ -1,0 +1,46 @@
+extend type AIModel {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "AIModel", purpose: IMPLICIT_KEY_FIELD)
+}
+extend type AnalysisReport {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "AnalysisReport", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `AnalysisReport`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: UUID! @fdc_generated(from: "AnalysisReport.user", purpose: IMPLICIT_REF_FIELD)
+}
+extend type AnalyzedText {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "AnalyzedText", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `AnalyzedText`.`analysisReport`. It must match the value of `AnalysisReport`.`id`. See `@ref` for how to customize it.
+  """
+  analysisReportId: UUID! @fdc_generated(from: "AnalyzedText.analysisReport", purpose: IMPLICIT_REF_FIELD)
+}
+extend type TextSegmentSentiment {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "TextSegmentSentiment", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `TextSegmentSentiment`.`analysisReport`. It must match the value of `AnalysisReport`.`id`. See `@ref` for how to customize it.
+  """
+  analysisReportId: UUID! @fdc_generated(from: "TextSegmentSentiment.analysisReport", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `TextSegmentSentiment`.`analyzedText`. It must match the value of `AnalyzedText`.`id`. See `@ref` for how to customize it.
+  """
+  analyzedTextId: UUID! @fdc_generated(from: "TextSegmentSentiment.analyzedText", purpose: IMPLICIT_REF_FIELD)
+}
+extend type User {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "User", purpose: IMPLICIT_KEY_FIELD)
+}

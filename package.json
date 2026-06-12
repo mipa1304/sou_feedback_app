@@ -24,10 +24,12 @@
   },
   "homepage": "https://github.com/mipa1304/sou_feedback_app#readme",
   "dependencies": {
+    "@dataconnect/admin-generated": "file:src/dataconnect-admin-generated",
     "@genkit-ai/googleai": "^1.28.0",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "firebase-admin": "^13.6.1",
-    "genkit": "^1.35.0"
+    "genkit": "^1.35.0",
+    "pg": "^8.21.0"
   }
 }
