@@ -1,0 +1,562 @@
+extend type Mutation {
+  """
+  ✨ Insert a single `AIModel` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  aIModel_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: AIModel_Data!
+  ): AIModel_KeyOutput! @fdc_generated(from: "AIModel", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `AnalysisReport` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  analysisReport_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: AnalysisReport_Data!
+  ): AnalysisReport_KeyOutput! @fdc_generated(from: "AnalysisReport", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `AnalyzedText` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  analyzedText_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: AnalyzedText_Data!
+  ): AnalyzedText_KeyOutput! @fdc_generated(from: "AnalyzedText", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `TextSegmentSentiment` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  textSegmentSentiment_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: TextSegmentSentiment_Data!
+  ): TextSegmentSentiment_KeyOutput! @fdc_generated(from: "TextSegmentSentiment", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `User` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert `AIModel` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  aIModel_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [AIModel_Data!]!
+  ): [AIModel_KeyOutput!]! @fdc_generated(from: "AIModel", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `AnalysisReport` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  analysisReport_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [AnalysisReport_Data!]!
+  ): [AnalysisReport_KeyOutput!]! @fdc_generated(from: "AnalysisReport", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `AnalyzedText` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  analyzedText_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [AnalyzedText_Data!]!
+  ): [AnalyzedText_KeyOutput!]! @fdc_generated(from: "AnalyzedText", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `TextSegmentSentiment` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  textSegmentSentiment_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [TextSegmentSentiment_Data!]!
+  ): [TextSegmentSentiment_KeyOutput!]! @fdc_generated(from: "TextSegmentSentiment", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `User` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert or update a single `AIModel` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `AIModel`.
+  """
+  aIModel_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: AIModel_Data!
+  ): AIModel_KeyOutput! @fdc_generated(from: "AIModel", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `AnalysisReport` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `AnalysisReport`.
+  """
+  analysisReport_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: AnalysisReport_Data!
+  ): AnalysisReport_KeyOutput! @fdc_generated(from: "AnalysisReport", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `AnalyzedText` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `AnalyzedText`.
+  """
+  analyzedText_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: AnalyzedText_Data!
+  ): AnalyzedText_KeyOutput! @fdc_generated(from: "AnalyzedText", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `TextSegmentSentiment` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `TextSegmentSentiment`.
+  """
+  textSegmentSentiment_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: TextSegmentSentiment_Data!
+  ): TextSegmentSentiment_KeyOutput! @fdc_generated(from: "TextSegmentSentiment", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `User` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update `AIModel` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `AIModel`.
+  """
+  aIModel_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [AIModel_Data!]!
+  ): [AIModel_KeyOutput!]! @fdc_generated(from: "AIModel", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `AnalysisReport` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `AnalysisReport`.
+  """
+  analysisReport_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [AnalysisReport_Data!]!
+  ): [AnalysisReport_KeyOutput!]! @fdc_generated(from: "AnalysisReport", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `AnalyzedText` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `AnalyzedText`.
+  """
+  analyzedText_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [AnalyzedText_Data!]!
+  ): [AnalyzedText_KeyOutput!]! @fdc_generated(from: "AnalyzedText", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `TextSegmentSentiment` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `TextSegmentSentiment`.
+  """
+  textSegmentSentiment_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [TextSegmentSentiment_Data!]!
+  ): [TextSegmentSentiment_KeyOutput!]! @fdc_generated(from: "TextSegmentSentiment", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `User` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Update a single `AIModel` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `AIModel` or `null` if not found.
+  """
+  aIModel_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: AIModel_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: AIModel_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: AIModel_Data!
+  ): AIModel_KeyOutput @fdc_generated(from: "AIModel", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `AnalysisReport` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `AnalysisReport` or `null` if not found.
+  """
+  analysisReport_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: AnalysisReport_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: AnalysisReport_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: AnalysisReport_Data!
+  ): AnalysisReport_KeyOutput @fdc_generated(from: "AnalysisReport", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `AnalyzedText` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `AnalyzedText` or `null` if not found.
+  """
+  analyzedText_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: AnalyzedText_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: AnalyzedText_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: AnalyzedText_Data!
+  ): AnalyzedText_KeyOutput @fdc_generated(from: "AnalyzedText", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `TextSegmentSentiment` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `TextSegmentSentiment` or `null` if not found.
+  """
+  textSegmentSentiment_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: TextSegmentSentiment_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: TextSegmentSentiment_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: TextSegmentSentiment_Data!
+  ): TextSegmentSentiment_KeyOutput @fdc_generated(from: "TextSegmentSentiment", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `User` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `User` or `null` if not found.
+  """
+  user_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: User_Data!
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update `AIModel` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  aIModel_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: AIModel_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: AIModel_Data!
+  ): Int! @fdc_generated(from: "AIModel", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `AnalysisReport` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  analysisReport_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: AnalysisReport_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: AnalysisReport_Data!
+  ): Int! @fdc_generated(from: "AnalysisReport", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `AnalyzedText` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  analyzedText_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: AnalyzedText_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: AnalyzedText_Data!
+  ): Int! @fdc_generated(from: "AnalyzedText", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `TextSegmentSentiment` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  textSegmentSentiment_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: TextSegmentSentiment_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: TextSegmentSentiment_Data!
+  ): Int! @fdc_generated(from: "TextSegmentSentiment", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `User` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  user_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: User_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: User_Data!
+  ): Int! @fdc_generated(from: "User", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Delete a single `AIModel` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  aIModel_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: AIModel_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: AIModel_FirstRow
+  ): AIModel_KeyOutput @fdc_generated(from: "AIModel", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `AnalysisReport` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  analysisReport_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: AnalysisReport_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: AnalysisReport_FirstRow
+  ): AnalysisReport_KeyOutput @fdc_generated(from: "AnalysisReport", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `AnalyzedText` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  analyzedText_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: AnalyzedText_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: AnalyzedText_FirstRow
+  ): AnalyzedText_KeyOutput @fdc_generated(from: "AnalyzedText", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `TextSegmentSentiment` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  textSegmentSentiment_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: TextSegmentSentiment_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: TextSegmentSentiment_FirstRow
+  ): TextSegmentSentiment_KeyOutput @fdc_generated(from: "TextSegmentSentiment", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `User` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  user_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete `AIModel` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  aIModel_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: AIModel_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "AIModel", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `AnalysisReport` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  analysisReport_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: AnalysisReport_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `AnalyzedText` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  analyzedText_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: AnalyzedText_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "AnalyzedText", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `TextSegmentSentiment` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  textSegmentSentiment_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: TextSegmentSentiment_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "TextSegmentSentiment", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `User` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  user_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: User_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "User", purpose: DELETE_MULTIPLE)
+}

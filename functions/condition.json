@@ -1,0 +1,5 @@
+{
+  "expression": "request.auth != null",
+  "title": "RequireAuth",
+  "description": "Only allow authenticated users"
+}

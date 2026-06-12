@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_ai/firebase_ai.dart';
 import 'package:flutter/material.dart';
 import 'package:sou_feedback_app/constant/routename.dart';
+import 'package:sou_feedback_app/constant/appconstant.dart';
 import 'package:sou_feedback_app/locator.dart';
 import 'package:sou_feedback_app/src/screens/FeedbackForm/feedback_form_model.dart';
 import 'package:sou_feedback_app/src/widgets/Cstmbtn.dart';
@@ -38,10 +39,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   late final Future<QueryResult<ListAnalysisReportsData?, void>>
       _reportListFuture;
 
-  static const snackBar = SnackBar(
-    content: Text('Your Valuable FeedBack Saved SuccessFully'),
-  );
-
   // List<Srno>? _srno;
 
   @override
@@ -68,6 +65,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
           builder: ((context, viewModel, child) {
             viewModel.getSrno();
             viewModel.initRecorder();
+            viewmodel.getResponse();
 
             return Scaffold(
               appBar: AppBar(
@@ -1316,8 +1314,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
                                         viewModel.updateSrno(sr_no.toString());
 
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(snackBar);
+                                        AppConstant.showSuccessToast(
+                                            "Your Valuable FeedBack Saved SuccessFully");
 
                                         viewModel.signOut();
 

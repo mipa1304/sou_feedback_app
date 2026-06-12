@@ -1,0 +1,586 @@
+extend type AIModel {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "AIModel", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `AIModel` table.
+  """
+  _count: Int! @fdc_generated(from: "AIModel.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AIModel` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AIModel.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AIModel` table where the `description` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  description_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AIModel.description", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AIModel` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AIModel.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AIModel` table where the `isActive` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  isActive_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AIModel.isActive", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AIModel` table where the `modelName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  modelName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AIModel.modelName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AIModel` table where the `version` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  version_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AIModel.version", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `AIModel` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "AIModel.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `AIModel` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "AIModel.createdAt", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "AIModel.id", purpose: ENTITY_ID)
+}
+extend type AnalysisReport {
+  """
+  ✨ List `AnalyzedText` objects in a one-to-many relationship (where `AnalyzedText`.`analysisReport` is this object).
+  """
+  analyzedTexts_on_analysisReport(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: AnalyzedText_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [AnalyzedText_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: AnalyzedText_Having
+  ): [AnalyzedText!]! @fdc_generated(from: "AnalyzedText.analysisReport", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `TextSegmentSentiment` objects in a one-to-many relationship (where `TextSegmentSentiment`.`analysisReport` is this object).
+  """
+  textSegmentSentiments_on_analysisReport(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: TextSegmentSentiment_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [TextSegmentSentiment_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: TextSegmentSentiment_Having
+  ): [TextSegmentSentiment!]! @fdc_generated(from: "TextSegmentSentiment.analysisReport", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "AnalysisReport", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table.
+  """
+  _count: Int! @fdc_generated(from: "AnalysisReport.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `negativePercentage` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  negativePercentage_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.negativePercentage", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `outstandingPercentage` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  outstandingPercentage_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.outstandingPercentage", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `positivePercentage` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  positivePercentage_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.positivePercentage", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `reportName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  reportName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.reportName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `sourceFileName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  sourceFileName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.sourceFileName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.userId", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `negativePercentage` field in the `AnalysisReport` table.
+  """
+  negativePercentage_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "AnalysisReport.negativePercentage", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `outstandingPercentage` field in the `AnalysisReport` table.
+  """
+  outstandingPercentage_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "AnalysisReport.outstandingPercentage", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `positivePercentage` field in the `AnalysisReport` table.
+  """
+  positivePercentage_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "AnalysisReport.positivePercentage", purpose: QUERY_SUM)
+  """
+  ✨ Average the `negativePercentage` field in the `AnalysisReport` table.
+  """
+  negativePercentage_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "AnalysisReport.negativePercentage", purpose: QUERY_AVG)
+  """
+  ✨ Average the `outstandingPercentage` field in the `AnalysisReport` table.
+  """
+  outstandingPercentage_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "AnalysisReport.outstandingPercentage", purpose: QUERY_AVG)
+  """
+  ✨ Average the `positivePercentage` field in the `AnalysisReport` table.
+  """
+  positivePercentage_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "AnalysisReport.positivePercentage", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `createdAt` field in the `AnalysisReport` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "AnalysisReport.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `negativePercentage` field in the `AnalysisReport` table.
+  """
+  negativePercentage_min: Float @fdc_generated(from: "AnalysisReport.negativePercentage", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `outstandingPercentage` field in the `AnalysisReport` table.
+  """
+  outstandingPercentage_min: Float @fdc_generated(from: "AnalysisReport.outstandingPercentage", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `positivePercentage` field in the `AnalysisReport` table.
+  """
+  positivePercentage_min: Float @fdc_generated(from: "AnalysisReport.positivePercentage", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `AnalysisReport` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "AnalysisReport.createdAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `negativePercentage` field in the `AnalysisReport` table.
+  """
+  negativePercentage_max: Float @fdc_generated(from: "AnalysisReport.negativePercentage", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `outstandingPercentage` field in the `AnalysisReport` table.
+  """
+  outstandingPercentage_max: Float @fdc_generated(from: "AnalysisReport.outstandingPercentage", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `positivePercentage` field in the `AnalysisReport` table.
+  """
+  positivePercentage_max: Float @fdc_generated(from: "AnalysisReport.positivePercentage", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "AnalysisReport.id", purpose: ENTITY_ID)
+}
+extend type AnalyzedText {
+  """
+  ✨ List `TextSegmentSentiment` objects in a one-to-many relationship (where `TextSegmentSentiment`.`analyzedText` is this object).
+  """
+  textSegmentSentiments_on_analyzedText(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: TextSegmentSentiment_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [TextSegmentSentiment_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: TextSegmentSentiment_Having
+  ): [TextSegmentSentiment!]! @fdc_generated(from: "TextSegmentSentiment.analyzedText", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "AnalyzedText", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `AnalyzedText` table.
+  """
+  _count: Int! @fdc_generated(from: "AnalyzedText.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalyzedText` table where the `analysisReportId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  analysisReportId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalyzedText.analysisReportId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalyzedText` table where the `fullText` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  fullText_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalyzedText.fullText", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalyzedText` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalyzedText.id", purpose: QUERY_COUNT)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "AnalyzedText.id", purpose: ENTITY_ID)
+}
+extend type TextSegmentSentiment {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "TextSegmentSentiment", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `TextSegmentSentiment` table.
+  """
+  _count: Int! @fdc_generated(from: "TextSegmentSentiment.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TextSegmentSentiment` table where the `analysisReportId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  analysisReportId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TextSegmentSentiment.analysisReportId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TextSegmentSentiment` table where the `analyzedTextId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  analyzedTextId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TextSegmentSentiment.analyzedTextId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TextSegmentSentiment` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TextSegmentSentiment.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TextSegmentSentiment` table where the `segmentText` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  segmentText_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TextSegmentSentiment.segmentText", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TextSegmentSentiment` table where the `sentimentLabel` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  sentimentLabel_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TextSegmentSentiment.sentimentLabel", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `TextSegmentSentiment` table where the `sentimentScore` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  sentimentScore_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "TextSegmentSentiment.sentimentScore", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `sentimentScore` field in the `TextSegmentSentiment` table.
+  """
+  sentimentScore_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "TextSegmentSentiment.sentimentScore", purpose: QUERY_SUM)
+  """
+  ✨ Average the `sentimentScore` field in the `TextSegmentSentiment` table.
+  """
+  sentimentScore_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "TextSegmentSentiment.sentimentScore", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `sentimentScore` field in the `TextSegmentSentiment` table.
+  """
+  sentimentScore_min: Float @fdc_generated(from: "TextSegmentSentiment.sentimentScore", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `sentimentScore` field in the `TextSegmentSentiment` table.
+  """
+  sentimentScore_max: Float @fdc_generated(from: "TextSegmentSentiment.sentimentScore", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "TextSegmentSentiment.id", purpose: ENTITY_ID)
+}
+extend type User {
+  """
+  ✨ List `AnalysisReport` objects in a one-to-many relationship (where `AnalysisReport`.`user` is this object).
+  """
+  analysisReports_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: AnalysisReport_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [AnalysisReport_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: AnalysisReport_Having
+  ): [AnalysisReport!]! @fdc_generated(from: "AnalysisReport.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "User", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `User` table.
+  """
+  _count: Int! @fdc_generated(from: "User.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `displayName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  displayName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.displayName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `email` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  email_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.email", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `photoUrl` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  photoUrl_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.photoUrl", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `User` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "User.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `User` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "User.createdAt", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "User.id", purpose: ENTITY_ID)
+}
