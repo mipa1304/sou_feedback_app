@@ -67,8 +67,20 @@ void main() async {
   // }
   // }
 
-  await FirebaseAppCheck.instance
-      .activate(androidProvider: AndroidProvider.playIntegrity);
+  // try {
+  //   if (kIsWeb) {
+  //     // Provide your reCAPTCHA v3 site key for web App Check initialization.
+  //     // Replace the placeholder with your actual site key from Firebase Console.
+  //     await FirebaseAppCheck.instance
+  //         .activate(webRecaptchaSiteKey: 'REPLACE_WITH_YOUR_SITE_KEY');
+  //   } else {
+  //     await FirebaseAppCheck.instance
+  //         .activate(androidProvider: AndroidProvider.playIntegrity);
+  //   }
+  // } catch (e) {
+  //   // If App Check activation fails, log and continue — avoid crashing the app.
+  //   if (kDebugMode) print('App Check activation failed: $e');
+  // }
   setupLocator();
 
   runApp(const MyApp());
