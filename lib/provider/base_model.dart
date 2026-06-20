@@ -31,41 +31,76 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class BaseModel extends ChangeNotifier {
-  final navigationService = locator<NavigationService>();
-  final DialogService _dialogService = locator<DialogService>();
+  late final NavigationService navigationService;
+  late final DialogService _dialogService;
+
+  // Optional overrides for easier testing
+  final FirebaseAuth? _authOverride;
+  final FirebaseFirestore? _firestoreOverride;
+  final dynamic _storageRefOverride;
+  final dynamic _modelAIOverride;
+  final dynamic _modelAI2Override;
 
   ViewState _state = ViewState.idle;
   BuildContext? context;
   // ViewState get state => _state;
   // DialogService get dialogService => _dialogService;
-  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseAuth get auth => _authOverride ?? FirebaseAuth.instance;
   QuerySnapshot? snapshot;
   FlutterSoundRecorder? _recorder;
 
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  FirebaseFirestore get _firestore =>
+      _firestoreOverride ?? FirebaseFirestore.instance;
   List<Srno> _srno = [];
   List<Srno> get srno => _srno;
   AnimationController? _animationController;
   final bool _isAnimating = false;
   String? text = "";
   bool isMatchFound = false;
-  final SpeechToText speech = SpeechToText();
+  final SpeechToText speech;
   bool speechTest = false;
   PersistentBottomSheetController? _controller;
   bool isListening = true;
   bool isLoading = false;
   late final Future<QueryResult<ListAnalysisReportsData?, void>>
       _reportListFuture;
-  final FlutterTts flutterTts = FlutterTts();
+  final FlutterTts flutterTts;
   String? stopfilePath;
   late final File file;
-  final storageRef = FirebaseStorage.instance.ref();
+  dynamic get storageRef =>
+      _storageRefOverride ?? FirebaseStorage.instance.ref();
   // late final audioRef;
   final TextEditingController fileRemarkController = TextEditingController();
-  final modelAI =
+  dynamic get modelAI =>
+      _modelAIOverride ??
       FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
 
-  final modelAI2 = FirebaseAI.googleAI().templateGenerativeModel();
+  dynamic get modelAI2 =>
+      _modelAI2Override ?? FirebaseAI.googleAI().templateGenerativeModel();
+
+  // Constructor allows injecting test doubles; falls back to real instances.
+  BaseModel({
+    NavigationService? navigationService,
+    DialogService? dialogService,
+    FirebaseAuth? authOverride,
+    FirebaseFirestore? firestoreOverride,
+    dynamic storageRefOverride,
+    dynamic modelAIOverride,
+    dynamic modelAI2Override,
+    FlutterTts? flutterTtsOverride,
+    SpeechToText? speechOverride,
+    FlutterSoundRecorder? recorderOverride,
+  })  : _authOverride = authOverride,
+        _firestoreOverride = firestoreOverride,
+        _storageRefOverride = storageRefOverride,
+        _modelAIOverride = modelAIOverride,
+        _modelAI2Override = modelAI2Override,
+        flutterTts = flutterTtsOverride ?? FlutterTts(),
+        speech = speechOverride ?? SpeechToText() {
+    this.navigationService = navigationService ?? locator<NavigationService>();
+    this._dialogService = dialogService ?? locator<DialogService>();
+    _recorder = recorderOverride;
+  }
 
   var customerName = 'Mihir';
 
@@ -105,15 +140,31 @@ class BaseModel extends ChangeNotifier {
   Future<void> requestStoragePermission() async {
     final plugin = DeviceInfoPlugin();
     final android = await plugin.androidInfo;
-    final statusStorage = android.version.sdkInt >= 30
-        ? await Permission.manageExternalStorage.request()
-        : await Permission.storage.request();
+    if (android.version.sdkInt >= 30) {
+      // Android 11+ : try to request All files access first.
+      final statusManage = await Permission.manageExternalStorage.request();
+      if (statusManage == PermissionStatus.granted) {
+        print("MANAGE_EXTERNAL_STORAGE granted");
+        return;
+      }
 
-    if (statusStorage == PermissionStatus.granted) {
-      print("Media & Storage permissions granted");
-    } else {
+      // Fallback to legacy storage permission where appropriate.
+      final statusStorage = await Permission.storage.request();
+      if (statusStorage == PermissionStatus.granted) {
+        print("Storage permission granted (fallback)");
+        return;
+      }
+
       print("Media permissions denied");
-      // Handle denied permissions
+      openAppSettings();
+    } else {
+      final statusStorage = await Permission.storage.request();
+      if (statusStorage == PermissionStatus.granted) {
+        print("Storage permission granted");
+        return;
+      }
+
+      print("Storage permission denied");
       openAppSettings();
     }
   }
@@ -347,16 +398,10 @@ class BaseModel extends ChangeNotifier {
   }
 
   void updateTextBoxWithAudioPath(String path) {
-    // remark = fileRemarkController.text;
-
-    // fileRemarkController.text = File(path.path).path;
-    // var remark = fileRemarkController.text;
-    // file = fileRemarkController.text.toString() as File;
-
-    path = fileRemarkController.text;
+    // Always put the recorded audio file path into the textbox so the
+    // UI shows which file was recorded/uploaded.
     fileRemarkController.text = path;
     print("fileRemarkController.text: ${fileRemarkController.text}");
-    // print("remark: $remark");
 
     notifyListeners();
   }
@@ -394,11 +439,23 @@ class BaseModel extends ChangeNotifier {
   }
 
   void _initspeech() async {
-    bool available = await speech.initialize();
-    if (available) {
-      speechTest = true;
-      notifyListeners();
-    } else {
+    try {
+      bool available = false;
+      try {
+        available = await speech.initialize();
+      } catch (e) {
+        // Speech initialization can fail in test or non-platform environments.
+        available = false;
+      }
+
+      if (available) {
+        speechTest = true;
+        notifyListeners();
+      } else {
+        speechTest = false;
+      }
+    } catch (e) {
+      // Ensure no exceptions escape from async void to the test zone.
       speechTest = false;
     }
   }
@@ -426,7 +483,7 @@ class BaseModel extends ChangeNotifier {
 
   // String get recognizedText => text ?? '';
 
-  redirectToPage(String routename, {dynamic arguments}) {
+  void redirectToPage(String routename, {dynamic arguments}) {
     if (arguments == null) {
       navigationService.navigateTo(routename);
     } else {
@@ -434,7 +491,7 @@ class BaseModel extends ChangeNotifier {
     }
   }
 
-  final update_Srno = FirebaseFirestore.instance.collection('form_no');
+  dynamic get update_Srno => FirebaseFirestore.instance.collection('form_no');
 
   Future<void> updateSrno(String newSrno) async {
     print(" ===> Sr. no $newSrno");

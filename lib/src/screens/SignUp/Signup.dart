@@ -325,6 +325,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         fontWeight: FontWeight.bold,
                         btnColor: ThemeColors.appDarkPrimaryColor,
                         btnPressed: () async {
+                          print(
+                              '===> ${model.email_id} ${model.password} ${model.Username} ${model.UserBirthDay} ${model.UserCity} ${model.UserGender} ${model.UserMobile} ${model.UserGrpSize} ${model.UserProfession}');
                           if (_formKey.currentState!.validate()) {
                             final isSaved = await model.saveusers();
                             if (isSaved) {
