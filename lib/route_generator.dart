@@ -15,6 +15,7 @@ import 'src/screens/FeedBackForm3/FeedbackForm3.dart';
 import 'src/screens/OTP Screen/OTP_Screen.dart';
 import 'package:sou_feedback_app/src/screens/Login/login.dart';
 import 'package:sou_feedback_app/src/screens/ChangeLanguageScreen/change_language_screen.dart';
+import 'package:sou_feedback_app/src/screens/VisitorFeedback/visitor_feedback_home_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings, {dynamic args}) {
   switch (settings.name) {
@@ -27,6 +28,10 @@ Route<dynamic> generateRoute(RouteSettings settings, {dynamic args}) {
     case changelanguagescreen:
       return _getPageRoute(
           routeName: settings.name, viewToShow: const ChangeLanguageScreen());
+    case visitorFeedbackScreen:
+      return _getPageRoute(
+          routeName: settings.name,
+          viewToShow: const VisitorFeedbackHomeScreen());
     case feedbackscreen:
       return _getPageRoute(
           routeName: settings.name, viewToShow: const FeedbackScreen());

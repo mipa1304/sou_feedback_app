@@ -20,7 +20,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import '../locator.dart';
-import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -47,7 +46,7 @@ class BaseModel extends ChangeNotifier {
   // DialogService get dialogService => _dialogService;
   FirebaseAuth get auth => _authOverride ?? FirebaseAuth.instance;
   QuerySnapshot? snapshot;
-  FlutterSoundRecorder? _recorder;
+  dynamic _recorder;
 
   FirebaseFirestore get _firestore =>
       _firestoreOverride ?? FirebaseFirestore.instance;
@@ -89,7 +88,7 @@ class BaseModel extends ChangeNotifier {
     dynamic modelAI2Override,
     FlutterTts? flutterTtsOverride,
     SpeechToText? speechOverride,
-    FlutterSoundRecorder? recorderOverride,
+    dynamic recorderOverride,
   })  : _authOverride = authOverride,
         _firestoreOverride = firestoreOverride,
         _storageRefOverride = storageRefOverride,
@@ -123,9 +122,11 @@ class BaseModel extends ChangeNotifier {
   }
 
   Future<void> initRecorder() async {
-    _recorder = FlutterSoundRecorder();
-    await _recorder!.openRecorder();
-    print("Recorder initialized ${_recorder!.isStopped}");
+    if (_recorder == null) {
+      throw StateError('A recorder implementation must be provided.');
+    }
+    await _recorder.openRecorder();
+    print("Recorder initialized ${_recorder.isStopped}");
   }
 
   bool isRecording = false;
@@ -195,10 +196,7 @@ class BaseModel extends ChangeNotifier {
     final filePath = '${directory.path}/${DateTime.now()}.aac';
     await requestRecordingpermission();
     print("Directory: ${filePath}");
-    await _recorder!.startRecorder(
-      toFile: filePath,
-      codec: Codec.aacADTS,
-    );
+    await _recorder!.startRecorder(toFile: filePath);
     stopfilePath = filePath;
     isRecording = true;
     notifyListeners();

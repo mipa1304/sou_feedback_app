@@ -65,6 +65,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   firebase_data_connect: ^0.3.0+3
+  mobile_scanner: 5.2.3
   # qr_flutter: ^4.1.0
 
 dev_dependencies:

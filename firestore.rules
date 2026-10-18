@@ -17,6 +17,66 @@ service cloud.firestore {
       allow read: if request.auth != null;
     }
 
+    function isValidVisitorFeedback(data) {
+      return data.keys().hasAll([
+          'areaId',
+          'areaName',
+          'rating',
+          'comment',
+          'languageCode',
+          'languageName',
+          'inputMethod',
+          'createdAt'
+        ])
+        && data.keys().hasOnly([
+          'areaId',
+          'areaName',
+          'rating',
+          'comment',
+          'languageCode',
+          'languageName',
+          'inputMethod',
+          'createdAt'
+        ])
+        && data.areaId is string
+        && data.areaId in [
+          'exhibition_hall',
+          'lift_lobby',
+          'viewing_gallery',
+          'external_walkways',
+          'ticket_counter_washroom',
+          'exhibition_hall_washroom',
+          'viewing_gallery_washroom',
+          'security_check',
+          'guest_relations',
+          'bridge_facilities',
+          'museum_exhibits',
+          'projection_show',
+          'cafeteria'
+        ]
+        && data.areaName is string
+        && data.areaName.size() <= 100
+        && (data.rating == null
+          || (data.rating is int && data.rating >= 1 && data.rating <= 5))
+        && data.comment is string
+        && data.comment.size() <= 2000
+        && (data.rating != null || data.comment.size() > 0)
+        && data.languageCode is string
+        && data.languageCode in ['en', 'hi', 'gu', 'ta']
+        && data.languageName is string
+        && data.languageName.size() > 0
+        && data.languageName.size() <= 40
+        && data.inputMethod is string
+        && data.inputMethod in ['typed', 'voice', 'mixed']
+        && data.createdAt == request.time;
+    }
+
+    match /VisitorFeedback/{feedbackId} {
+      allow create: if request.auth != null
+        && isValidVisitorFeedback(request.resource.data);
+      allow read, update, delete: if false;
+    }
+
     // Allow authenticated users to query and read form_no collection
     match /form_no {
       allow read: if request.auth != null;

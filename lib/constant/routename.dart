@@ -7,3 +7,4 @@ const String feedbackscreen4 = "feedbackscreen4";
 const String otpscreen = "otpscreen";
 const String changelanguagescreen = "changelanguagescreen";
 const String grhomescreen = "grhomescreen";
+const String visitorFeedbackScreen = "visitorFeedbackScreen";
