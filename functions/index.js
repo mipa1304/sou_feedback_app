@@ -47,6 +47,8 @@ exports.processAllCollections = functions.https.onRequest(async (req, res) => {
     const firestore = admin.firestore();
     const collections = await firestore.listCollections();
     for (const coll of collections) {
+      if (coll.id === 'VisitorFeedback') continue;
+
       const snap = await coll.get();
       if (snap.empty) continue;
 
@@ -76,6 +78,9 @@ exports.processCollection = functions.https.onRequest(async (req, res) => {
   try {
     const collectionName = req.query.collection || req.body.collection;
     if (!collectionName) return res.status(400).json({ error: 'collection param required' });
+    if (collectionName === 'VisitorFeedback') {
+      return res.status(403).json({ error: 'Collection processing is disabled.' });
+    }
 
     const firestore = admin.firestore();
     const coll = firestore.collection(collectionName);
@@ -125,14 +130,30 @@ exports.saveFeedbackToSql = functions.region('us-east4').https.onRequest(async (
       return res.status(401).json({ error: 'Unauthorized' });
     }
 
-    // Placeholder: enqueue into Firestore for later SQL processing.
-    const firestore = admin.firestore();
-    await firestore.collection('feedback_sql_queue').add({
-      payload,
-      receivedAt: admin.firestore.FieldValue.serverTimestamp(),
+    // Dynamically require the Data Connect admin helper.
+    let validateAdminArgs;
+    try {
+      validateAdminArgs = require('firebase-admin/data-connect').validateAdminArgs;
+    } catch (err) {
+      console.error('firebase-admin/data-connect not available in this environment', err);
+      // Fallback to old behavior if DC is not available.
+      const firestore = admin.firestore();
+      await firestore.collection('feedback_sql_queue').add({
+        payload,
+        receivedAt: admin.firestore.FieldValue.serverTimestamp(),
+        error: 'Data Connect SDK not found, enqueued for manual processing.',
+      });
+      return res.status(500).json({ ok: false, error: 'Data Connect SDK not available.' });
+    }
+
+    // Get the Data Connect instance and execute the mutation.
+    const { dc: dcInstance } = validateAdminArgs(dcConnectorConfig, undefined, undefined, undefined);
+    const result = await dcInstance.execute({
+      document: 'mutation CreateFeedback($payload: JSON!) { feedback_insert(objects: [$payload]) { affected_rows } }',
+      variables: { payload },
     });
 
-    return res.status(200).json({ ok: true });
+    return res.status(200).json({ ok: true, result });
   } catch (err) {
     console.error('saveFeedbackToSql error', err);
     return res.status(500).json({ error: err.message || String(err) });

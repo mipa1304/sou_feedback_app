@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, unused_import, avoid_print, non_constant_identifier_names, unused_field, use_build_context_synchronously, sized_box_for_whitespace, no_leading_underscores_for_local_identifiers, unused_element, unnecessary_brace_in_string_interps
 
 // import 'package:SOUFEEDBACKAPP/src/models/sr_view_model.dart';
-import 'package:flutter/foundation.dart';
 import 'package:sou_feedback_app/provider/base_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_ai/firebase_ai.dart';
@@ -69,21 +68,24 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
             return Scaffold(
               appBar: AppBar(
-                flexibleSpace: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        ThemeColors.bgColor,
-                        ThemeColors.bgColor2,
-                      ],
-                    ),
-                  ),
-                ),
+                backgroundColor: Colors.transparent,
+                elevation: 4,
+                centerTitle: true,
+                // flexibleSpace: Container(
+                //   decoration: const BoxDecoration(
+                //     gradient: LinearGradient(
+                //       begin: Alignment.topLeft,
+                //       end: Alignment.bottomRight,
+                //       colors: [
+                //         ThemeColors.bgColor,
+                //         ThemeColors.bgColor2,
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 actions: [
                   Container(
-                    color: const Color.fromARGB(0, 255, 255, 255),
+                    // color: Colors.transparent.withOpacity(0.1),
                     width: size.width * 0.999,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

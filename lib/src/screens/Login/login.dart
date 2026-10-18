@@ -15,7 +15,6 @@ import 'package:sou_feedback_app/src/widgets/Cstmbtn.dart';
 import 'package:sou_feedback_app/constant/routename.dart';
 import 'package:sou_feedback_app/constant/appconstant.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:sou_feedback_app/locator.dart';
 // import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -72,6 +71,13 @@ class _LoginScreenState extends State<LoginScreen> {
             child,
           ) {
             return Scaffold(
+              floatingActionButton: FloatingActionButton.extended(
+                onPressed: () {
+                  Navigator.of(context).pushNamed(visitorFeedbackScreen);
+                },
+                icon: const Icon(Icons.qr_code_scanner),
+                label: const Text('Quick visitor feedback'),
+              ),
               body: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height >= 775.0
@@ -228,37 +234,38 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontWeight: FontWeight.bold,
 
                             btnPressed: () {
-                              if (_email.text.isEmpty ||
-                                  _password.text.isEmpty) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content:
-                                        Text('Please enter email and password'),
-                                  ),
-                                );
-                                return;
-                              } else {
-                                model.loginWithEmailPassword(
-                                    context,
-                                    _email.text.toString().trim(),
-                                    _password.text.toString().trim());
+                              model.redirectToPage(feedbackscreen);
+                              // if (_email.text.isEmpty ||
+                              //     _password.text.isEmpty) {
+                              //   ScaffoldMessenger.of(context).showSnackBar(
+                              //     SnackBar(
+                              //       content:
+                              //           Text('Please enter email and password'),
+                              //     ),
+                              //   );
+                              //   return;
+                              // } else {
+                              //   model.loginWithEmailPassword(
+                              //       context,
+                              //       _email.text.toString().trim(),
+                              //       _password.text.toString().trim());
 
-                                if (model.authStatus ==
-                                    "Logged in successfully") {
-                                  model.redirectToPage(feedbackscreen);
-                                } else {
-                                  print(model.authStatus);
-                                  // ScaffoldMessenger.of(context).showSnackBar(
-                                  //   SnackBar(
-                                  //     content:
-                                  //         Text(model.authStatus.toString()),
-                                  //   ),
-                                  // );
+                              //   if (model.authStatus ==
+                              //       "Logged in successfully") {
+                              //     model.redirectToPage(feedbackscreen);
+                              //   } else {
+                              //     print(model.authStatus);
+                              //     // ScaffoldMessenger.of(context).showSnackBar(
+                              //     //   SnackBar(
+                              //     //     content:
+                              //     //         Text(model.authStatus.toString()),
+                              //     //   ),
+                              //     // );
 
-                                  AppConstant.showFailToast(
-                                      model.authStatus.toString());
-                                }
-                              }
+                              //     AppConstant.showFailToast(
+                              //         model.authStatus.toString());
+                              //   }
+                              // }
                             },
                             // btnPressed: () async {
                             //   final isExistusers = await model

@@ -16,7 +16,6 @@ import 'package:sou_feedback_app/config/app_config.dart';
 import 'package:sou_feedback_app/src/widgets/Cstmbtn.dart';
 import 'package:sou_feedback_app/constant/routename.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:sou_feedback_app/locator.dart';
 // import 'package:qr_code_scanner/qr_code_scanner.dart';

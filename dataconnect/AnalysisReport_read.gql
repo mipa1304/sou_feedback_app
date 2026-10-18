@@ -1,0 +1,19 @@
+
+# This is a file for you to write an un-named query.
+# Only one un-named query is allowed per file.
+query {
+  analysisReports{
+    user {
+      displayName
+      createdAt
+      email
+      photoUrl
+    }
+    reportName
+    createdAt
+    positivePercentage
+    negativePercentage
+    outstandingPercentage
+    sourceFileName
+  }
+}

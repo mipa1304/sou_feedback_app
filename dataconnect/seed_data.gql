@@ -1,4 +1,5 @@
-mutation CreateSeedData @transaction @auth(level: PUBLIC, insecureReason: "This mutation is used to populate the database with seed data.") {
+mutation CreateSeedData @transaction @auth(level: PUBLIC, 
+insecureReason: "This mutation is used to populate the database with seed data.") {
   user_insertMany(data: [
     {
       id: "550e8400-e29b-41d4-a716-446655440000",

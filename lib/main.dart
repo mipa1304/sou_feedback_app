@@ -1,7 +1,6 @@
 // ignore_for_file: unused_import, unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
 import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
 import 'package:sou_feedback_app/Localization/localization_delegate.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -24,10 +23,46 @@ import 'Localization/locale_constants.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_data_connect/firebase_data_connect.dart';
 import 'package:sou_feedback_app/dataconnect_generated/generated.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+
+Future<void> initializeFirebaseServices() async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  if (!kIsWeb && kDebugMode) {
+    final emulatorHost = defaultTargetPlatform == TargetPlatform.android
+        ? '10.0.2.2'
+        : 'localhost';
+
+    try {
+      await FirebaseAuth.instance.useAuthEmulator(emulatorHost, 9099);
+    } catch (_) {}
+    try {
+      FirebaseFirestore.instance.useFirestoreEmulator(emulatorHost, 8080);
+    } catch (_) {}
+    try {
+      FirebaseStorage.instance.useStorageEmulator(emulatorHost, 9199);
+    } catch (_) {}
+    try {
+      ExampleConnector.instance.dataConnect.useDataConnectEmulator(
+        emulatorHost,
+        9410,
+      );
+    } catch (_) {}
+  }
+
+  try {
+    await FirebaseAuth.instance.signInAnonymously();
+  } catch (e) {
+    if (kDebugMode) {
+      print('Anonymous sign-in failed during startup: $e');
+    }
+  }
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await initializeFirebaseServices();
 
   // Initialize Firebase Auth using a custom token from a secure endpoint.
   // Replace the URL below with your token provider endpoint.
@@ -108,14 +143,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
 
-  late final Future<QueryResult<ListAnalysisReportsData?, void>>
-      _reportListFuture;
+  late Future<QueryResult<ListAnalysisReportsData?, void>> _reportListFuture;
 
   @override
   void initState() {
     super.initState();
-    _reportListFuture =
-        ExampleConnector.instance.listAnalysisReports().execute();
+    _reportListFuture = _loadReports();
 
     _reportListFuture.then(
       (result) {
@@ -129,6 +162,18 @@ class _MyAppState extends State<MyApp> {
         }
       },
     );
+  }
+
+  Future<QueryResult<ListAnalysisReportsData?, void>> _loadReports() async {
+    try {
+      await FirebaseAuth.instance.signInAnonymously();
+    } catch (e) {
+      if (kDebugMode) {
+        print('Anonymous sign-in before Data Connect request failed: $e');
+      }
+    }
+
+    return ExampleConnector.instance.listAnalysisReports().execute();
   }
 
   void setLocale(Locale locale) {

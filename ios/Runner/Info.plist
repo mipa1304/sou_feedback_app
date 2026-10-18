@@ -43,6 +43,12 @@
 	</array>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera access is used to scan visitor feedback QR codes.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone access is used to dictate visitor feedback.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Speech recognition transcribes your spoken visitor feedback.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 </dict>
