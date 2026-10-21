@@ -21,7 +21,8 @@ Route<dynamic> generateRoute(RouteSettings settings, {dynamic args}) {
   switch (settings.name) {
     case homescreen:
       return _getPageRoute(
-          routeName: settings.name, viewToShow: const LoginScreen());
+          routeName: settings.name,
+          viewToShow: const VisitorFeedbackHomeScreen());
     case grhomescreen:
       return _getPageRoute(
           routeName: settings.name, viewToShow: const GRLoginScreen());
