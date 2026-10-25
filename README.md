@@ -6,9 +6,10 @@ Flutter visitor feedback app for the Statue of Unity premises.
 
 From the login screen, select **Quick visitor feedback**. Visitors can scan an
 area QR code in the app or choose an area manually, then submit a 1–5 star
-rating, a typed comment, or a speech-to-text comment. English, Hindi, Gujarati,
-and Tamil are available for voice input. The app saves the comment as text; it
-does not upload an audio recording.
+rating, a typed comment, or a speech-to-text comment. Voice input requests
+English, Hindi, Gujarati, or Tamil. Actual recognition availability depends on
+the speech service and language packs installed on the device. The app saves
+the comment as text; it does not upload an audio recording.
 
 The **Area QR codes** button displays the codes to place in visitor areas. Each
 QR code contains an area identifier and is meant to be scanned from within the

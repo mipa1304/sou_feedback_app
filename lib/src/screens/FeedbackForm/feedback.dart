@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, unused_import, avoid_print, non_constant_identifier_names, unused_field, use_build_context_synchronously, sized_box_for_whitespace, no_leading_underscores_for_local_identifiers, unused_element, unnecessary_brace_in_string_interps
+﻿// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, unused_import, avoid_print, non_constant_identifier_names, unused_field, use_build_context_synchronously, sized_box_for_whitespace, no_leading_underscores_for_local_identifiers, unused_element, unnecessary_brace_in_string_interps
 
 // import 'package:SOUFEEDBACKAPP/src/models/sr_view_model.dart';
 import 'package:sou_feedback_app/provider/base_model.dart';
@@ -473,7 +473,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   },
                                   selectedValue: viewModel.viewing_gallery_b,
                                 ),
-
                                 singleChoiceRow(
                                   context,
                                   title:

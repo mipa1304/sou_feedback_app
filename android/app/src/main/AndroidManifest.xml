@@ -2,9 +2,9 @@
     <!-- Storage and media permissions. Adjust for target SDK and Android versions.
          - For Android 13+ use READ_MEDIA_AUDIO/IMAGES/VIDEO.
          - For older versions use READ/WRITE_EXTERNAL_STORAGE (WRITE limited to <=28).
-         - MANAGE_EXTERNAL_STORAGE grants All files access (use with caution).
-    -->
+         - MANAGE_EXTERNAL_STORAGE grants All files access (use with caution).-->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
@@ -51,6 +51,9 @@
 
          In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
     <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
