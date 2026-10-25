@@ -19,10 +19,10 @@ class VisitorFeedbackFormScreen extends StatefulWidget {
 
 class _VisitorFeedbackFormScreenState extends State<VisitorFeedbackFormScreen> {
   static const _languages = <_FeedbackLanguage>[
-    _FeedbackLanguage('en', 'English'),
-    _FeedbackLanguage('hi', 'हिन्दी'),
-    _FeedbackLanguage('gu', 'ગુજરાતી'),
-    _FeedbackLanguage('ta', 'தமிழ்'),
+    _FeedbackLanguage('en', 'English', 'en-US'),
+    _FeedbackLanguage('hi', 'हिन्दी', 'hi-IN'),
+    _FeedbackLanguage('gu', 'ગુજરાતી', 'gu-IN'),
+    _FeedbackLanguage('ta', 'தமிழ்', 'ta-IN'),
   ];
 
   final SpeechToText _speech = SpeechToText();
@@ -78,21 +78,20 @@ class _VisitorFeedbackFormScreenState extends State<VisitorFeedbackFormScreen> {
       final locales = await _speech.locales();
       LocaleName? locale;
       for (final candidate in locales) {
-        if (candidate.localeId.toLowerCase().startsWith(_language.code)) {
+        final languageCode = candidate.localeId
+            .replaceAll('_', '-')
+            .split('-')
+            .first
+            .toLowerCase();
+        if (languageCode == _language.code) {
           locale = candidate;
           break;
         }
       }
-      if (locale == null) {
-        _showMessage(
-          'Speech recognition for ${_language.name} is not available on this device.',
-        );
-        return;
-      }
 
       _usedVoiceInput = true;
       await _speech.listen(
-        localeId: locale.localeId,
+        localeId: locale?.localeId ?? _language.localeId,
         listenFor: const Duration(minutes: 1),
         pauseFor: const Duration(seconds: 5),
         onResult: (result) {
@@ -278,8 +277,9 @@ class _VisitorFeedbackFormScreenState extends State<VisitorFeedbackFormScreen> {
 }
 
 class _FeedbackLanguage {
-  const _FeedbackLanguage(this.code, this.name);
+  const _FeedbackLanguage(this.code, this.name, this.localeId);
 
   final String code;
   final String name;
+  final String localeId;
 }
