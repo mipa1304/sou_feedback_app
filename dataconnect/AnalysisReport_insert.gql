@@ -1,7 +1,0 @@
-# This is a file for you to write an un-named mutation. 
-# Only one un-named mutation is allowed per file.
-mutation {
-  analysisReport_insert(
-    data: {id: "11111111222233334444555555555555", userId: "11111111222233334444555555555555", createdAt: "2026-07-07T04:38:46.457Z", negativePercentage: 0, outstandingPercentage: 0, positivePercentage: 0, reportName: "", sourceFileName: ""}
-  )
-}

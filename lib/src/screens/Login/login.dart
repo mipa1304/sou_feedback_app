@@ -1,365 +1,365 @@
-// ignore_for_file: deprecated_member_use, unused_import, prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, avoid_print, unused_field, unused_local_variable, unused_element, use_build_context_synchronously, library_private_types_in_public_api, sort_child_properties_last, unnecessary_null_comparison, unnecessary_import
+// // ignore_for_file: deprecated_member_use, unused_import, prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, avoid_print, unused_field, unused_local_variable, unused_element, use_build_context_synchronously, library_private_types_in_public_api, sort_child_properties_last, unnecessary_null_comparison, unnecessary_import
 
-import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:sou_feedback_app/provider/base_model.dart';
-import 'package:sou_feedback_app/provider/base_view.dart';
-import 'package:sou_feedback_app/provider/getusers_model.dart';
-import 'package:sou_feedback_app/src/models/save_users.dart';
-import 'package:sou_feedback_app/src/screens/Login/login_screen_viewmodel.dart';
-import 'package:sou_feedback_app/src/widgets/TextFieldWithPostFixIcon.dart';
-import 'package:sou_feedback_app/config/app_config.dart';
-import 'package:sou_feedback_app/src/widgets/Cstmbtn.dart';
-import 'package:sou_feedback_app/constant/routename.dart';
-import 'package:sou_feedback_app/constant/appconstant.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:provider/provider.dart';
-import 'package:sou_feedback_app/locator.dart';
-// import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:stacked/stacked.dart';
-import 'package:sou_feedback_app/src/screens/OTP Screen/OTP_Screen.dart';
-//import 'package:custom_qr_generator/custom_qr_generator.dart';
-import 'package:sou_feedback_app/src/screens/FeedbackForm/feedback.dart';
-import 'package:qr_flutter/qr_flutter.dart';
-import 'package:sou_feedback_app/src/screens/FeedBackForm2/feedback2.dart';
-//import 'package:qr_code_scanner/qr_code_scanner.dart';
-//import 'package:qr_flutter/qr_flutter.dart';
+// import 'dart:io';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:flutter/foundation.dart';
+// import 'package:flutter/material.dart';
+// import 'package:sou_feedback_app/provider/base_model.dart';
+// import 'package:sou_feedback_app/provider/base_view.dart';
+// import 'package:sou_feedback_app/provider/getusers_model.dart';
+// import 'package:sou_feedback_app/src/models/save_users.dart';
+// import 'package:sou_feedback_app/src/screens/Login/login_screen_viewmodel.dart';
+// import 'package:sou_feedback_app/src/widgets/TextFieldWithPostFixIcon.dart';
+// import 'package:sou_feedback_app/config/app_config.dart';
+// import 'package:sou_feedback_app/src/widgets/Cstmbtn.dart';
+// import 'package:sou_feedback_app/constant/routename.dart';
+// import 'package:sou_feedback_app/constant/appconstant.dart';
+// import 'package:flutter/scheduler.dart';
+// import 'package:provider/provider.dart';
+// import 'package:sou_feedback_app/locator.dart';
+// // import 'package:qr_code_scanner/qr_code_scanner.dart';
+// import 'package:stacked/stacked.dart';
+// import 'package:sou_feedback_app/src/screens/OTP Screen/OTP_Screen.dart';
+// //import 'package:custom_qr_generator/custom_qr_generator.dart';
+// import 'package:sou_feedback_app/src/screens/FeedbackForm/feedback.dart';
+// import 'package:qr_flutter/qr_flutter.dart';
+// import 'package:sou_feedback_app/src/screens/FeedBackForm2/feedback2.dart';
+// //import 'package:qr_code_scanner/qr_code_scanner.dart';
+// //import 'package:qr_flutter/qr_flutter.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+// class LoginScreen extends StatefulWidget {
+//   const LoginScreen({Key? key}) : super(key: key);
 
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
+//   @override
+//   _LoginScreenState createState() => _LoginScreenState();
+// }
 
-class _LoginScreenState extends State<LoginScreen> {
-  List<UsersViewModel>? _users;
-  // final TextEditingController _mobileno = TextEditingController();
-  final TextEditingController _email = TextEditingController();
-  final TextEditingController _password = TextEditingController();
-  bool isScanned = false;
-  // QRViewController? controller;
-  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+// class _LoginScreenState extends State<LoginScreen> {
+//   List<UsersViewModel>? _users;
+//   // final TextEditingController _mobileno = TextEditingController();
+//   final TextEditingController _email = TextEditingController();
+//   final TextEditingController _password = TextEditingController();
+//   bool isScanned = false;
+//   // QRViewController? controller;
+//   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
-  @override
-  Widget build(BuildContext context) {
-    bool isotp;
+//   @override
+//   Widget build(BuildContext context) {
+//     bool isotp;
 
-    bool isPhoneShow = true;
+//     bool isPhoneShow = true;
 
-    bool isOtpShow = false;
+//     bool isOtpShow = false;
 
-    String verid = "";
+//     String verid = "";
 
-    var size = MediaQuery.of(context).size;
+//     var size = MediaQuery.of(context).size;
 
-    const IconData dialpad = IconData(0xe1ce, fontFamily: 'MaterialIcons');
+//     const IconData dialpad = IconData(0xe1ce, fontFamily: 'MaterialIcons');
 
-    QuerySnapshot? snapshot;
+//     QuerySnapshot? snapshot;
 
-    return ChangeNotifierProvider<LoginScreenViewModel>(
-      create: (context) => locator<LoginScreenViewModel>(),
-      child: ViewModelBuilder<LoginScreenViewModel>.reactive(
-          viewModelBuilder: () => LoginScreenViewModel(
-                context,
-              ),
-          builder: (
-            context,
-            model,
-            child,
-          ) {
-            return Scaffold(
-              floatingActionButton: FloatingActionButton.extended(
-                onPressed: () {
-                  Navigator.of(context).pushNamed(visitorFeedbackScreen);
-                },
-                icon: const Icon(Icons.qr_code_scanner),
-                label: const Text('Quick visitor feedback'),
-              ),
-              body: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height >= 775.0
-                    ? MediaQuery.of(context).size.height
-                    : 775.0,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    ThemeColors.bgColor,
-                    ThemeColors.bgColor2,
-                  ],
-                )),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(bottom: size.height * 0.06),
-                        child: Text(
-                          'Welcome to GUEST FEEDBACK FORM',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 32,
-                          ),
-                        ),
-                      ),
+//     return ChangeNotifierProvider<LoginScreenViewModel>(
+//       create: (context) => locator<LoginScreenViewModel>(),
+//       child: ViewModelBuilder<LoginScreenViewModel>.reactive(
+//           viewModelBuilder: () => LoginScreenViewModel(
+//                 context,
+//               ),
+//           builder: (
+//             context,
+//             model,
+//             child,
+//           ) {
+//             return Scaffold(
+//               floatingActionButton: FloatingActionButton.extended(
+//                 onPressed: () {
+//                   Navigator.of(context).pushNamed(visitorFeedbackScreen);
+//                 },
+//                 icon: const Icon(Icons.qr_code_scanner),
+//                 label: const Text('Quick visitor feedback'),
+//               ),
+//               body: Container(
+//                 width: MediaQuery.of(context).size.width,
+//                 height: MediaQuery.of(context).size.height >= 775.0
+//                     ? MediaQuery.of(context).size.height
+//                     : 775.0,
+//                 decoration: BoxDecoration(
+//                     gradient: LinearGradient(
+//                   begin: Alignment.topLeft,
+//                   end: Alignment.bottomRight,
+//                   colors: [
+//                     ThemeColors.bgColor,
+//                     ThemeColors.bgColor2,
+//                   ],
+//                 )),
+//                 child: Center(
+//                   child: Column(
+//                     mainAxisAlignment: MainAxisAlignment.center,
+//                     children: <Widget>[
+//                       Container(
+//                         margin: EdgeInsets.only(bottom: size.height * 0.06),
+//                         child: Text(
+//                           'Welcome to GUEST FEEDBACK FORM',
+//                           textAlign: TextAlign.center,
+//                           style: TextStyle(
+//                             color: Colors.white,
+//                             fontWeight: FontWeight.bold,
+//                             fontSize: 32,
+//                           ),
+//                         ),
+//                       ),
 
-                      // Container(
-                      //   margin: EdgeInsets.only(bottom: size.height * 0.06),
-                      //   child: Text(
-                      //     'HouseKeeping',
-                      //     textAlign: TextAlign.center,
-                      //     style: TextStyle(
-                      //       color: Colors.white,
-                      //       fontWeight: FontWeight.bold,
-                      //       fontSize: 32,
-                      //     ),
-                      //   ),
-                      // ),
+//                       // Container(
+//                       //   margin: EdgeInsets.only(bottom: size.height * 0.06),
+//                       //   child: Text(
+//                       //     'HouseKeeping',
+//                       //     textAlign: TextAlign.center,
+//                       //     style: TextStyle(
+//                       //       color: Colors.white,
+//                       //       fontWeight: FontWeight.bold,
+//                       //       fontSize: 32,
+//                       //     ),
+//                       //   ),
+//                       // ),
 
-                      // SizedBox(
-                      //     height: 200,
-                      //     width: 200,
-                      //     //flex: 5,
-                      //     child: QRView(
-                      //       key: qrKey,
-                      //       onQRViewCreated: _onQRViewCreated,
-                      //     )),
-                      // Expanded(
-                      //     flex: 1,
-                      //     child: Center(
-                      //       child: isScanned
-                      //           ? Text('QR Code Scanned!')
-                      //           : Text('Please scan a QR code'),
-                      //     )),
+//                       // SizedBox(
+//                       //     height: 200,
+//                       //     width: 200,
+//                       //     //flex: 5,
+//                       //     child: QRView(
+//                       //       key: qrKey,
+//                       //       onQRViewCreated: _onQRViewCreated,
+//                       //     )),
+//                       // Expanded(
+//                       //     flex: 1,
+//                       //     child: Center(
+//                       //       child: isScanned
+//                       //           ? Text('QR Code Scanned!')
+//                       //           : Text('Please scan a QR code'),
+//                       //     )),
 
-                      // GestureDetector(
-                      //   onTap: () {
-                      //     Navigator.pushReplacement(
-                      //       context,
-                      //       MaterialPageRoute(
-                      //           builder: (context) => FeedbackScreen()),
-                      //     );
-                      //   },
-                      //   child: SizedBox(
-                      //       child: QrImageView(
-                      //     data: 'HouseKeeping',
-                      //     version: QrVersions.auto,
-                      //     size: 200.0,
-                      //   )),
-                      // ),
+//                       // GestureDetector(
+//                       //   onTap: () {
+//                       //     Navigator.pushReplacement(
+//                       //       context,
+//                       //       MaterialPageRoute(
+//                       //           builder: (context) => FeedbackScreen()),
+//                       //     );
+//                       //   },
+//                       //   child: SizedBox(
+//                       //       child: QrImageView(
+//                       //     data: 'HouseKeeping',
+//                       //     version: QrVersions.auto,
+//                       //     size: 200.0,
+//                       //   )),
+//                       // ),
 
-                      // Expanded(
-                      //     flex: 5,
-                      //     child: QRView(
-                      //       key: qrKey,
-                      //       onQRViewCreated: model.onQRViewCreated,
-                      //     )),
+//                       // Expanded(
+//                       //     flex: 5,
+//                       //     child: QRView(
+//                       //       key: qrKey,
+//                       //       onQRViewCreated: model.onQRViewCreated,
+//                       //     )),
 
-                      // Expanded(
-                      //   flex: 1,
-                      //   child: Center(
-                      //       child: result != null
-                      //           ? Text(
-                      //               'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
-                      //           : Text('eScan a cod')),
-                      // )
+//                       // Expanded(
+//                       //   flex: 1,
+//                       //   child: Center(
+//                       //       child: result != null
+//                       //           ? Text(
+//                       //               'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
+//                       //           : Text('eScan a cod')),
+//                       // )
 
-                      Container(
-                        margin: EdgeInsets.only(bottom: size.height * 0.06),
-                        child: Text(
-                          'LogIn',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
-                        ),
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          TextFieldWithPostFixIcon(
-                            postfixIconTap: () => {},
-                            controller: _email,
-                            // postfixIcon: dialpad,
-                            hinText: "Enter Email",
-                            postfixIconColor: Colors.white24,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          TextFieldWithPostFixIcon(
-                            postfixIconTap: () => {},
-                            controller: _password,
-                            // postfixIcon: dialpad,
-                            hinText: "Enter Password",
-                            postfixIconColor: Colors.white24,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            alignment: Alignment.centerRight,
-                            color: Colors.transparent,
-                            height: size.height * 0.05,
-                            width: size.width * 0.7,
-                            child: TextButton(
-                              onPressed: () {
-                                model.redirectToPage(signupScreen);
-                              },
-                              child: const Text(
-                                'New User? CreateAccount',
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          CustomBtn(
-                            height: size.height * 0.05,
-                            width: size.width * 0.6,
-                            str: 'Log In Now',
-                            btnColor: ThemeColors.appDarkPrimaryColor,
-                            fontWeight: FontWeight.bold,
+//                       Container(
+//                         margin: EdgeInsets.only(bottom: size.height * 0.06),
+//                         child: Text(
+//                           'LogIn',
+//                           textAlign: TextAlign.center,
+//                           style: TextStyle(
+//                               color: Colors.white,
+//                               fontWeight: FontWeight.bold,
+//                               fontSize: 18),
+//                         ),
+//                       ),
+//                       Column(
+//                         mainAxisAlignment: MainAxisAlignment.center,
+//                         children: <Widget>[
+//                           TextFieldWithPostFixIcon(
+//                             postfixIconTap: () => {},
+//                             controller: _email,
+//                             // postfixIcon: dialpad,
+//                             hinText: "Enter Email",
+//                             postfixIconColor: Colors.white24,
+//                           ),
+//                           SizedBox(
+//                             height: 10,
+//                           ),
+//                           TextFieldWithPostFixIcon(
+//                             postfixIconTap: () => {},
+//                             controller: _password,
+//                             // postfixIcon: dialpad,
+//                             hinText: "Enter Password",
+//                             postfixIconColor: Colors.white24,
+//                           ),
+//                           SizedBox(
+//                             height: 10,
+//                           ),
+//                           Container(
+//                             alignment: Alignment.centerRight,
+//                             color: Colors.transparent,
+//                             height: size.height * 0.05,
+//                             width: size.width * 0.7,
+//                             child: TextButton(
+//                               onPressed: () {
+//                                 model.redirectToPage(signupScreen);
+//                               },
+//                               child: const Text(
+//                                 'New User? CreateAccount',
+//                                 textAlign: TextAlign.right,
+//                                 style: TextStyle(
+//                                   color: Colors.black,
+//                                   fontSize: 15,
+//                                 ),
+//                               ),
+//                             ),
+//                           ),
+//                           SizedBox(
+//                             height: 20,
+//                           ),
+//                           CustomBtn(
+//                             height: size.height * 0.05,
+//                             width: size.width * 0.6,
+//                             str: 'Log In Now',
+//                             btnColor: ThemeColors.appDarkPrimaryColor,
+//                             fontWeight: FontWeight.bold,
 
-                            btnPressed: () {
-                              model.redirectToPage(feedbackscreen);
-                              // if (_email.text.isEmpty ||
-                              //     _password.text.isEmpty) {
-                              //   ScaffoldMessenger.of(context).showSnackBar(
-                              //     SnackBar(
-                              //       content:
-                              //           Text('Please enter email and password'),
-                              //     ),
-                              //   );
-                              //   return;
-                              // } else {
-                              //   model.loginWithEmailPassword(
-                              //       context,
-                              //       _email.text.toString().trim(),
-                              //       _password.text.toString().trim());
+//                             btnPressed: () {
+//                               model.redirectToPage(feedbackscreen);
+//                               // if (_email.text.isEmpty ||
+//                               //     _password.text.isEmpty) {
+//                               //   ScaffoldMessenger.of(context).showSnackBar(
+//                               //     SnackBar(
+//                               //       content:
+//                               //           Text('Please enter email and password'),
+//                               //     ),
+//                               //   );
+//                               //   return;
+//                               // } else {
+//                               //   model.loginWithEmailPassword(
+//                               //       context,
+//                               //       _email.text.toString().trim(),
+//                               //       _password.text.toString().trim());
 
-                              //   if (model.authStatus ==
-                              //       "Logged in successfully") {
-                              //     model.redirectToPage(feedbackscreen);
-                              //   } else {
-                              //     print(model.authStatus);
-                              //     // ScaffoldMessenger.of(context).showSnackBar(
-                              //     //   SnackBar(
-                              //     //     content:
-                              //     //         Text(model.authStatus.toString()),
-                              //     //   ),
-                              //     // );
+//                               //   if (model.authStatus ==
+//                               //       "Logged in successfully") {
+//                               //     model.redirectToPage(feedbackscreen);
+//                               //   } else {
+//                               //     print(model.authStatus);
+//                               //     // ScaffoldMessenger.of(context).showSnackBar(
+//                               //     //   SnackBar(
+//                               //     //     content:
+//                               //     //         Text(model.authStatus.toString()),
+//                               //     //   ),
+//                               //     // );
 
-                              //     AppConstant.showFailToast(
-                              //         model.authStatus.toString());
-                              //   }
-                              // }
-                            },
-                            // btnPressed: () async {
-                            //   final isExistusers = await model
-                            //       .checkCustomerExist(_mobileno.text);
+//                               //     AppConstant.showFailToast(
+//                               //         model.authStatus.toString());
+//                               //   }
+//                               // }
+//                             },
+//                             // btnPressed: () async {
+//                             //   final isExistusers = await model
+//                             //       .checkCustomerExist(_mobileno.text);
 
-                            // if (isExistusers == true) {
-                            // final isOtpsent = await model.loginWithEmailPassword(
-                            //     context, _mobileno.text.toString().trim(), );
+//                             // if (isExistusers == true) {
+//                             // final isOtpsent = await model.loginWithEmailPassword(
+//                             //     context, _mobileno.text.toString().trim(), );
 
-                            // ScaffoldMessenger.of(context).showSnackBar(
-                            //     SnackBar(
-                            //         content: Text(
-                            //             model.authexception.toString())));
+//                             // ScaffoldMessenger.of(context).showSnackBar(
+//                             //     SnackBar(
+//                             //         content: Text(
+//                             //             model.authexception.toString())));
 
-                            //   if (isOtpsent) {
-                            //     setState(() {
-                            //       verid = model.verificationid.toString();
-                            //     });
-                            //     Navigator.push(
-                            //       context,
-                            //       MaterialPageRoute(
-                            //           builder: (context) =>
-                            //               OTPScreen(verId: verid)),
-                            //     );
-                            //   } else {
-                            //     ScaffoldMessenger.of(context).showSnackBar(
-                            //         SnackBar(
-                            //             content: Text("Didn't get OTP")));
-                            //   }
-                            // } else {
-                            //   ScaffoldMessenger.of(context).showSnackBar(
-                            //       SnackBar(
-                            //           content: Text("user is not exist")));
-                            // }
-                            // },
-                            borderRadius: 10,
-                            btnBorderColor: ThemeColors.textBoxOutlineBorder,
-                            fontSize: 18,
-                            // fontWeight: FontWeight.w300,
-                            txtColor: ThemeColors.textBoxOutlineBorder,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            );
-          }),
-    );
-  }
+//                             //   if (isOtpsent) {
+//                             //     setState(() {
+//                             //       verid = model.verificationid.toString();
+//                             //     });
+//                             //     Navigator.push(
+//                             //       context,
+//                             //       MaterialPageRoute(
+//                             //           builder: (context) =>
+//                             //               OTPScreen(verId: verid)),
+//                             //     );
+//                             //   } else {
+//                             //     ScaffoldMessenger.of(context).showSnackBar(
+//                             //         SnackBar(
+//                             //             content: Text("Didn't get OTP")));
+//                             //   }
+//                             // } else {
+//                             //   ScaffoldMessenger.of(context).showSnackBar(
+//                             //       SnackBar(
+//                             //           content: Text("user is not exist")));
+//                             // }
+//                             // },
+//                             borderRadius: 10,
+//                             btnBorderColor: ThemeColors.textBoxOutlineBorder,
+//                             fontSize: 18,
+//                             // fontWeight: FontWeight.w300,
+//                             txtColor: ThemeColors.textBoxOutlineBorder,
+//                           ),
+//                         ],
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ),
+//             );
+//           }),
+//     );
+//   }
 
-  // void _onQRViewCreated(QRViewController controller) {
-  //   setState(() {
-  //     controller = controller;
-  //   });
-  //   controller.scannedDataStream.listen((scanData) {
-  //     if (!isScanned) {
-  //       print('Scanned data: ${scanData.code}');
+//   // void _onQRViewCreated(QRViewController controller) {
+//   //   setState(() {
+//   //     controller = controller;
+//   //   });
+//   //   controller.scannedDataStream.listen((scanData) {
+//   //     if (!isScanned) {
+//   //       print('Scanned data: ${scanData.code}');
 
-  //       _redirectBasedOnQRData(scanData.code.toString());
+//   //       _redirectBasedOnQRData(scanData.code.toString());
 
-  //       setState(() {
-  //         isScanned = true;
-  //       });
-  //     }
-  //   });
-  // }
+//   //       setState(() {
+//   //         isScanned = true;
+//   //       });
+//   //     }
+//   //   });
+//   // }
 
-  void _redirectBasedOnQRData(String qrData) {
-    if (qrData == 'HouseKeeping') {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => FeedbackScreen()),
-      );
-    } else if (qrData == 'GuestRelation') {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => Feedback2()),
-      );
-    }
-  }
+//   void _redirectBasedOnQRData(String qrData) {
+//     if (qrData == 'HouseKeeping') {
+//       Navigator.pushReplacement(
+//         context,
+//         MaterialPageRoute(builder: (context) => FeedbackScreen()),
+//       );
+//     } else if (qrData == 'GuestRelation') {
+//       Navigator.pushReplacement(
+//         context,
+//         MaterialPageRoute(builder: (context) => Feedback2()),
+//       );
+//     }
+//   }
 
-  // void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
-  //   if (!p) {
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       SnackBar(content: Text('no Permission')),
-  //     );
-  //   }
-  // }
+//   // void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
+//   //   if (!p) {
+//   //     ScaffoldMessenger.of(context).showSnackBar(
+//   //       SnackBar(content: Text('no Permission')),
+//   //     );
+//   //   }
+//   // }
 
-  @override
-  void dispose() {
-    // controller?.dispose();
-    super.dispose();
-  }
-}
+//   @override
+//   void dispose() {
+//     // controller?.dispose();
+//     super.dispose();
+//   }
+// }

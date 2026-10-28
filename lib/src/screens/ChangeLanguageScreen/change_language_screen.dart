@@ -4,7 +4,7 @@ import 'package:sou_feedback_app/Localization/language/languages.dart';
 import 'package:sou_feedback_app/Localization/locale_constants.dart';
 import 'package:sou_feedback_app/src/models/language_model.dart';
 import 'package:sou_feedback_app/src/screens/ChangeLanguageScreen/change_language_screen_model.dart';
-import 'package:sou_feedback_app/src/screens/FeedbackForm/feedback.dart';
+// import 'package:sou_feedback_app/src/screens/FeedbackForm/feedback.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sou_feedback_app/locator.dart';
@@ -71,10 +71,10 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
             });
             changeLanguage(context, language!.languageCode!);
 
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => FeedbackScreen()),
-            );
+            // Navigator.pushReplacement(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => FeedbackScreen()),
+            // );
 
             print(language.languageCode);
           },

@@ -42,8 +42,6 @@ class BaseModel extends ChangeNotifier {
 
   ViewState _state = ViewState.idle;
   BuildContext? context;
-  // ViewState get state => _state;
-  // DialogService get dialogService => _dialogService;
   FirebaseAuth get auth => _authOverride ?? FirebaseAuth.instance;
   QuerySnapshot? snapshot;
   dynamic _recorder;
